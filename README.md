@@ -1,4 +1,4 @@
-# [Nombre del juego]
+﻿# World War
 
 ## Sobre las personas
 
@@ -9,10 +9,10 @@
 
 ### Integrantes del equipo
 
-* XXXX
-* XXXX
-* XXXX
-* XXXX
+* Alvarez, Lautaro
+* Avalo, Pablo
+* Pichetti, Gonzalo
+* Retamar, Alejandro
 
 ## Sobre la tecnología
 
