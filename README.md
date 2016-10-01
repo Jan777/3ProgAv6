@@ -9,10 +9,10 @@
 
 ### Integrantes del equipo
 
-* Alvarez, Lautaro
-* Avalo, Pablo
-* Pichetti, Gonzalo
-* Retamar, Alejandro
+* Alvarez, Lautaro ([lauto94](https://github.com/lauto94))
+* Avalo, Pablo ([PabloAvalo](https://github.com/pabloavalo))
+* Pichetti, Gonzalo ([gpichetti](https://github.com/gpichetti))
+* Retamar, Alejandro ([aretamar](https://github.com/aretamar))
 
 ## Sobre la tecnología
 
