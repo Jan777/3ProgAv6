@@ -68,6 +68,6 @@ Como jugador, quiero poder destrozar elementos que aparezcan en el mapa.
 * Criterio de aceptación: Al destrozar elementos que aparezcan en el mapa, puedo atravesar la zona en la que se encontraba. 
 
 ###HISTORIA 14
-Como jugador, quiero atacar criaturas que no puedan atacarme para aumentar mi expericneia. 
+Como jugador, quiero atacar criaturas que no puedan atacarme para aumentar mi experiencia. 
  
 * Criterio de aceptación: Al eliminar una criatura, mi personaje aumenta su experiencia.
