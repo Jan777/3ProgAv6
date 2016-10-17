@@ -2,50 +2,50 @@
 #WorldWar
 
 ###HISTORIA 1:
-Como jugador, quiero asignarle a mi personaje raza y casta, y verlo reflejado en mi avatar.
+Como jugador, quiero asignarle a mi personaje raza y casta para verlo reflejado en mi avatar.
 
-* Criterio de aceptación: Al asignarle raza y casta al personaje, se refleja la elección en el avatar.
+* Criterio de aceptación: Dado un personaje, cuando se le asigna raza y casta, entonces se ve reflejada la elección en el avatar.
 
 ###HISTORIA 2
-Como jugador, quiero ingresar a un mundo con mi personaje.
+Como jugador, quiero ingresar a un mundo con mi personaje para recorrerlo.
 
-* Criterio de aceptación: Al ingresar a un mapa, puedo explorarlo con mi personaje.
+* Criterio de aceptación: Dado un personaje, cuando ingresa a un mundo, entonces éste puede explorarlo. 
 
 ###HISTORIA 3
-Como jugador, quiero adquirir items cuando gano una batalla.
+Como jugador, quiero adquirir items cuando gano una batalla para poder equiparlos. 
 
-* Criterio de aceptación: Al derrotar un enemigo, adquiero el mejor ítem que disponga.
+* Criterio de aceptación: Dado un personaje y una batalla, cuando éste gana, entonces adquiere un item. 
 
 ###HISTORIA 4
 Como jugador, quiero atacar enemigos para aumentar mi experiencia.
 
-* Criterio de aceptación: Al atacar a un enemigo, aumenta la experiencia de mi personaje.
+* Criterio de aceptación: Dado un persoanaje, cuando ataca a un enemigo, entonces aumenta su experiencia. 
 
 ###HISTORIA 5
 Como jugador, quiero acumular experiencia para poder subir de nivel.
 
-* Criterio de aceptación: Al llegar a 100 puntos de experiencia, mi personaje sube de nivel.
+* Criterio de aceptación: Dado un personaje, cuando alcanza los 100 puntos de experiencia, entonces aumenta un nivel. 
 
 ###HISTORIA 6
 Como jugador, quiero subir de nivel para poder asignar puntos adicionales a mis habilidades.
 
-* Criterio de aceptación: Al subir de nivel, mi personaje recibe puntos para asignar a las habilidades.
+* Criterio de aceptación: Dado un peronsaje, cuando sube de nivel, entonces obtiene puntos asignables a sus habilidades. 
 
 ###HISTORIA 7
 
 Como jugador, quiero equipar una espada para poder potenciar mis puntos de ataque.
 
-* Criterio de aceptación: Al equipar una espada, cuando ataco mis puntos de ataque resultan aumentados.
+* Criterio de aceptación: Dado un personaje, cuando equipa una espada, entonces sus puntos de ataque resultan aumentados.
 
 ###HISTORIA 8
 Como jugador, quiero equipar con escudo para poder potenciar mis puntos de defensa.
 
-* Criterio de aceptación:  Al equipar un escudo, cuando me atacan mis puntos de defensa resultan aumentados.
+* Criterio de aceptación: Dado un personaje, cuando equipa una escudo, entonces sus puntos de defensa resultan aumentados.
 
 ###HISTORIA 9
 Como jugador, quiero equipar con papiro para poder potenciar mis puntos de inteligencia.
 
-* Criterio de aceptación: Al equipar un papiro, cuando ataco puedo elegir un hechizo diferente aumentando mis puntos de inteligencia.
+* Criterio de aceptación: Dado un personaje equipado con papiro, cuando éste selecciona un hechizo, entonces aumenta sus puntos de inteligencia.
 
 ###HISTORIA 10
 Como jugador, quiero aliarme con otro jugador para combatir junto a él y aumentar la experiencia que recolectamos en ese tiempo.
