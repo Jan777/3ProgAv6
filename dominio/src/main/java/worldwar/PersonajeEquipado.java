@@ -53,5 +53,15 @@ public class PersonajeEquipado extends Personaje {
 	public int obtenerPuntosDeMagia() {
 		return this.personajeEq.obtenerPuntosDeMagia();
 	}
+	
+	@Override
+	public int obtenerPuntosDeExperiencia() {
+		return experiencia.getPuntoDeExperiencia();
+	}
+
+	@Override
+	public int obtenerNivel() {
+		return nivel.getNivel();
+	}
 
 }

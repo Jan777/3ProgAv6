@@ -2,22 +2,19 @@ package worldwar;
 
 public class Explorador extends Casta {
 	
-	public Explorador (Personaje explorador) {
-		super (explorador);
+	public Explorador () {
+		super();
 	}
 	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia();
+	public int getInteligencia() {
+		return super.getInteligencia();
 	}
-	
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque();
+
+	public int getAtaque() {
+		return super.getAtaque();
 	}
-	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa()+5;
+
+	public int getDefensa() {
+		return super.getDefensa()+5;
 	}
 }

@@ -4,30 +4,8 @@ public class Elfo extends Personaje {
 	
 	int ataquesRecibidos;
 	
-	
-	@Override
-	protected int calcularPuntosDeDefensa() {
-		return getDestreza();
-	}
-	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return getInteligencia();
-	}
-	
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return calcularPuntosDeAtaque();
-	}
-	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return calcularPuntosDeDefensa();
-	}
-	
-	@Override
-	protected void despuesDeAtacar() {
-		salud++;
+	public Elfo(Casta casta) {
+		super(casta);
 	}
 	
 	@Override
@@ -35,7 +13,37 @@ public class Elfo extends Personaje {
 		return getFuerza()+ataquesRecibidos;
 		
 	}
-
+	
+	@Override
+	protected int calcularPuntosDeDefensa() {
+		return getDestreza();
+	}
+	
+	@Override
+	protected int calcularPuntosDeInteligencia() {
+		return getInteligencia();
+	}
+	
+	@Override
+	public int obtenerPuntosDeInteligencia() {
+		return calcularPuntosDeInteligencia() + casta.getInteligencia();
+	}
+	
+	@Override
+	public int obtenerPuntosDeAtaque() {
+		return calcularPuntosDeAtaque() + casta.getAtaque();
+	}
+	
+	@Override
+	public int obtenerPuntosDeDefensa() {
+		return calcularPuntosDeDefensa() + casta.getDefensa();
+	}
+	
+	@Override
+	protected void despuesDeAtacar() {
+		salud++;
+	}
+	
 	@Override
 	protected boolean puedeAtacar() {
 		return energia >= calcularPuntosDeAtaque();
@@ -52,13 +60,19 @@ public class Elfo extends Personaje {
 		return 0;
 	}
 
-	@Override
-	protected int calcularPuntosDeInteligencia() {
-		return 0;
-	}
 
 	@Override
 	public int obtenerPuntosDeMagia() {
 		return 0;
+	}
+	
+	@Override
+	public int obtenerPuntosDeExperiencia() {
+		return experiencia.getPuntoDeExperiencia();
+	}
+
+	@Override
+	public int obtenerNivel() {
+		return nivel.getNivel();
 	}
 }

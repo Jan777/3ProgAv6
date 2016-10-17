@@ -2,22 +2,19 @@ package worldwar;
 
 public class Mago extends Casta {
 	
-	public Mago (Personaje mago) {
-		super (mago);
+	public Mago () {
+		super();
 	}
-	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia()+5;
+
+	public int getInteligencia() {
+		return super.getInteligencia()+5;
 	}
-	
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque();
+
+	public int getAtaque() {
+		return super.getAtaque();
 	}
-	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa();
+
+	public int getDefensa() {
+		return super.getDefensa();
 	}
 }

@@ -8,7 +8,21 @@ public abstract class Personaje implements Atacable {
 	protected int destreza = 1;
 	protected int inteligencia = 1;
 	protected int radio = 100;
-		
+	protected Casta casta;
+	protected Experiencia experiencia;
+	protected Nivel nivel;	
+	
+	public Personaje(Casta casta) {
+		this.casta = casta;
+		this.experiencia = new Experiencia();
+		this.nivel = new Nivel();
+	}
+	
+	public Personaje() {
+		this.experiencia = new Experiencia();
+		this.nivel = new Nivel();
+	}
+	
 	public int getFuerza() {
 		return fuerza;
 	}
@@ -37,6 +51,14 @@ public abstract class Personaje implements Atacable {
 		if (puedeAtacar()) {
 			atacado.serAtacado(calcularPuntosDeAtaque());
 			energia -= calcularPuntosDeAtaque();
+			experiencia.aumentarExperiencia();
+			/* Al llegar a los 100 puntos aumento la experiencia 
+			 * PONGO 5 PTS PARA PODER HACER EL TEST 
+			 */
+			if(experiencia.getPuntoDeExperiencia() == 5){
+				nivel.aumentarNivel();
+				experiencia.resetearExperiencia();
+			}
 			despuesDeAtacar();
 		}
 	}
@@ -56,6 +78,8 @@ public abstract class Personaje implements Atacable {
 	public abstract int obtenerPuntosDeDefensa();
 	public abstract int obtenerPuntosDeMagia();
 	public abstract int obtenerPuntosDeInteligencia();
+	public abstract int obtenerPuntosDeExperiencia();
+	public abstract int obtenerNivel();
 	//public abstract void aplicarHechizoEn(String nombre, Personaje p);
 	
 	public void serAtacado(int daño) {

@@ -17,12 +17,13 @@ public class ItemTest {
     @Test
     public void quePuedoAgregarItemDeAtaque() {
  
-        Personaje sigmund = new Humano();
-        Assert.assertEquals(1, sigmund.obtenerPuntosDeAtaque());
+    	Casta mago = new Mago();
+        Personaje sigmund = new Humano(mago);
+        Assert.assertEquals(6, sigmund.obtenerPuntosDeInteligencia());
  
         // agrego item de ataque
         sigmund = new ConEspada(sigmund);
-        Assert.assertEquals(5 + 1, sigmund.obtenerPuntosDeAtaque());
+        Assert.assertEquals(6, sigmund.obtenerPuntosDeAtaque());
     }
  
         

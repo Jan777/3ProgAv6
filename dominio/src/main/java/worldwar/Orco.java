@@ -4,30 +4,40 @@ public class Orco extends Personaje {
 
 	int cantidadDeAtaques;	
 	
-	@Override
-	protected int calcularPuntosDeDefensa() {
-		return getDestreza();
-	}
-	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return getInteligencia();
-	}
-
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return calcularPuntosDeAtaque();
-	}
-	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return calcularPuntosDeDefensa();
+	public Orco(Casta casta) {
+		super(casta);
 	}
 	
 	@Override
 	protected int calcularPuntosDeAtaque() {
 		return getFuerza()+cantidadDeAtaques;
 	}
+	
+	@Override
+	protected int calcularPuntosDeDefensa() {
+		return getDestreza();
+	}
+	
+	@Override
+	protected int calcularPuntosDeInteligencia() {
+		return getInteligencia();
+	}
+	
+	@Override
+	public int obtenerPuntosDeInteligencia() {
+		return calcularPuntosDeInteligencia() + casta.getInteligencia();
+	}
+
+	@Override
+	public int obtenerPuntosDeAtaque() {
+		return calcularPuntosDeAtaque() + casta.getAtaque();
+	}
+	
+	@Override
+	public int obtenerPuntosDeDefensa() {
+		return calcularPuntosDeDefensa() + casta.getDefensa();
+	}
+	
 	
 	@Override
 	protected void despuesDeAtacar() {
@@ -45,12 +55,17 @@ public class Orco extends Personaje {
 	}
 
 	@Override
-	protected int calcularPuntosDeInteligencia() {
+	public int obtenerPuntosDeMagia() {
 		return 0;
+	}
+	
+	@Override
+	public int obtenerPuntosDeExperiencia() {
+		return experiencia.getPuntoDeExperiencia();
 	}
 
 	@Override
-	public int obtenerPuntosDeMagia() {
-		return 0;
+	public int obtenerNivel() {
+		return nivel.getNivel();
 	}
 }

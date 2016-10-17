@@ -2,10 +2,14 @@ package worldwar;
 
 public class Experiencia {
 
-	protected int experiencia;
+	protected int puntosDeExperiencia = 0;
 	
 	public void aumentarExperiencia(){
-		
+		this.puntosDeExperiencia++;
+	}
+	
+	public int getPuntoDeExperiencia(){
+		return this.puntosDeExperiencia;
 	}
 	
 	public void controlarExperiencia(){
@@ -13,7 +17,7 @@ public class Experiencia {
 	}
 	
 	public void resetearExperiencia(){
-		
+		this.puntosDeExperiencia = 0;
 	}
 	
 	public void puntosHabilidades(){

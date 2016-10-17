@@ -2,22 +2,19 @@ package worldwar;
 
 public class Guerrero extends Casta {
 	
-	public Guerrero (Personaje guerrero) {
-		super (guerrero);
+	public Guerrero () {
+		super();
 	}
 	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia();
+	public int getInteligencia() {
+		return super.getInteligencia();
 	}
-	
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque()+5;
+
+	public int getAtaque() {
+		return super.getAtaque() + 5;
 	}
-	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa();
+
+	public int getDefensa() {
+		return super.getDefensa();
 	}
 }

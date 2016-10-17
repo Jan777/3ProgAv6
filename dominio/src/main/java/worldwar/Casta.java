@@ -1,63 +1,23 @@
 package worldwar;
 
-public class Casta extends Personaje {
+public class Casta {
 	
-	private Personaje personaje;
+	private int ataque = 0;
+	private int defensa = 0;
+	private int inteligencia = 0;
 	
-	public Casta(Personaje sigmund) {
-		personaje = sigmund;
+	public Casta() {}
+	
+	public int getInteligencia() {
+		return inteligencia;
 	}
 
-	@Override
-	protected boolean puedeAtacar() {
-		// TODO Auto-generated method stub
-		return false;
+	public int getAtaque() {
+		return ataque;
 	}
 
-	@Override
-	protected int calcularPuntosDeAtaque() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	protected int calcularPuntosDeDefensa() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		// TODO Auto-generated method stub
-		return personaje.obtenerPuntosDeAtaque();
-	}
-
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		// TODO Auto-generated method stub
-		return personaje.obtenerPuntosDeDefensa();
-	}
-
-	public int obtenerPuntosDeInteligencia() {
-		return personaje.obtenerPuntosDeInteligencia();
-	}
-
-	@Override
-	protected int calcularPuntosDeMagia() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	protected int calcularPuntosDeInteligencia() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int obtenerPuntosDeMagia() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getDefensa() {
+		return defensa;
 	}
 	
 }
