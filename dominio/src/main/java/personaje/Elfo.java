@@ -1,14 +1,19 @@
-package worldwar;
+package personaje;
 
-public class Humano extends Personaje {
+import casta.Casta;
+
+public class Elfo extends Personaje {
 	
-	public Humano(Casta casta) {
+	int ataquesRecibidos;
+	
+	public Elfo(Casta casta) {
 		super(casta);
 	}
 	
 	@Override
 	protected int calcularPuntosDeAtaque() {
-		return getFuerza();
+		return getFuerza()+ataquesRecibidos;
+		
 	}
 	
 	@Override
@@ -35,10 +40,21 @@ public class Humano extends Personaje {
 	public int obtenerPuntosDeDefensa() {
 		return calcularPuntosDeDefensa() + casta.getDefensa();
 	}
-
+	
+	@Override
+	protected void despuesDeAtacar() {
+		salud++;
+	}
+	
 	@Override
 	protected boolean puedeAtacar() {
-		return energia >= 10;
+		return energia >= calcularPuntosDeAtaque();
+	}
+
+	@Override
+	public void serAtacado(int daño) {
+		super.serAtacado(daño);
+		this.ataquesRecibidos++;
 	}
 
 	@Override
@@ -46,11 +62,12 @@ public class Humano extends Personaje {
 		return 0;
 	}
 
+
 	@Override
 	public int obtenerPuntosDeMagia() {
 		return 0;
 	}
-
+	
 	@Override
 	public int obtenerPuntosDeExperiencia() {
 		return experiencia.getPuntoDeExperiencia();
@@ -58,15 +75,15 @@ public class Humano extends Personaje {
 
 	@Override
 	public int obtenerNivel() {
-		return nivel.getNivel();
+		return experiencia.getNivel();
 	}
 	
-	/*public void aplicarHechizoEn(String nombre, Personaje p){
-		Iterator <String> it = m.keySet().iterator();
-		
-	}*/
+	public int obtenerQuiteDeEnergia(){
+		return calcularQuiteDeEnergia();
+	}
 	
-	
-		
+	protected int calcularQuiteDeEnergia(){
+		return 5;
+	}
 	
 }

@@ -1,4 +1,4 @@
-package worldwar;
+package mapa;
 
 public class Mapa {
 	private int dimensionX;

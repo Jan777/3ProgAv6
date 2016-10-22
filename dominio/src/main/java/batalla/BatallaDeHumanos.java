@@ -1,4 +1,8 @@
-package worldwar;
+package batalla;
+
+import personaje.Atacable;
+import personaje.Humano;
+import personaje.Personaje;
 
 public class BatallaDeHumanos extends Batalla {
 

@@ -2,6 +2,12 @@ package worldwar;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import casta.Casta;
+import casta.Mago;
+import items.ConEspada;
+import personaje.Humano;
+import personaje.Personaje;
  
 public class ItemTest {
    

@@ -1,17 +1,18 @@
-package worldwar;
+package personaje;
 
-public class Elfo extends Personaje {
+import casta.Casta;
+
+public class Orco extends Personaje {
+
+	int cantidadDeAtaques;	
 	
-	int ataquesRecibidos;
-	
-	public Elfo(Casta casta) {
+	public Orco(Casta casta) {
 		super(casta);
 	}
 	
 	@Override
 	protected int calcularPuntosDeAtaque() {
-		return getFuerza()+ataquesRecibidos;
-		
+		return getFuerza()+cantidadDeAtaques;
 	}
 	
 	@Override
@@ -28,7 +29,7 @@ public class Elfo extends Personaje {
 	public int obtenerPuntosDeInteligencia() {
 		return calcularPuntosDeInteligencia() + casta.getInteligencia();
 	}
-	
+
 	@Override
 	public int obtenerPuntosDeAtaque() {
 		return calcularPuntosDeAtaque() + casta.getAtaque();
@@ -39,9 +40,10 @@ public class Elfo extends Personaje {
 		return calcularPuntosDeDefensa() + casta.getDefensa();
 	}
 	
+	
 	@Override
 	protected void despuesDeAtacar() {
-		salud++;
+		cantidadDeAtaques++;
 	}
 	
 	@Override
@@ -50,16 +52,9 @@ public class Elfo extends Personaje {
 	}
 
 	@Override
-	public void serAtacado(int daño) {
-		super.serAtacado(daño);
-		this.ataquesRecibidos++;
-	}
-
-	@Override
 	protected int calcularPuntosDeMagia() {
 		return 0;
 	}
-
 
 	@Override
 	public int obtenerPuntosDeMagia() {
@@ -73,6 +68,14 @@ public class Elfo extends Personaje {
 
 	@Override
 	public int obtenerNivel() {
-		return nivel.getNivel();
+		return experiencia.getNivel();
+	}
+	
+	public int obtenerQuiteDeEnergia(){
+		return calcularQuiteDeEnergia();
+	}
+	
+	protected int calcularQuiteDeEnergia(){
+		return 5;
 	}
 }

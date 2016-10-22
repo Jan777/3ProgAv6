@@ -1,4 +1,8 @@
-package worldwar;
+package batalla;
+
+import personaje.Atacable;
+import personaje.Orco;
+import personaje.Personaje;
 
 public class BatallaDeOrcos extends Batalla {
 

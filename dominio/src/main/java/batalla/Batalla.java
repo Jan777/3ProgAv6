@@ -1,13 +1,17 @@
-package worldwar;
+package batalla;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import personaje.Atacable;
+import personaje.Humano;
+import personaje.Personaje;
+
 public abstract class Batalla {
 
 	protected List<Personaje> batallon = new LinkedList<Personaje>();
-	
+		
 	public abstract void atacar(Batalla otro);
 	public abstract Atacable obtenerProximaVictima();
 	
@@ -19,15 +23,12 @@ public abstract class Batalla {
 	}
 	
 	public void comenzar(){
-		
 	}
 
 	public void finalizar(){
-		
 	}
 
 	public void escapar(){
-		
 	}
 	
 }

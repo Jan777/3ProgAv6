@@ -1,4 +1,4 @@
-package worldwar;
+package menu;
 
 public class Jugador {
 	

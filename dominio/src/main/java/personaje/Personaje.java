@@ -1,4 +1,7 @@
-package worldwar;
+package personaje;
+
+import casta.Casta;
+import xp.XP;
 
 public abstract class Personaje implements Atacable {
 
@@ -9,18 +12,15 @@ public abstract class Personaje implements Atacable {
 	protected int inteligencia = 1;
 	protected int radio = 100;
 	protected Casta casta;
-	protected Experiencia experiencia;
-	protected Nivel nivel;	
-	
+	protected XP experiencia;
+		
 	public Personaje(Casta casta) {
 		this.casta = casta;
-		this.experiencia = new Experiencia();
-		this.nivel = new Nivel();
+		this.experiencia = new XP();
 	}
 	
 	public Personaje() {
-		this.experiencia = new Experiencia();
-		this.nivel = new Nivel();
+		this.experiencia = new XP();
 	}
 	
 	public int getFuerza() {
@@ -50,20 +50,14 @@ public abstract class Personaje implements Atacable {
 	public final void atacar(Atacable atacado) {
 		if (puedeAtacar()) {
 			atacado.serAtacado(calcularPuntosDeAtaque());
-			energia -= calcularPuntosDeAtaque();
+			energia -= calcularQuiteDeEnergia();
 			experiencia.aumentarExperiencia();
-			/* Al llegar a los 100 puntos aumento la experiencia 
-			 * PONGO 5 PTS PARA PODER HACER EL TEST 
-			 */
-			if(experiencia.getPuntoDeExperiencia() == 5){
-				nivel.aumentarNivel();
-				experiencia.resetearExperiencia();
-			}
 			despuesDeAtacar();
 		}
 	}
 
-	protected void despuesDeAtacar() { }
+	protected void despuesDeAtacar() { 
+	}
 	
 	public boolean estaVivo() {
 		return this.salud > 0;
@@ -74,16 +68,21 @@ public abstract class Personaje implements Atacable {
 	protected abstract int calcularPuntosDeDefensa();
 	protected abstract int calcularPuntosDeMagia();
 	protected abstract int calcularPuntosDeInteligencia();
+	protected abstract int calcularQuiteDeEnergia();
 	public abstract int obtenerPuntosDeAtaque();
 	public abstract int obtenerPuntosDeDefensa();
 	public abstract int obtenerPuntosDeMagia();
 	public abstract int obtenerPuntosDeInteligencia();
 	public abstract int obtenerPuntosDeExperiencia();
 	public abstract int obtenerNivel();
+	public abstract int obtenerQuiteDeEnergia();
 	//public abstract void aplicarHechizoEn(String nombre, Personaje p);
-	
+
 	public void serAtacado(int daño) {
 		this.salud -= daño;
+		if (this.salud<=0){
+			morir();
+		}
 	}
 
 	public void serCurado() {
@@ -94,13 +93,13 @@ public abstract class Personaje implements Atacable {
 		this.energia = 100;
 	}
 
-	protected void vivir(){
-		
+	protected void aparecer(){
+		//aparece el personaje en una posicion del mapa
 	}
 
 	protected void morir(){
-		
+		//hacer desaparecer el personaje
+		aparecer();
 	}
 	
 }
-

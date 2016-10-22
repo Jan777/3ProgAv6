@@ -1,4 +1,6 @@
-package worldwar;
+package personaje;
+
+import xp.XP;
 
 public class PersonajeEquipado extends Personaje {
 	
@@ -14,7 +16,7 @@ public class PersonajeEquipado extends Personaje {
 	}
 	
 	@Override
-	public int calcularPuntosDeAtaque(){
+	protected int calcularPuntosDeAtaque(){
 		return this.personajeEq.calcularPuntosDeAtaque();
 	}
 	
@@ -24,7 +26,7 @@ public class PersonajeEquipado extends Personaje {
 	}
 	
 	@Override
-	public int calcularPuntosDeDefensa(){
+	protected int calcularPuntosDeDefensa(){
 		return this.personajeEq.calcularPuntosDeDefensa();
 	}
 	
@@ -37,7 +39,6 @@ public class PersonajeEquipado extends Personaje {
 	protected int calcularPuntosDeInteligencia() {
 		return this.personajeEq.calcularPuntosDeInteligencia();
 	}
-
 	
 	@Override
 	public int obtenerPuntosDeInteligencia() {
@@ -61,7 +62,17 @@ public class PersonajeEquipado extends Personaje {
 
 	@Override
 	public int obtenerNivel() {
-		return nivel.getNivel();
+		return personajeEq.experiencia.getNivel();
 	}
 
+	protected int calcularQuiteDeEnergia() {
+		return this.personajeEq.calcularQuiteDeEnergia();
+	}
+	
+	public int obtenerQuiteDeEnergia(){
+		return this.personajeEq.obtenerQuiteDeEnergia();
+	}
+	
+	
+	
 }

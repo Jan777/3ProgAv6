@@ -1,4 +1,7 @@
-package worldwar;
+package items;
+
+import personaje.Personaje;
+import personaje.PersonajeEquipado;
 
 public class ConEspada extends PersonajeEquipado {
 	
@@ -8,7 +11,7 @@ public class ConEspada extends PersonajeEquipado {
 	
 	@Override
 	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque()+5;
+		return super.obtenerPuntosDeAtaque()+1;
 	}
 	
 	@Override

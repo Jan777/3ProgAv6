@@ -1,4 +1,4 @@
-package worldwar;
+package mapa;
 
 public class Obstaculo {
 

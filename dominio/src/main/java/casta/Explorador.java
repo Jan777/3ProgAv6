@@ -1,4 +1,4 @@
-package worldwar;
+package casta;
 
 public class Explorador extends Casta {
 	
@@ -15,6 +15,6 @@ public class Explorador extends Casta {
 	}
 
 	public int getDefensa() {
-		return super.getDefensa()+5;
+		return super.getDefensa()+1;
 	}
 }

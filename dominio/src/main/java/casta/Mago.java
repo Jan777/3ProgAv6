@@ -1,4 +1,4 @@
-package worldwar;
+package casta;
 
 public class Mago extends Casta {
 	
@@ -7,7 +7,7 @@ public class Mago extends Casta {
 	}
 
 	public int getInteligencia() {
-		return super.getInteligencia()+5;
+		return super.getInteligencia()+1;
 	}
 
 	public int getAtaque() {

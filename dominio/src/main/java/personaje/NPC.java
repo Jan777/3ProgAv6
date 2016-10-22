@@ -1,4 +1,4 @@
-package worldwar;
+package personaje;
 
 public class NPC implements Atacable  {
 	

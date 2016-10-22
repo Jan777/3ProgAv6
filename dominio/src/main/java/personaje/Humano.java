@@ -1,22 +1,23 @@
-package worldwar;
+package personaje;
 
-public class Orco extends Personaje {
+import casta.Casta;
 
-	int cantidadDeAtaques;	
+public class Humano extends Personaje {
 	
-	public Orco(Casta casta) {
+	public Humano(Casta casta) {
 		super(casta);
 	}
 	
 	@Override
 	protected int calcularPuntosDeAtaque() {
-		return getFuerza()+cantidadDeAtaques;
+		return getFuerza();
 	}
 	
 	@Override
 	protected int calcularPuntosDeDefensa() {
 		return getDestreza();
 	}
+	
 	
 	@Override
 	protected int calcularPuntosDeInteligencia() {
@@ -27,7 +28,7 @@ public class Orco extends Personaje {
 	public int obtenerPuntosDeInteligencia() {
 		return calcularPuntosDeInteligencia() + casta.getInteligencia();
 	}
-
+	
 	@Override
 	public int obtenerPuntosDeAtaque() {
 		return calcularPuntosDeAtaque() + casta.getAtaque();
@@ -37,16 +38,10 @@ public class Orco extends Personaje {
 	public int obtenerPuntosDeDefensa() {
 		return calcularPuntosDeDefensa() + casta.getDefensa();
 	}
-	
-	
-	@Override
-	protected void despuesDeAtacar() {
-		cantidadDeAtaques++;
-	}
-	
+
 	@Override
 	protected boolean puedeAtacar() {
-		return energia >= calcularPuntosDeAtaque();
+		return energia >= 10;
 	}
 
 	@Override
@@ -58,7 +53,7 @@ public class Orco extends Personaje {
 	public int obtenerPuntosDeMagia() {
 		return 0;
 	}
-	
+
 	@Override
 	public int obtenerPuntosDeExperiencia() {
 		return experiencia.getPuntoDeExperiencia();
@@ -66,6 +61,23 @@ public class Orco extends Personaje {
 
 	@Override
 	public int obtenerNivel() {
-		return nivel.getNivel();
+		return experiencia.getNivel();
 	}
+	
+	public int obtenerQuiteDeEnergia(){
+		return calcularQuiteDeEnergia();
+	}
+	
+	protected int calcularQuiteDeEnergia(){
+		return 1;
+	}
+	
+	/*public void aplicarHechizoEn(String nombre, Personaje p){
+		Iterator <String> it = m.keySet().iterator();
+		
+	}*/
+	
+	
+		
+	
 }

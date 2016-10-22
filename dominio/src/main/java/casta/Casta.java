@@ -1,4 +1,4 @@
-package worldwar;
+package casta;
 
 public class Casta {
 	

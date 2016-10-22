@@ -1,4 +1,4 @@
-package worldwar;
+package casta;
 
 public class Guerrero extends Casta {
 	
@@ -11,7 +11,7 @@ public class Guerrero extends Casta {
 	}
 
 	public int getAtaque() {
-		return super.getAtaque() + 5;
+		return super.getAtaque() + 1;
 	}
 
 	public int getDefensa() {
