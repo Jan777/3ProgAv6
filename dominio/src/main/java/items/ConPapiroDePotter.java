@@ -3,9 +3,9 @@ package items;
 import personaje.Personaje;
 import personaje.PersonajeEquipado;
 
-public class ConPapiro extends PersonajeEquipado {
+public class ConPapiroDePotter extends PersonajeEquipado {
 	
-	public ConPapiro(Personaje personajeConPapiro) {
+	public ConPapiroDePotter(Personaje personajeConPapiro) {
 		super (personajeConPapiro);
 	}
 	
@@ -21,7 +21,7 @@ public class ConPapiro extends PersonajeEquipado {
 	
 	@Override
 	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia()+1;
+		return super.obtenerPuntosDeInteligencia()+2;
 	}
 	
 }

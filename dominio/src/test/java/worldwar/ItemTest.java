@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import casta.Casta;
 import casta.Mago;
-import items.ConEspada;
+import items.ConEspadaDeMadera;
 import personaje.Humano;
 import personaje.Personaje;
  
@@ -28,7 +28,7 @@ public class ItemTest {
         Assert.assertEquals(6, sigmund.obtenerPuntosDeInteligencia());
  
         // agrego item de ataque
-        sigmund = new ConEspada(sigmund);
+        sigmund = new ConEspadaDeMadera(sigmund);
         Assert.assertEquals(6, sigmund.obtenerPuntosDeAtaque());
     }
  

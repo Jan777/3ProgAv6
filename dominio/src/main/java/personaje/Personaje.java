@@ -23,6 +23,22 @@ public abstract class Personaje implements Atacable {
 		this.experiencia = new XP();
 	}
 	
+	public int getEnergia() {
+		return energia;
+	}
+
+	public void setEnergia(int energia) {
+		this.energia = energia;
+	}
+
+	public int getSalud() {
+		return salud;
+	}
+
+	public void setSalud(int salud) {
+		this.salud = salud;
+	}
+
 	public int getFuerza() {
 		return fuerza;
 	}

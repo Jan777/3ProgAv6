@@ -7,10 +7,15 @@ import casta.Casta;
 import casta.Explorador;
 import casta.Guerrero;
 import casta.Mago;
-import items.ConEscudo;
-import items.ConEspada;
-import items.ConPapiro;
+import items.ConEscudoDeMadera;
+import items.ConEscudoDeAcero;
+import items.ConEscudoDeKevlar;
+import items.ConEspadaDeMadera;
+import items.ConPapiroDeOz;
 import personaje.Elfo;
+import personaje.Enemigo1;
+import personaje.Enemigo2;
+import personaje.Enemigo3;
 import personaje.Humano;
 import personaje.Orco;
 import personaje.Personaje;
@@ -36,7 +41,7 @@ public class PersonajeTest {
         Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
 
         //Asigno una espada al personaje
-        humano = new ConEspada(humano);
+        humano = new ConEspadaDeMadera(humano);
         Assert.assertEquals(3, humano.obtenerPuntosDeAtaque());
         Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
         Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
@@ -47,7 +52,7 @@ public class PersonajeTest {
 	 * ~~~~~~~~~~~~~~~~~~~~~~~
 	 * Orco (Fuerza=1,Destreza=1,Inteligencia=1)
 	 * Asigno una casta Explorador (suma 1 a la defensa)
-	 * Asigno un escudo (suma 1 a la defensa)
+	 * Asigno un escudo de madera (suma 2 a la defensa)
 	 */
 
 	@Test
@@ -61,7 +66,7 @@ public class PersonajeTest {
         Assert.assertEquals(1, orco.obtenerPuntosDeInteligencia());
 
         //Asigno un escudo al personaje
-        orco = new ConEscudo(orco);
+        orco = new ConEscudoDeMadera(orco);
         Assert.assertEquals(1, orco.obtenerPuntosDeAtaque());
         Assert.assertEquals(3, orco.obtenerPuntosDeDefensa());
         Assert.assertEquals(1, orco.obtenerPuntosDeInteligencia());
@@ -87,15 +92,15 @@ public class PersonajeTest {
         Assert.assertEquals(2, elfo.obtenerPuntosDeInteligencia());
     
         //Asigno un papiro al personaje
-        elfo = new ConPapiro(elfo);
+        elfo = new ConPapiroDeOz(elfo);
         Assert.assertEquals(1, elfo.obtenerPuntosDeAtaque());
         Assert.assertEquals(1, elfo.obtenerPuntosDeDefensa());
         Assert.assertEquals(3, elfo.obtenerPuntosDeInteligencia());
         
         //Asigno un escudo al personaje
-        elfo = new ConEscudo(elfo);
+        elfo = new ConEscudoDeAcero(elfo);
         Assert.assertEquals(1, elfo.obtenerPuntosDeAtaque());
-        Assert.assertEquals(2, elfo.obtenerPuntosDeDefensa());
+        Assert.assertEquals(4, elfo.obtenerPuntosDeDefensa());
         Assert.assertEquals(3, elfo.obtenerPuntosDeInteligencia());
         
     }

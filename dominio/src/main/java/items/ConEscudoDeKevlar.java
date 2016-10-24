@@ -3,25 +3,24 @@ package items;
 import personaje.Personaje;
 import personaje.PersonajeEquipado;
 
-public class ConEspada extends PersonajeEquipado {
-	
-	public ConEspada(Personaje personajeConEspada) {
-		super (personajeConEspada);
+public class ConEscudoDeKevlar extends PersonajeEquipado{
+	 
+	public ConEscudoDeKevlar (Personaje personajeConEscudoDeMimbre) {
+		super (personajeConEscudoDeMimbre);
 	}
-	
+		
 	@Override
 	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque()+1;
+		return super.obtenerPuntosDeAtaque();
 	}
 	
 	@Override
 	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa();
+		return super.obtenerPuntosDeDefensa()+2;
 	}
 	
 	@Override
 	public int obtenerPuntosDeInteligencia() {
 		return super.obtenerPuntosDeInteligencia();
 	}
-	
 }
