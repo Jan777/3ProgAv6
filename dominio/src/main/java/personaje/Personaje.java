@@ -78,6 +78,36 @@ public abstract class Personaje implements Atacable {
 		this.inteligencia = inteligencia;
 	}
 
+	public void incrementarInteligencia(){
+		if(validaPuntos()){
+			this.inteligencia++;
+			this.experiencia.decrementarPuntosGanados();
+		}
+	}
+	
+	public void incrementarFuerza(){
+		if(validaPuntos()){
+			this.fuerza++;
+			this.experiencia.decrementarPuntosGanados();
+		}
+	}
+
+	public void incrementarDestreza(){
+		if(validaPuntos()){
+			this.destreza++;
+			this.experiencia.decrementarPuntosGanados();
+		}
+	}
+	
+	public boolean validaPuntos(){
+		return obtenerPuntosGanados() >= 1;
+	}
+
+	
+	public int obtenerPuntosGanados(){
+		return this.experiencia.getPuntosGanados();
+	}
+	
 	public final void atacar(Atacable atacado) {
 		if (puedeAtacar()) {
 			atacado.serAtacado(obtenerPuntosDeAtaque());
@@ -110,12 +140,16 @@ public abstract class Personaje implements Atacable {
 	//public abstract void aplicarHechizoEn(String nombre, Personaje p);
 
 	public void serAtacado(int daño) {
-		this.salud -= daño;
+		this.salud -= daño*(1-calcularPorcentajeDeDefensa());
 		if (this.salud<=0){
 			morir();
 		}
 	}
 
+	public int calcularPorcentajeDeDefensa(){
+		return (calcularPuntosDeDefensa()/this.destreza);
+	}
+	
 	public void serCurado() {
 		this.salud = 100;
 	}

@@ -68,7 +68,12 @@ public class HistoriaDeUsuario {
 	    public void Historia4() {
 			Enemigo1 enemigo1 = new Enemigo1();
 			Casta guerrero = new Guerrero();
-			Personaje humano= new Humano(guerrero);			
+			Personaje humano= new Humano(guerrero);		
+			
+			Assert.assertEquals(0, humano.obtenerPuntosDeExperiencia());
+			humano.atacar(enemigo1);
+			Assert.assertEquals(1, humano.obtenerPuntosDeExperiencia());
+
 		}
 		
 		/*
@@ -79,6 +84,28 @@ public class HistoriaDeUsuario {
 		
 		@Test
 	    public void Historia5() {
+			/*Elijo una casta y se la asigno a un Humano*/
+			Casta explorador = new Explorador();
+			Personaje humano= new Humano(explorador);
+			
+	        Casta guerrero = new Guerrero();
+			Personaje humano2 = new Humano(guerrero);
+	        
+			/*Nivel inicial y puntos ganados iniciales*/
+			Assert.assertEquals(0, humano.obtenerNivel());
+			Assert.assertEquals(0, humano.obtenerPuntosDeExperiencia());
+        	
+			/*Ataco 100 veces hasta aumentar el nivel (curo y energizo para poder hacer el testeo)*/
+	        for(int i = 0; i < 100 ; i++){
+	        	Assert.assertEquals(i, humano.obtenerPuntosDeExperiencia());
+	        	humano.atacar(humano2);
+	        	humano2.serCurado();
+	        	humano.serEnergizado();
+	        }
+	        
+	        Assert.assertEquals(1, humano.obtenerNivel());
+			Assert.assertEquals(0, humano.obtenerPuntosDeExperiencia());
+
 		}
 		
 		/*
@@ -89,6 +116,58 @@ public class HistoriaDeUsuario {
 		
 		@Test
 	    public void Historia6() {
+			/*Elijo una casta y se la asigno a un Humano*/
+			Casta explorador = new Explorador();
+			Personaje humano= new Humano(explorador);
+			
+	        Casta explorador2 = new Explorador();
+			Personaje humano2 = new Humano(explorador2);
+	        
+			/*Nivel inicial y puntos ganados iniciales*/
+			Assert.assertEquals(0, humano.obtenerNivel());
+			Assert.assertEquals(0, humano.obtenerPuntosGanados());
+        	
+			/*Ataco 100 veces hasta aumentar el nivel (curo y energizo para poder hacer el testeo)*/
+	        for(int i = 0; i<100 ; i++){
+	        	humano.atacar(humano2);
+	        	//System.out.println(humano2.calcularPorcentajeDeDefensa());
+	        	humano2.serCurado();
+	        	humano.serEnergizado();
+	        }
+	        
+	        Assert.assertEquals(1, humano.obtenerNivel());
+			Assert.assertEquals(4, humano.obtenerPuntosGanados());
+			
+			/*Asigo algunos de los puntos ganados (no todos)*/
+			humano.incrementarDestreza();
+			humano.incrementarFuerza();
+			humano.incrementarFuerza();
+			
+	        Assert.assertEquals(3, humano.obtenerPuntosDeAtaque());
+	        Assert.assertEquals(3, humano.obtenerPuntosDeDefensa());
+	        Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
+			
+	        /*Vuelvo a atacar 100 veces*/
+	        for(int i = 0; i<100 ; i++){
+	        	humano.atacar(humano2);
+	        	humano2.serCurado();
+	        	humano.serEnergizado();
+	        }
+	        
+	        Assert.assertEquals(2, humano.obtenerNivel());
+			Assert.assertEquals(6, humano.obtenerPuntosGanados());
+			
+			/* Asigno todos los puntos ganados que tengo */
+			humano.incrementarDestreza();
+			humano.incrementarDestreza();
+			humano.incrementarFuerza();
+			humano.incrementarFuerza();
+			humano.incrementarInteligencia();
+			humano.incrementarInteligencia();
+			
+	        Assert.assertEquals(5, humano.obtenerPuntosDeAtaque());
+	        Assert.assertEquals(5, humano.obtenerPuntosDeDefensa());
+	        Assert.assertEquals(3, humano.obtenerPuntosDeInteligencia());
 		}
 		
 		/*
@@ -131,7 +210,7 @@ public class HistoriaDeUsuario {
 	        //Asigno un escudo al personaje
 	        orco = new ConEscudoDeMadera(orco);
 	        Assert.assertEquals(1, orco.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(3, orco.obtenerPuntosDeDefensa());
+	        Assert.assertEquals(2, orco.obtenerPuntosDeDefensa());
 	        Assert.assertEquals(1, orco.obtenerPuntosDeInteligencia());
 		}
 		
