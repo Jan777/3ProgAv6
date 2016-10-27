@@ -3,6 +3,8 @@ package worldwar;
 import org.junit.Assert;
 import org.junit.Test;
 
+import alianza.Aliados;
+import alianza.Alianza;
 import casta.Casta;
 import casta.Explorador;
 import casta.Guerrero;
@@ -146,7 +148,37 @@ public class PersonajeTest {
 		Assert.assertEquals(1, humano1.obtenerNivel());
 		Assert.assertEquals(1, humano1.obtenerPuntosDeExperiencia());
 		Assert.assertEquals(0, humano2.obtenerNivel());
-		Assert.assertEquals(5, humano2.obtenerPuntosDeExperiencia());
+		Assert.assertEquals(5, humano2.obtenerPuntosDeExperiencia());		
     }
+	
+	/*
+	@Test //Alianzas
+	public void asignacionPersonajeAlianza (){
+
+		Alianza alianza = new Alianza();
+		
+		Aliados aliados = alianza.crearAlianza();
+		
+		Casta casta1 = new Mago ();
+		Personaje p1 = new Humano (casta1);
+		p1.idPersonaje = 11;
+		
+		Casta casta2 = new Mago ();
+		Personaje p2 = new Humano (casta2);
+		p2.idPersonaje = 22;
+		
+		Aliados alianza = new Aliados ();
+		alianza.agregarPersonaje(p1);
+		p1.alianza = alianza;
+		alianza.listarPersonajes();
+		p1.alianza.listarPersonajes();
+		p1.alianza.quitarPersonaje(p1);
+		
+		alianza.listarPersonajes();
+		
+	}
+	
+	*/
+			
 	
 }

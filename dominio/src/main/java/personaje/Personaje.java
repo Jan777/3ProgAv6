@@ -2,9 +2,11 @@ package personaje;
 
 import casta.Casta;
 import xp.XP;
+import alianza.Aliados;
 
 public abstract class Personaje implements Atacable {
 
+	public int idPersonaje;
 	protected int energia = 100;
 	protected int salud = 100;
 	protected int fuerza = 1;
@@ -13,6 +15,9 @@ public abstract class Personaje implements Atacable {
 	protected int radio = 100;
 	protected Casta casta;
 	protected XP experiencia;
+	public Aliados alianza;
+	private int posX;
+	private int posY;
 		
 	public Personaje(Casta casta) {
 		this.casta = casta;
