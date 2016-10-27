@@ -8,48 +8,63 @@ import personaje.Atacable;
 import personaje.Humano;
 import personaje.Personaje;
 
-public abstract class Batalla {
+public class Batalla  {
 
 	protected List<Personaje> batallon1 = new LinkedList<Personaje>();
 	protected List<Personaje> batallon2 = new LinkedList<Personaje>();
+	
+	public void agregarb1 (Personaje pers){
+		batallon1.add(pers);
+	}
+	
+	public void agregarb2 (Personaje pers){
+		batallon2.add(pers);
+	}
+	
+	public void removerb1 (Personaje pers){
+		batallon1.remove(pers);
+	}
+	
+	public void removerb2 (Personaje pers){
+		batallon2.remove(pers);
+	}
+	
+	public int consultaBatallon1(){
+		return batallon1.size();
+	}
+	
+	public int consultaBatallon2(){
+		return batallon2.size();
+	}
+	
+	public void batalla () {
+		Iterator<Personaje> iter1 = batallon1.iterator();
+		Iterator<Personaje> iter2 = batallon2.iterator();
+		int i=0;
+		while (consultaBatallon1 () != 0 || consultaBatallon1 () != 0){
+			while (iter1.hasNext() && iter2.hasNext()){
+				Personaje pers1 = iter1.next();
+				Personaje pers2 = iter2.next();
+				pers1.atacar(pers2);
+				if (pers2.getSalud()==0){
+					removerb2(pers2);
+				}
+				pers2.atacar(pers1);
+				if (pers1.getSalud()==0){
+					removerb1(pers1);
+				}
+				i++;
+			}
+			iter1= batallon1.listIterator(0);
+			iter2= batallon2.listIterator(0);
 		
-	public abstract void atacar(Batalla otro);
-	public abstract Atacable obtenerProximaVictima();
-	
-	public boolean agregarBatallon1(Personaje personaje) {
-		return batallon1.add(personaje);
-	}
-
-	public boolean agregarBatallon2(Personaje personaje) {
-		return batallon2.add(personaje);
-	}
-
-	public final void depurarBatallon1() {
-		Iterator<Personaje> iter1 = batallon1.iterator();
-		while(iter1.hasNext()){
-		    if(!iter1.next().estaVivo()) iter1.remove();
+			
 		}
-	}
-	
-	public final void depurarBatallon2() {
-		Iterator<Personaje> iter2 = batallon2.iterator();
-		while(iter2.hasNext()){
-		    if(!iter2.next().estaVivo()) iter2.remove();
+		if (consultaBatallon1()==0){
+			System.out.println("gano batallon 2");
+		}else{
+			System.out.println("gano batallon 1");
 		}
-	}
 	
-	public void comenzarBatalla(){
-		Iterator<Personaje> iter1 = batallon1.iterator();
-		Iterator<Personaje> iter2 = batallon2.iterator();
-		while(batallon1.isEmpty() || batallon2.isEmpty()){
-			iter1.hasNext().atacar(iter2.hasNext());	
-		}
 	}
-
-	public void finalizar(){
-	}
-
-	public void escapar(){
-	}
-	
 }

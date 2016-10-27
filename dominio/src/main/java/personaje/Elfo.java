@@ -52,8 +52,8 @@ public class Elfo extends Personaje {
 	}
 
 	@Override
-	public void serAtacado(int daño) {
-		super.serAtacado(daño);
+	public void serAtacado(int daÃ±o) {
+		super.serAtacado(daÃ±o);
 		this.ataquesRecibidos++;
 	}
 

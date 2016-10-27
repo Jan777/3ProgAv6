@@ -1,4 +1,4 @@
-package batalla;
+/*package batalla;
 
 import personaje.Atacable;
 import personaje.Orco;
@@ -31,3 +31,4 @@ public class BatallaDeOrcos extends Batalla {
 	}
 
 }
+*/

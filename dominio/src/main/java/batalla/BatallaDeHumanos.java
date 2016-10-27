@@ -1,4 +1,4 @@
-package batalla;
+/*package batalla;
 
 import personaje.Atacable;
 import personaje.Humano;
@@ -22,8 +22,9 @@ public class BatallaDeHumanos extends Batalla {
 	public Atacable obtenerProximaVictima() {
 		depurarBatallon();
 		if(batallon.isEmpty()) {
-			throw new RuntimeException("El batallón está vacío");
+			throw new RuntimeException("El batallï¿½n estï¿½ vacï¿½o");
 		}
 		return batallon.get(0);
 	}
 }
+*/

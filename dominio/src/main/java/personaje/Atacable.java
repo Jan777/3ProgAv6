@@ -2,6 +2,6 @@ package personaje;
 
 public interface Atacable {
 	
-	public void serAtacado(int daño);
+	public void serAtacado(int daÃ±o);
 
 }

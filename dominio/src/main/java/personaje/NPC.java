@@ -17,7 +17,7 @@ public class NPC implements Atacable  {
 	}
 
 	
-	public void serAtacado(int daño) {
-		this.salud-=daño;
+	public void serAtacado(int daÃ±o) {
+		this.salud-=daÃ±o;
 	}
 }
