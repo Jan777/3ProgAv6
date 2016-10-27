@@ -4,6 +4,7 @@ import casta.Casta;
 import xp.XP;
 import alianza.Aliados;
 
+
 public abstract class Personaje implements Atacable {
 
 	public int idPersonaje;
@@ -64,19 +65,28 @@ public abstract class Personaje implements Atacable {
 		return inteligencia;
 	}
 
+	
+	public XP getExperiencia() {
+		return experiencia;
+	}
+
+	public void setExperiencia(XP experiencia) {
+		this.experiencia = experiencia;
+	}
+
 	public void setInteligencia(int inteligencia) {
 		this.inteligencia = inteligencia;
 	}
 
 	public final void atacar(Atacable atacado) {
 		if (puedeAtacar()) {
-			atacado.serAtacado(calcularPuntosDeAtaque());
+			atacado.serAtacado(obtenerPuntosDeAtaque());
 			energia -= calcularQuiteDeEnergia();
 			experiencia.aumentarExperiencia();
 			despuesDeAtacar();
 		}
 	}
-
+	
 	protected void despuesDeAtacar() { 
 	}
 	

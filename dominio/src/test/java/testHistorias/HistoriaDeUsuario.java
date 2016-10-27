@@ -3,11 +3,13 @@ package testHistorias;
 import org.junit.Assert;
 import org.junit.Test;
 
+import batalla.BatallaVSNPC;
 import casta.Casta;
 import casta.Explorador;
 import casta.Guerrero;
 import casta.Mago;
 import items.ConEscudoDeMadera;
+import items.ConEspadaDeAcero;
 import items.ConEspadaDeMadera;
 import items.ConPapiroDeOz;
 import personaje.Elfo;
@@ -15,6 +17,7 @@ import personaje.Enemigo1;
 import personaje.Enemigo2;
 import personaje.Enemigo3;
 import personaje.Humano;
+import personaje.NPC;
 import personaje.Orco;
 import personaje.Personaje;
 
@@ -202,7 +205,28 @@ public class HistoriaDeUsuario {
 		
 		@Test
 	    public void Historia14() {
+			
+			//Elijo una casta y se la asigno a un Humano
+			Casta guerrero = new Guerrero();
+			Personaje humano= new Humano(guerrero);
+		    humano = new ConEspadaDeAcero(humano);
+		    NPC npc = new NPC ();
+		    NPC npc1 = new NPC ();
+		    Assert.assertEquals(5, humano.obtenerPuntosDeAtaque());
+		    Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
+		    Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
+		    Assert.assertEquals(0, humano.getExperiencia().getPuntoDeExperiencia());
+		    Assert.assertEquals(5, npc.getSalud());
+		    BatallaVSNPC batalla= new BatallaVSNPC();
+			batalla.ataqueNPC(humano,npc);
+			Assert.assertEquals(1, humano.getExperiencia().getPuntoDeExperiencia());
+			Assert.assertEquals(0, npc.getSalud());
+			BatallaVSNPC batalla1= new BatallaVSNPC();
+			batalla1.ataqueNPC(humano,npc1);
+			Assert.assertEquals(2, humano.getExperiencia().getPuntoDeExperiencia());
+			Assert.assertEquals(0, npc.getSalud());
 		}
+		
 		
 
 }
