@@ -7,11 +7,12 @@ public class ConEspadaDeAcero extends PersonajeEquipado {
 	
 	public ConEspadaDeAcero(Personaje personajeConEspada) {
 		super (personajeConEspada);
+		this.prioridad = 1;
 	}
 	
 	@Override
 	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque()+3;
+		return super.obtenerPuntosDeAtaque()+5;
 	}
 	
 	@Override

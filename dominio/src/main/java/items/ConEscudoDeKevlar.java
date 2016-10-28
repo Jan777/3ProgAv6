@@ -16,7 +16,7 @@ public class ConEscudoDeKevlar extends PersonajeEquipado{
 	
 	@Override
 	public int obtenerPuntosDeDefensa() {
-		return (int) (super.obtenerPuntosDeDefensa()*1.3);
+		return super.obtenerPuntosDeDefensa()+2;
 	}
 	
 	@Override

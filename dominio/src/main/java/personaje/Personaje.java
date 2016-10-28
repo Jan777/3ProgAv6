@@ -31,6 +31,11 @@ public abstract class Personaje implements Atacable {
 		this.experiencia = new XP();
 	}
 	
+	public Personaje(Personaje pers){
+		this.casta = pers.casta;
+		this.experiencia = pers.experiencia;
+	}
+	
 	public int getEnergia() {
 		return energia;
 	}
@@ -56,7 +61,7 @@ public abstract class Personaje implements Atacable {
 	}
 
 	public int getDestreza() {
-		return destreza;
+		return this.destreza;
 	}
 
 	public void setDestreza(int destreza) {
@@ -142,14 +147,14 @@ public abstract class Personaje implements Atacable {
 	//public abstract void aplicarHechizoEn(String nombre, Personaje p);
 
 	public void serAtacado(int danio) {
-		this.salud -= danio*(1-calcularPorcentajeDeDefensa());
+		if(danio > this.obtenerPuntosDeDefensa())
+			this.salud -= (danio-this.obtenerPuntosDeDefensa());
+		else
+			this.salud--;
+		
 		if (this.salud<=0){
-			morir();
+			this.morir();
 		}
-	}
-
-	public int calcularPorcentajeDeDefensa(){
-		return (calcularPuntosDeDefensa()/this.destreza);
 	}
 	
 	public void serCurado() {

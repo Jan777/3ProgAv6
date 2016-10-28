@@ -8,8 +8,10 @@ import casta.Casta;
 import casta.Explorador;
 import casta.Guerrero;
 import casta.Mago;
+import items.ConEscudoDeAcero;
 import items.ConEscudoDeMadera;
 import items.ConEspadaDeAcero;
+import items.ConEspadaDeHierro;
 import items.ConEspadaDeMadera;
 import items.ConPapiroDeOz;
 import personaje.Elfo;
@@ -168,12 +170,13 @@ public class HistoriaDeUsuario {
 	        Assert.assertEquals(5, humano.obtenerPuntosDeAtaque());
 	        Assert.assertEquals(5, humano.obtenerPuntosDeDefensa());
 	        Assert.assertEquals(3, humano.obtenerPuntosDeInteligencia());
+	        
 		}
 		
 		/*
 		 * Historia 7:
 		 * ~~~~~~~~~~~~~~~~~~~~~~~
-		 * Equipar un personaje con una espada, potencia mi fuerza
+		 * Equipar un personaje con una espada, potencia mi ataque
 		 */
 		
 		@Test
@@ -184,7 +187,7 @@ public class HistoriaDeUsuario {
 	        Assert.assertEquals(2, humano.obtenerPuntosDeAtaque());
 	        Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
 	        Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
-
+	        
 	        //Asigno una espada al personaje
 	        humano = new ConEspadaDeMadera(humano);
 	        Assert.assertEquals(3, humano.obtenerPuntosDeAtaque());
@@ -210,7 +213,7 @@ public class HistoriaDeUsuario {
 	        //Asigno un escudo al personaje
 	        orco = new ConEscudoDeMadera(orco);
 	        Assert.assertEquals(1, orco.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(2, orco.obtenerPuntosDeDefensa());
+	        Assert.assertEquals(3, orco.obtenerPuntosDeDefensa());
 	        Assert.assertEquals(1, orco.obtenerPuntosDeInteligencia());
 		}
 		
@@ -291,7 +294,7 @@ public class HistoriaDeUsuario {
 		    humano = new ConEspadaDeAcero(humano);
 		    NPC npc = new NPC ();
 		    NPC npc1 = new NPC ();
-		    Assert.assertEquals(5, humano.obtenerPuntosDeAtaque());
+		    Assert.assertEquals(7, humano.obtenerPuntosDeAtaque());
 		    Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
 		    Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
 		    Assert.assertEquals(0, humano.getExperiencia().getPuntoDeExperiencia());
@@ -305,7 +308,4 @@ public class HistoriaDeUsuario {
 			Assert.assertEquals(2, humano.getExperiencia().getPuntoDeExperiencia());
 			Assert.assertEquals(0, npc.getSalud());
 		}
-		
-		
-
 }

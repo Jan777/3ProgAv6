@@ -16,7 +16,7 @@ public class ConEscudoDeMadera extends PersonajeEquipado {
 	
 	@Override
 	public int obtenerPuntosDeDefensa() {
-		return (int) (super.obtenerPuntosDeDefensa()*1.2);
+		return super.obtenerPuntosDeDefensa()+1;
 	}
 	
 	@Override

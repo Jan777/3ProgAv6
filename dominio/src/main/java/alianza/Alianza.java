@@ -27,7 +27,7 @@ public class Alianza {
 		this.aliados.remove(p);
 	}
 	
-	public int getTamaÃ±o(){
+	public int getTamaño(){
 		return this.aliados.size();
 	}
 	

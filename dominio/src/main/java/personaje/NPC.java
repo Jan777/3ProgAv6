@@ -15,10 +15,18 @@ public class NPC implements Atacable  {
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
-
-
 	
 	public void serAtacado(int danio) {
 		this.salud-=danio;
 	}
+	
+	public void morir() {
+		this.salud = 0;
+	}
+	
+	public int obtenerPuntosDeDefensa() {
+		return 0;
+	}
+	
+	
 }

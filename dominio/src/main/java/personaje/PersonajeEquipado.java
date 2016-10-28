@@ -5,8 +5,10 @@ import xp.XP;
 public class PersonajeEquipado extends Personaje {
 	
 	private Personaje personajeEq;
+	protected int prioridad;
 	
 	public PersonajeEquipado(Personaje personaje) {
+		//super(personaje);
 		this.personajeEq = personaje;
 	}
 	
