@@ -1,21 +1,34 @@
 package alianza;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.LinkedList;
 
 import personaje.Personaje;
 
+
+
 public class Alianza {
 	
-	public Map <Integer, Aliados> alianza = new HashMap <Integer, Aliados> ();
+	LinkedList <Personaje> aliados= new LinkedList<Personaje>();
 	
-	public Aliados crearAlianza () {
-		alianza.put(alianza.size() + 1, new Aliados(alianza.size() + 1));
-		return alianza.get(alianza.size());
+	public void agregarAliado( Personaje p) {
+		this.aliados.add(p);
 	}
 	
-	public void agregarAliado(int numero, Personaje p) {
-		alianza.get(numero).agregarPersonaje(p);
+	public LinkedList<Personaje> getAliados() {
+		return aliados;
+	}
+
+	public void setAliados(LinkedList<Personaje> aliados) {
+		this.aliados = aliados;
+	}
+
+	public void removerAliado(Personaje p){
+		this.aliados.remove(p);
+	}
+	
+	public int getTamaño(){
+		return this.aliados.size();
 	}
 	
 }
