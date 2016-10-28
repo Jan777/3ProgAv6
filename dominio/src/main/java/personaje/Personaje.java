@@ -139,8 +139,8 @@ public abstract class Personaje implements Atacable {
 	public abstract int obtenerQuiteDeEnergia();
 	//public abstract void aplicarHechizoEn(String nombre, Personaje p);
 
-	public void serAtacado(int daño) {
-		this.salud -= daño*(1-calcularPorcentajeDeDefensa());
+	public void serAtacado(int danio) {
+		this.salud -= danio*(1-calcularPorcentajeDeDefensa());
 		if (this.salud<=0){
 			morir();
 		}
