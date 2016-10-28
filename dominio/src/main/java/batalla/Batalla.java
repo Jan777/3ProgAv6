@@ -40,8 +40,7 @@ public class Batalla  {
 	public void batalla () {
 		Iterator<Personaje> iter1 = batallon1.iterator();
 		Iterator<Personaje> iter2 = batallon2.iterator();
-		int i=0;
-		while (consultaBatallon1 () != 0 || consultaBatallon1 () != 0){
+		while (batallon1.isEmpty() || batallon2.isEmpty()){
 			while (iter1.hasNext() && iter2.hasNext()){
 				Personaje pers1 = iter1.next();
 				Personaje pers2 = iter2.next();
@@ -53,12 +52,7 @@ public class Batalla  {
 				if (pers1.getSalud()==0){
 					removerb1(pers1);
 				}
-				i++;
 			}
-			iter1= batallon1.listIterator(0);
-			iter2= batallon2.listIterator(0);
-		
-			
 		}
 		if (consultaBatallon1()==0){
 			System.out.println("gano batallon 2");
