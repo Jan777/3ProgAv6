@@ -159,6 +159,44 @@ public abstract class Personaje implements Atacable {
 	public void serEnergizado() {
 		this.energia = 100;
 	}
+	
+	public Alianza getAliados() {
+		return aliados;
+	}
+
+	public void setAliados(Alianza aliados) {
+		this.aliados = aliados;
+	}
+	
+	public void aliarse(Personaje otr) {
+		if (this.aliados == null) {
+			if (otr.aliados == null) {
+				Alianza alianza = new Alianza();
+				alianza.agregarAliado(otr);
+				alianza.agregarAliado(this);
+				this.aliados = alianza;
+				otr.aliados = alianza;
+			} else {
+
+				otr.aliados.agregarAliado(this);
+				this.aliados = otr.aliados;
+			}
+		} else {
+			if(otr.aliados == null){
+				this.aliados.agregarAliado(this);
+				otr.aliados = this.aliados;
+			}
+			else 
+				System.out.println("el jugador ya tiene alianza");
+
+		}
+
+	}
+
+	public void salirDeAlianza() {
+		this.aliados.removerAliado(this);
+		this.aliados = null;
+	}
 
 	protected void aparecer(){
 		//aparece el personaje en una posicion del mapa
