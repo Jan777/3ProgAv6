@@ -3,6 +3,8 @@ package testHistorias;
 import org.junit.Assert;
 import org.junit.Test;
 
+import alianza.Alianza;
+import batalla.Batalla;
 import batalla.BatallaVSNPC;
 import casta.Casta;
 import casta.Explorador;
@@ -54,11 +56,29 @@ public class HistoriaDeUsuario {
 		 * Historia 3:
 		 * ~~~~~~~~~~~~~~~~~~~~~~~
 		 * Obtener un item al ganar una batalla
+		 * No se reflejan los cambios que se realizan dentro de la clase Batalla al agregar y quitar Items
 		 */
 		
-		@Test
+		/*@Test
 	    public void Historia3() {
-		}
+			Casta guerrero = new Guerrero();
+			Personaje humano= new Humano(guerrero);
+			humano = new ConEspadaDeAcero(humano);
+			Casta guerrero1 = new Guerrero();
+			Personaje humano1= new Humano(guerrero1);
+			humano1 = new ConEspadaDeMadera(humano1);
+			humano1.setSalud(10);
+			Batalla batalla= new Batalla ();
+			batalla.agregarb1(humano);
+			batalla.agregarb2(humano1);
+			batalla.batalla();
+			Assert.assertTrue(humano.tiene(ConEspadaDeAcero.class));
+			Assert.assertEquals(7,humano.obtenerPuntosDeAtaque());
+			Assert.assertEquals(3,humano1.obtenerPuntosDeAtaque());
+			//Assert.assertTrue(humano.tiene(ConEspadaDeMadera.class));
+			//Assert.assertFalse(humano1.tiene(ConEspadaDeMadera.class));
+					
+		}*/
 		
 		/*
 		 * Historia 4:
@@ -247,28 +267,65 @@ public class HistoriaDeUsuario {
 		
 		@Test
 	    public void Historia10() {
+			Casta mago = new Mago();
+			Personaje elfo= new Elfo(mago);
+			Casta guerrero = new Guerrero();
+			Personaje humano= new Humano(guerrero);
+			Alianza alianza=new Alianza();
+			alianza.agregarAliado(humano);
+			alianza.agregarAliado(elfo);
+			Assert.assertEquals(2, alianza.getTamaño());
 		}
 		
 		/*
 		 * Historia 11:
 		 * ~~~~~~~~~~~~~~~~~~~~~~~
-		 * Romper una alianza para generar una nueva
+		 * Romper una alianza para generar una nueva, falta validar que un personaje no tenga mas de una alianza
 		 */
 		
 		@Test
 	    public void Historia11() {
+			Casta mago = new Mago();
+			Personaje elfo= new Elfo(mago);
+			Casta guerrero = new Guerrero();
+			Personaje humano= new Humano(guerrero);
+			Casta explorador = new Explorador();
+			Personaje orco= new Orco (explorador);
+			Alianza alianza=new Alianza();
+			alianza.agregarAliado(humano);
+			alianza.agregarAliado(elfo);
+			Assert.assertEquals(2, alianza.getTamaño());
+			alianza.removerAliado(humano);
+			Assert.assertEquals(1, alianza.getTamaño());
+			Alianza alianza1=new Alianza();
+			alianza1.agregarAliado(humano);
+			alianza1.agregarAliado(orco);
+			Assert.assertEquals(2, alianza1.getTamaño());
 		}
 		
 		/*
 		 * Historia 12:
 		 * ~~~~~~~~~~~~~~~~~~~~~~~
 		 * Escapar de una batalla, siendo penalizado
+		 * Falta realizar ajuste para desequipar un Item
 		 */
 		
 		@Test
-	    public void Historia12() {
+		public void Historia12() {
+			Casta guerrero = new Guerrero();
+			Personaje humano= new Humano(guerrero);
+			humano = new ConEspadaDeAcero(humano);
+			Casta guerrero1 = new Guerrero();
+			Personaje humano1= new Humano(guerrero1);
+			humano1 = new ConEspadaDeMadera(humano1);
+			Batalla batalla= new Batalla ();
+			batalla.agregarb1(humano);
+			batalla.agregarb2(humano1);
+			batalla.escaparBatalla(humano);
+			Assert.assertEquals(0,batalla.consultaBatallon1());
+			Assert.assertEquals(1,batalla.consultaBatallon2());
+					
 		}
-		
 		/*
 		 * Historia 13:
 		 * ~~~~~~~~~~~~~~~~~~~~~~~

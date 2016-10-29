@@ -75,6 +75,24 @@ public class PersonajeEquipado extends Personaje {
 		return this.personajeEq.obtenerQuiteDeEnergia();
 	}
 	
-	
+	@Override
+	public boolean tiene(Class decorado) {
+		return this.getClass() == decorado || this.personajeEq.tiene(decorado);
+	}
+
+	@Override
+	public Personaje desequipar(Class decorado, PersonajeEquipado persEq, PersonajeEquipado persOri) {
+		return this.desequiparEste(decorado, persEq, persOri);
+	}
+
+	private Personaje desequiparEste(Class decorado, PersonajeEquipado persEq, PersonajeEquipado persOri) {
+		if (decorado==persEq.getClass()){
+			return this.personajeEq;
+		}else if (this.getClass() == decorado){
+			persEq.personajeEq=this.personajeEq;
+			return persOri; 
+		} else
+		return this.personajeEq.desequipar(decorado, this, persOri);
+	}
 	
 }

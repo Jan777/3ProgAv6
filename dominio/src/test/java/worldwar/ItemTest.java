@@ -5,9 +5,15 @@ import org.junit.Test;
 
 import casta.Casta;
 import casta.Mago;
+import items.ConEscudoDeKevlar;
+import items.ConEscudoDeMadera;
+import items.ConEspadaDeAcero;
+import items.ConEspadaDeHierro;
 import items.ConEspadaDeMadera;
+import items.ConPapiroDeGandalf;
 import personaje.Humano;
 import personaje.Personaje;
+import personaje.PersonajeEquipado;
  
 public class ItemTest {
    
@@ -20,7 +26,7 @@ public class ItemTest {
      */
  
 
-    @Test
+    /*@Test
     public void quePuedoAgregarItemDeAtaque() {
  
     	Casta mago = new Mago();
@@ -32,7 +38,7 @@ public class ItemTest {
         Assert.assertEquals(6, sigmund.obtenerPuntosDeAtaque());
     }
  
-        
+     */   
     /*@Test
     public void quePuedoAgregarAmbosItems() {
  
@@ -66,5 +72,34 @@ public class ItemTest {
         Assert.assertEquals((5 + 1) * 2, sigmund.obtenerPuntosDeAtaque());
     }*/
 	
+    @Test
+	public void quePuedoQuitarUnItem() {
+    	Casta mago = new Mago();
+		Personaje sigmund = new Humano(mago);
+		
+		
+		sigmund = new ConEspadaDeHierro(sigmund);
+		/*sigmund = new ConEspadaDeAcero(sigmund);
+		sigmund = new ConEscudoDeMadera(sigmund);
+		sigmund = new ConEscudoDeKevlar(sigmund);
+		sigmund = new ConPapiroDeGandalf(sigmund);
+		System.out.println(sigmund.getCantItem());*/
+		//Assert.assertEquals(2,sigmund.getCantItem());
+		
+		Assert.assertTrue(sigmund.tiene(ConEspadaDeHierro.class));
+		//Assert.assertTrue(sigmund.tiene(ConEspadaDeAcero.class));
+		//Assert.assertTrue(sigmund.tiene(ConEscudoDeMadera.class));
+		sigmund = sigmund.desequipar(ConEspadaDeHierro.class, (PersonajeEquipado)sigmund, (PersonajeEquipado)sigmund);
+		Assert.assertFalse(sigmund.tiene(ConEspadaDeHierro.class));
+		//Assert.assertFalse(sigmund.tiene(ConEspadaDeAcero.class));
+		//Assert.assertTrue(sigmund.tiene(ConEscudoDeMadera.class));
+		//Assert.assertTrue(sigmund.tiene(ConEscudoDeKevlar.class));
+		//Assert.assertTrue(sigmund.tiene(ConPapiroDeGandalf.class));
+		//Assert.assertTrue(sigmund.tiene(ConEspadaDeHierro.class));
+		/*Assert.assertTrue(sigmund.tiene(ConEspadaSkofnung.class));
+		sigmund = sigmund.desequipar(ConEspadaSkofnung.class);
+		Assert.assertFalse(sigmund.tiene(ConEspadaSkofnung.class));
+		*/
+	}
 	
 }

@@ -21,6 +21,8 @@ public abstract class Personaje implements Atacable {
 	private Ubicacion ubicacion;
 	protected int saludTope;
 	protected int energiTope;
+	protected int cantItem = 0;
+	//protected ArrayList <String> 
 		
 	public Personaje(Casta casta) {
 		this.casta = casta;
@@ -137,6 +139,7 @@ public abstract class Personaje implements Atacable {
 	protected abstract int calcularPuntosDeMagia();
 	protected abstract int calcularPuntosDeInteligencia();
 	protected abstract int calcularQuiteDeEnergia();
+	//protected abstract int calcularCantItems();
 	public abstract int obtenerPuntosDeAtaque();
 	public abstract int obtenerPuntosDeDefensa();
 	public abstract int obtenerPuntosDeMagia();
@@ -144,6 +147,7 @@ public abstract class Personaje implements Atacable {
 	public abstract int obtenerPuntosDeExperiencia();
 	public abstract int obtenerNivel();
 	public abstract int obtenerQuiteDeEnergia();
+	//public abstract int obtenerCantItems();
 	//public abstract void aplicarHechizoEn(String nombre, Personaje p);
 
 	public void serAtacado(int danio) {
@@ -210,6 +214,30 @@ public abstract class Personaje implements Atacable {
 	protected void morir(){
 		//hacer desaparecer el personaje
 		aparecer();
+	}
+	
+	public boolean tiene(Class decorado) {
+		return false;
+	}
+
+	public Personaje desequipar(Class decorado, PersonajeEquipado persEq, PersonajeEquipado persOri) {
+		return this;
+	}
+	
+	public boolean puedeEquipar(){
+		return this.cantItem<3;
+	}
+	
+	public void incrementarItem(){
+		this.cantItem++;
+	}
+
+	public int getCantItem() {
+		return cantItem;
+	}
+
+	public void setCantItem(int cantItem) {
+		this.cantItem = cantItem;
 	}
 	
 }

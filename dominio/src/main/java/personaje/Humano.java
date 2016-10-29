@@ -4,6 +4,8 @@ import casta.Casta;
 
 public class Humano extends Personaje {
 	
+	int cantItems;
+	
 	public Humano(Casta casta) {
 		super(casta);
 	}
