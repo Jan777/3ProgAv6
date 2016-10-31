@@ -5,4 +5,4 @@
 **/build
 
 dominio/src/test/java/worldwar/prueba.java
-.recommenders
+.recommenders/
