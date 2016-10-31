@@ -3,7 +3,6 @@ package personaje;
 public class Enemigo3 extends Personaje {
 
 	public Enemigo3() {
-		
 		this.fuerza=2;
 	}
 

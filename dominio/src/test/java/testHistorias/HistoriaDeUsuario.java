@@ -1,6 +1,7 @@
 package testHistorias;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import alianza.Alianza;
@@ -48,7 +49,7 @@ public class HistoriaDeUsuario {
 		 * ingresar a un mundo con un personaje
 		 */
 		
-		@Test
+		@Ignore
 	    public void Historia2() {
 		}
 		
@@ -59,7 +60,7 @@ public class HistoriaDeUsuario {
 		 * No se reflejan los cambios que se realizan dentro de la clase Batalla al agregar y quitar Items
 		 */
 		
-		/*@Test
+		@Ignore
 	    public void Historia3() {
 			Casta guerrero = new Guerrero();
 			Personaje humano= new Humano(guerrero);
@@ -75,10 +76,7 @@ public class HistoriaDeUsuario {
 			Assert.assertTrue(humano.tiene(ConEspadaDeAcero.class));
 			Assert.assertEquals(7,humano.obtenerPuntosDeAtaque());
 			Assert.assertEquals(3,humano1.obtenerPuntosDeAtaque());
-			//Assert.assertTrue(humano.tiene(ConEspadaDeMadera.class));
-			//Assert.assertFalse(humano1.tiene(ConEspadaDeMadera.class));
-					
-		}*/
+		}
 		
 		/*
 		 * Historia 4:
@@ -152,7 +150,6 @@ public class HistoriaDeUsuario {
 			/*Ataco 100 veces hasta aumentar el nivel (curo y energizo para poder hacer el testeo)*/
 	        for(int i = 0; i<100 ; i++){
 	        	humano.atacar(humano2);
-	        	//System.out.println(humano2.calcularPorcentajeDeDefensa());
 	        	humano2.serCurado();
 	        	humano.serEnergizado();
 	        }
@@ -274,7 +271,7 @@ public class HistoriaDeUsuario {
 			Alianza alianza=new Alianza();
 			alianza.agregarAliado(humano);
 			alianza.agregarAliado(elfo);
-			Assert.assertEquals(2, alianza.getTamaño());
+			Assert.assertEquals(2, alianza.getTamanio());
 		}
 		
 		/*
@@ -294,13 +291,13 @@ public class HistoriaDeUsuario {
 			Alianza alianza=new Alianza();
 			alianza.agregarAliado(humano);
 			alianza.agregarAliado(elfo);
-			Assert.assertEquals(2, alianza.getTamaño());
+			Assert.assertEquals(2, alianza.getTamanio());
 			alianza.removerAliado(humano);
-			Assert.assertEquals(1, alianza.getTamaño());
+			Assert.assertEquals(1, alianza.getTamanio());
 			Alianza alianza1=new Alianza();
 			alianza1.agregarAliado(humano);
 			alianza1.agregarAliado(orco);
-			Assert.assertEquals(2, alianza1.getTamaño());
+			Assert.assertEquals(2, alianza1.getTamanio());
 		}
 		
 		/*
@@ -332,7 +329,7 @@ public class HistoriaDeUsuario {
 		 * Destrozar obstaculos
 		 */
 		
-		@Test
+		@Ignore
 	    public void Historia13() {
 		}
 		

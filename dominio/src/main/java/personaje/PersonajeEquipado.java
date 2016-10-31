@@ -8,7 +8,6 @@ public class PersonajeEquipado extends Personaje {
 	protected int prioridad;
 	
 	public PersonajeEquipado(Personaje personaje) {
-		//super(personaje);
 		this.personajeEq = personaje;
 	}
 	

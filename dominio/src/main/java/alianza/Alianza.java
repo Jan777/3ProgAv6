@@ -1,11 +1,8 @@
 package alianza;
 
-
 import java.util.LinkedList;
 
 import personaje.Personaje;
-
-
 
 public class Alianza {
 	
@@ -27,7 +24,7 @@ public class Alianza {
 		this.aliados.remove(p);
 	}
 	
-	public int getTamaño(){
+	public int getTamanio(){
 		return this.aliados.size();
 	}
 	

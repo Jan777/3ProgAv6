@@ -74,12 +74,4 @@ public class Humano extends Personaje {
 		return 1;
 	}
 	
-	/*public void aplicarHechizoEn(String nombre, Personaje p){
-		Iterator <String> it = m.keySet().iterator();
-		
-	}*/
-	
-	
-		
-	
 }

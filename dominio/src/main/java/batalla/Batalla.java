@@ -23,15 +23,7 @@ public class Batalla  {
 	public void agregarb2 (Personaje pers){
 		batallon2.add(pers);
 	}
-	/*
-	public void removerb1 (Personaje pers){
-		batallon1.remove(pers);
-	}
 	
-	public void removerb2 (Personaje pers){
-		batallon2.remove(pers);
-	}
-	*/
 	public int consultaBatallon1(){
 		return batallon1.size();
 	}

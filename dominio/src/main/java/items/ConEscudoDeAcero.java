@@ -9,7 +9,6 @@ public class ConEscudoDeAcero extends PersonajeEquipado {
 	
 	public ConEscudoDeAcero (Personaje personajeConEscudoDeAcero) {
 		super (personajeConEscudoDeAcero);
-		//this.prioridad = 1;
 	}
 		
 	@Override
