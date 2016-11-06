@@ -42,22 +42,14 @@ public abstract class Item {
 		return this.getClass() == decorado || this.equipamiento.tiene(decorado);
 	}
 
-	public void desequipar(Class decorado, Item itemLlamador) {
+	public void desequiparPorClase(Class decorado, Item itemLlamador) {
 		if (this.getClass() == decorado) { 
 			itemLlamador.equipamiento = this.equipamiento;
 		} else {
-			this.equipamiento.desequipar(decorado, this);
+			this.equipamiento.desequiparPorClase(decorado, this);
 		}
 	}
 	
-	public void desequipar2(int decorado, Item itemLlamador) {
-		if (this.getPrioridad() == decorado) { 
-			itemLlamador.equipamiento = this.equipamiento;
-		} else {
-			this.equipamiento.desequipar2(decorado, this);
-		}
-	}
-
 	public int buscarMayorPrioridad(int mejor) {
 		if(this.equipamiento == null){
 			if(this.prioridad > mejor)
@@ -68,6 +60,15 @@ public abstract class Item {
 				return this.equipamiento.buscarMayorPrioridad(this.prioridad);
 			return this.equipamiento.buscarMayorPrioridad(mejor);
 		}
-		
 	}
+	
+	public Class desequiparPorPrioridad(int decorado, Item itemLlamador) {
+		if (this.getPrioridad() == decorado) { 
+			itemLlamador.equipamiento = this.equipamiento;
+			return this.getClass();
+		} else {
+			return this.equipamiento.desequiparPorPrioridad(decorado, this);
+		}
+	}
+
 }

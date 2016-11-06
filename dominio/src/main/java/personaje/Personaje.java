@@ -2,6 +2,7 @@ package personaje;
 
 import casta.Casta;
 import items.Item;
+import ubicacion.Ubicacion;
 import xp.XP;
 import alianza.Alianza;
 
@@ -22,7 +23,7 @@ public abstract class Personaje implements Atacable {
 	protected int energiTope;
 	protected int cantItem = 0;
 	protected Item equipamiento = null;
-	
+	protected Ubicacion ubicacion;
 	
 	/*
 	 *  Constructores 
@@ -260,36 +261,41 @@ public abstract class Personaje implements Atacable {
 		incrementarCantidadDeItemsEquipados();
 	}
 	
-	public Personaje desequipar(Class decorado){
+	public Personaje desequiparPorClase(Class decorado){
 		if(this.equipamiento == null  ||  !this.tiene(decorado) ){
 			return this;
 		}
 		if(this.equipamiento.getClass() == decorado)
 			this.equipamiento = this.equipamiento.equipamiento;
 		else {
-			this.equipamiento.desequipar(decorado,this.equipamiento);			
+			this.equipamiento.desequiparPorClase(decorado,this.equipamiento);			
 		}
 		decrementarCantidadDeItemsEquipados();
 		return this;
 	}
 	
-	public Personaje desequipar2(int decorado){
-		if(this.equipamiento.getPrioridad() == decorado)
-			this.equipamiento = this.equipamiento.equipamiento;
-		else {
-			this.equipamiento.desequipar2(decorado,this.equipamiento);			
-		}
-		decrementarCantidadDeItemsEquipados();
-		return this;
-	}
-	
-	public Personaje desequiparMejorItem() {
+	public Class desequiparMejorItem() {
 		if(this.equipamiento == null ){
-			return this;
+			return null;
+			//return this;
 		}
 		int mejor = equipamiento.buscarMayorPrioridad(this.equipamiento.getPrioridad());
-		return desequipar2(mejor);
+		return desequiparPorPrioridad(mejor);
 	}
+	
+	public Class desequiparPorPrioridad(int decorado){
+		Class claseQuitada;
+		if(this.equipamiento.getPrioridad() == decorado){
+			claseQuitada = this.equipamiento.getClass();
+			this.equipamiento = this.equipamiento.equipamiento;
+		}
+		else{
+			claseQuitada = this.equipamiento.desequiparPorPrioridad(decorado,this.equipamiento);			
+		}
+		decrementarCantidadDeItemsEquipados();
+		return claseQuitada;
+	}
+
 
 	public boolean puedeEquipar(){
 		return this.cantItem<3;
@@ -309,6 +315,13 @@ public abstract class Personaje implements Atacable {
 	
 	public int obtenerPuntosDeExperiencia (){
 		return this.experiencia.getPuntoDeExperiencia();
+	}
+	public Ubicacion getUbicacion() {
+		return ubicacion;
+	}
+	
+	public void setUbicacion(Ubicacion ubicacion){
+		this.ubicacion = ubicacion;
 	}
 	
 

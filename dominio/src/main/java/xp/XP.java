@@ -50,5 +50,9 @@ public class XP {
 	public int getPuntosGanados(){
 		return this.puntosGanados;
 	}
+
+	public void aumentarExperiencia(int i) {
+		this.experiencia += i;
+	}
 	
 }
