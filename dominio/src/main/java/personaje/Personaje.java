@@ -1,7 +1,7 @@
 package personaje;
 
 import casta.Casta;
-import ubicacion.Ubicacion;
+import items.Item;
 import xp.XP;
 import alianza.Alianza;
 
@@ -17,74 +17,90 @@ public abstract class Personaje implements Atacable {
 	protected Casta casta;
 	protected XP experiencia;
 	protected Alianza aliados = null;
-	private Ubicacion ubicacion;
+	//ubicacion
 	protected int saludTope;
 	protected int energiTope;
 	protected int cantItem = 0;
-			
+	protected Item equipamiento = null;
+	
+	
+	/*
+	 *  Constructores 
+	 */
+	//Constructor estándar
 	public Personaje(Casta casta) {
 		this.casta = casta;
 		this.experiencia = new XP();
 	}
-	
+	//Constructor para Enemigos
 	public Personaje() {
-		this.experiencia = new XP();
 	}
-	
+	//Contructor para?
 	public Personaje(Personaje pers){
 		this.casta = pers.casta;
 		this.experiencia = pers.experiencia;
 	}
 	
+	/*
+	 * Getters y Setters
+	 */
 	public int getEnergia() {
 		return energia;
 	}
-
 	public void setEnergia(int energia) {
 		this.energia = energia;
 	}
-
 	public int getSalud() {
 		return salud;
 	}
-
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
-
 	public int getFuerza() {
 		return fuerza;
 	}
-
 	public void setFuerza(int fuerza) {
 		this.fuerza = fuerza;
 	}
-
 	public int getDestreza() {
 		return this.destreza;
 	}
-
 	public void setDestreza(int destreza) {
 		this.destreza = destreza;
 	}
-
 	public int getInteligencia() {
 		return inteligencia;
 	}
-
-	
 	public XP getExperiencia() {
 		return experiencia;
 	}
-
 	public void setExperiencia(XP experiencia) {
 		this.experiencia = experiencia;
 	}
-
 	public void setInteligencia(int inteligencia) {
 		this.inteligencia = inteligencia;
 	}
+	public Alianza getAliados() {
+		return aliados;
+	}
+	public void setAliados(Alianza aliados) {
+		this.aliados = aliados;
+	}
+	public int getCantItem() {
+		return cantItem;
+	}
+	
 
+	/*
+	 * Definición de métodos abstractos
+	 */
+	public abstract int obtenerPuntosDeAtaque();
+	public abstract int obtenerPuntosDeDefensa();
+	public abstract int obtenerPuntosDeInteligencia();
+	
+	/*f
+	 * Asignación de puntos a habilidades
+	 */
 	public void incrementarInteligencia(){
 		if(validaPuntos()){
 			this.inteligencia++;
@@ -109,16 +125,18 @@ public abstract class Personaje implements Atacable {
 	public boolean validaPuntos(){
 		return obtenerPuntosGanados() >= 1;
 	}
-
 	
 	public int obtenerPuntosGanados(){
 		return this.experiencia.getPuntosGanados();
 	}
 	
+	/*
+	 * Atacar y Ser Atacado
+	 */
 	public final void atacar(Atacable atacado) {
 		if (puedeAtacar()) {
 			atacado.serAtacado(obtenerPuntosDeAtaque());
-			energia -= calcularQuiteDeEnergia();
+			energia -= obtenerPuntosDeAtaque();
 			experiencia.aumentarExperiencia();
 			despuesDeAtacar();
 		}
@@ -126,24 +144,6 @@ public abstract class Personaje implements Atacable {
 	
 	protected void despuesDeAtacar() { 
 	}
-	
-	public boolean estaVivo() {
-		return this.salud > 0;
-	}
-	
-	protected abstract boolean puedeAtacar();
-	protected abstract int calcularPuntosDeAtaque();
-	protected abstract int calcularPuntosDeDefensa();
-	protected abstract int calcularPuntosDeMagia();
-	protected abstract int calcularPuntosDeInteligencia();
-	protected abstract int calcularQuiteDeEnergia();
-	public abstract int obtenerPuntosDeAtaque();
-	public abstract int obtenerPuntosDeDefensa();
-	public abstract int obtenerPuntosDeMagia();
-	public abstract int obtenerPuntosDeInteligencia();
-	public abstract int obtenerPuntosDeExperiencia();
-	public abstract int obtenerNivel();
-	public abstract int obtenerQuiteDeEnergia();
 	
 	public void serAtacado(int danio) {
 		if(danio > this.obtenerPuntosDeDefensa())
@@ -156,22 +156,40 @@ public abstract class Personaje implements Atacable {
 		}
 	}
 	
-	public void serCurado() {
-		this.salud = 100;
-	}
-
-	public void serEnergizado() {
-		this.energia = 100;
+	protected boolean puedeAtacar() {
+		return energia >= obtenerPuntosDeAtaque();
 	}
 	
-	public Alianza getAliados() {
-		return aliados;
-	}
-
-	public void setAliados(Alianza aliados) {
-		this.aliados = aliados;
+	/*
+	 * Calculo de Puntos por Items
+	 */
+	public int obtenerPuntosDeAtaqueItem(){		
+		if (this.equipamiento == null){
+			return 0;
+		}else{
+			return this.equipamiento.obtenerPuntosDeAtaque();
+		}
 	}
 	
+	public int obtenerPuntosDeDefensaItem(){
+		if (this.equipamiento == null){
+			return 0;
+		}else{
+			return this.equipamiento.obtenerPuntosDeDefensa();
+		}
+	}
+	
+	public int obtenerPuntosDeInteligenciaItem(){
+		if (this.equipamiento == null){
+			return 0;
+		}else{
+			return this.equipamiento.obtenerPuntosDeInteligencia();
+		}
+	}
+	
+	/*
+	 * Métodos para Alianzas
+	 */
 	public void aliarse(Personaje otr) {
 		if (this.aliados == null) {
 			if (otr.aliados == null) {
@@ -201,6 +219,21 @@ public abstract class Personaje implements Atacable {
 		this.aliados.removerAliado(this);
 		this.aliados = null;
 	}
+	
+	/*
+	 * Otras varias...
+	 */
+	public boolean estaVivo() {
+		return this.salud > 0;
+	}
+	
+	public void serCurado() {
+		this.salud = 100;
+	}
+
+	public void serEnergizado() {
+		this.energia = 100;
+	}
 
 	protected void aparecer(){
 		//aparece el personaje en una posicion del mapa
@@ -211,28 +244,73 @@ public abstract class Personaje implements Atacable {
 		aparecer();
 	}
 	
+	/*
+	 * Métodos para manejo de items
+	 */
 	public boolean tiene(Class decorado) {
-		return false;
+		return this.equipamiento.tiene(decorado);
 	}
-
-	public Personaje desequipar(Class decorado, PersonajeEquipado persEq, PersonajeEquipado persOri) {
+	
+	public void agregarItem (Item i){
+		if(this.equipamiento == null)
+			this.equipamiento = i;
+		else{
+			this.equipamiento.agregarItem(i);
+		}
+		incrementarCantidadDeItemsEquipados();
+	}
+	
+	public Personaje desequipar(Class decorado){
+		if(this.equipamiento == null  ||  !this.tiene(decorado) ){
+			return this;
+		}
+		if(this.equipamiento.getClass() == decorado)
+			this.equipamiento = this.equipamiento.equipamiento;
+		else {
+			this.equipamiento.desequipar(decorado,this.equipamiento);			
+		}
+		decrementarCantidadDeItemsEquipados();
 		return this;
 	}
 	
+	public Personaje desequipar2(int decorado){
+		if(this.equipamiento.getPrioridad() == decorado)
+			this.equipamiento = this.equipamiento.equipamiento;
+		else {
+			this.equipamiento.desequipar2(decorado,this.equipamiento);			
+		}
+		decrementarCantidadDeItemsEquipados();
+		return this;
+	}
+	
+	public Personaje desequiparMejorItem() {
+		if(this.equipamiento == null ){
+			return this;
+		}
+		int mejor = equipamiento.buscarMayorPrioridad(this.equipamiento.getPrioridad());
+		return desequipar2(mejor);
+	}
+
 	public boolean puedeEquipar(){
 		return this.cantItem<3;
 	}
 	
-	public void incrementarItem(){
+	private void incrementarCantidadDeItemsEquipados(){
 		this.cantItem++;
 	}
-
-	public int getCantItem() {
-		return cantItem;
-	}
-
-	public void setCantItem(int cantItem) {
-		this.cantItem = cantItem;
+	
+	private void decrementarCantidadDeItemsEquipados() {
+		this.cantItem--;
 	}
 	
+	public int obtenerNivel() {
+		return experiencia.getNivel();
+	}
+	
+	public int obtenerPuntosDeExperiencia (){
+		return this.experiencia.getPuntoDeExperiencia();
+	}
+	
+
+		
 }

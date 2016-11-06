@@ -8,68 +8,18 @@ public class Enemigo2 extends Personaje {
 	}
 
 	@Override
-	protected boolean puedeAtacar() {
-		return energia >= calcularPuntosDeAtaque();
-	}
-
-	@Override
-	protected int calcularPuntosDeAtaque() {
-		return getFuerza();
-	}
-
-	@Override
-	protected int calcularPuntosDeDefensa() {
-		return getDestreza();
-	}
-
-	@Override
-	protected int calcularPuntosDeMagia() {
-		return 0;
-	}
-
-	@Override
-	protected int calcularPuntosDeInteligencia() {
-		return calcularPuntosDeInteligencia();
-	}
-
-	@Override
-	protected int calcularQuiteDeEnergia() {
-		return 1;
-	}
-
-	@Override
 	public int obtenerPuntosDeAtaque() {
-		return calcularPuntosDeAtaque();
+		return getFuerza() + casta.getAtaque() + obtenerPuntosDeAtaqueItem();
 	}
-
+	
 	@Override
 	public int obtenerPuntosDeDefensa() {
-		return calcularPuntosDeDefensa();
+		return getDestreza() +  casta.getDefensa() + obtenerPuntosDeDefensaItem();
 	}
-
-	@Override
-	public int obtenerPuntosDeMagia() {
-		return 0;
-	}
-
+	
 	@Override
 	public int obtenerPuntosDeInteligencia() {
-		return calcularPuntosDeInteligencia();
-	}
-
-	@Override
-	public int obtenerPuntosDeExperiencia() {
-		return 0;
-	}
-
-	@Override
-	public int obtenerNivel() {
-		return 0;
-	}
-
-	@Override
-	public int obtenerQuiteDeEnergia() {
-		return 1;
+		return getInteligencia() + casta.getInteligencia() + obtenerPuntosDeInteligenciaItem();
 	}
 
 }

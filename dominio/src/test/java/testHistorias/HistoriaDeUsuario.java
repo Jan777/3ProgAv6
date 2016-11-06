@@ -288,16 +288,15 @@ public class HistoriaDeUsuario {
 			Personaje humano= new Humano(guerrero);
 			Casta explorador = new Explorador();
 			Personaje orco= new Orco (explorador);
-			Alianza alianza=new Alianza();
-			alianza.agregarAliado(humano);
-			alianza.agregarAliado(elfo);
-			Assert.assertEquals(2, alianza.getTamanio());
-			alianza.removerAliado(humano);
-			Assert.assertEquals(1, alianza.getTamanio());
-			Alianza alianza1=new Alianza();
-			alianza1.agregarAliado(humano);
-			alianza1.agregarAliado(orco);
-			Assert.assertEquals(2, alianza1.getTamanio());
+			Personaje sigurd = new Humano(new Guerrero());
+			sigurd.aliarse(humano);
+			sigurd.aliarse(sigurd);
+			elfo.aliarse(orco);
+			sigurd.aliarse(orco);
+			Assert.assertEquals(2, elfo.getAliados().getTamanio());
+			Assert.assertEquals(2, orco.getAliados().getTamanio());
+			Assert.assertEquals(2, humano.getAliados().getTamanio());
+			Assert.assertEquals(2, humano.getAliados().getTamanio());
 		}
 		
 		/*

@@ -1,26 +1,28 @@
 package items;
 
 import personaje.Personaje;
-import personaje.PersonajeEquipado;
 
-public class ConEscudoDeKevlar extends PersonajeEquipado{
-	 
-	public ConEscudoDeKevlar (Personaje personajeConEscudoDeMimbre) {
-		super (personajeConEscudoDeMimbre);
+public class ConEscudoDeKevlar extends Item {
+
+	public ConEscudoDeKevlar(){
+		this.prioridad = 2;
 	}
-		
-	@Override
+	
 	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque();
+		if (this.equipamiento == null)
+			return 0;
+		return equipamiento.obtenerPuntosDeAtaque() + 0;
 	}
-	
-	@Override
+
 	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa()+2;
+		if (this.equipamiento == null)
+			return 10;
+		return equipamiento.obtenerPuntosDeDefensa() + 10;
 	}
-	
-	@Override
+
 	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia();
+		if (this.equipamiento == null)
+			return 0;
+		return equipamiento.obtenerPuntosDeInteligencia() + 0;
 	}
 }

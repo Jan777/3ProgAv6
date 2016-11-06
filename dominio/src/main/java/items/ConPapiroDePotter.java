@@ -1,27 +1,29 @@
 package items;
 
 import personaje.Personaje;
-import personaje.PersonajeEquipado;
 
-public class ConPapiroDePotter extends PersonajeEquipado {
+public class ConPapiroDePotter extends Item {
 	
-	public ConPapiroDePotter(Personaje personajeConPapiro) {
-		super (personajeConPapiro);
+	public ConPapiroDePotter(){
+		this.prioridad = 1;
 	}
 	
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque();
+	
+	public int obtenerPuntosDeAtaque(){
+		if (this.equipamiento == null)
+			return 0;
+		return equipamiento.obtenerPuntosDeAtaque() + 0;
 	}
 	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa();
+	public int obtenerPuntosDeDefensa(){
+		if (this.equipamiento == null)
+			return 0;
+		return equipamiento.obtenerPuntosDeDefensa() + 0;
 	}
 	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia()+2;
+	public int obtenerPuntosDeInteligencia(){
+		if (this.equipamiento == null)
+			return 5;
+		return equipamiento.obtenerPuntosDeInteligencia() +  5 ;
 	}
-	
 }

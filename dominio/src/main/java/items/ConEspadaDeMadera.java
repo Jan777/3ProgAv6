@@ -1,27 +1,28 @@
 package items;
 
 import personaje.Personaje;
-import personaje.PersonajeEquipado;
 
-public class ConEspadaDeMadera extends PersonajeEquipado {
+public class ConEspadaDeMadera extends Item {
 	
-	public ConEspadaDeMadera(Personaje personajeConEspada) {
-		super (personajeConEspada);
+	public ConEspadaDeMadera(){
+		this.prioridad = 1;
+	}
+	public int obtenerPuntosDeAtaque(){
+		if (this.equipamiento == null)
+			return 5;
+		return equipamiento.obtenerPuntosDeAtaque() + 5;
 	}
 	
-	@Override
-	public int obtenerPuntosDeAtaque() {
-		return super.obtenerPuntosDeAtaque()+1;
+	public int obtenerPuntosDeDefensa(){
+		if (this.equipamiento == null)
+			return 0;
+		return equipamiento.obtenerPuntosDeDefensa() + 0;
 	}
 	
-	@Override
-	public int obtenerPuntosDeDefensa() {
-		return super.obtenerPuntosDeDefensa();
-	}
-	
-	@Override
-	public int obtenerPuntosDeInteligencia() {
-		return super.obtenerPuntosDeInteligencia();
+	public int obtenerPuntosDeInteligencia(){
+		if (this.equipamiento == null)
+			return 0;
+		return equipamiento.obtenerPuntosDeInteligencia() + 0;
 	}
 	
 }
