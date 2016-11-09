@@ -6,6 +6,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.json.JSONException;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -24,12 +26,12 @@ public class Loggin extends JFrame {
 	private JPasswordField txtPassword;
 	private Registro pantallaRegistro = null;
 	
-	private ServidorSQL servidorSQL;
+	private MensajeJSON mensajeJSON;
 	
 	Connection conn=null;
 	
 	public Loggin() {
-		conn=SQLConnection.dbConnector();
+		//conn=SQLConnection.dbConnector();
 		addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent arg0) {
@@ -80,9 +82,13 @@ public class Loggin extends JFrame {
 					if (!txtUsuario.getText().equals("")
 							&& !txtPassword.getText().equals("")) {
 						Usuario u = new Usuario(txtUsuario.getText());
-						u.setPassword(txtPassword.getText());				
-						servidorSQL=new ServidorSQL(); 
-						servidorSQL.validarUsuario(u);
+						u.setPassword(txtPassword.getText());
+						mensajeJSON=new MensajeJSON(); 
+						try {
+						MensajeJSON.validarUsuario(u.getNickname(), u.getPassword());
+						} catch (JSONException e1) {
+							e1.printStackTrace();
+						}
 					}
 				}
 			});
@@ -113,7 +119,7 @@ public class Loggin extends JFrame {
 	}
 	
 	public void abreDialogSalida() {
-		int res = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
+		int res = JOptionPane.showConfirmDialog(this, "ï¿½Desea Salir?",
 				"Salida", JOptionPane.YES_NO_OPTION);
 		if (res == JOptionPane.YES_OPTION) {
 			//getCliente().cerrarComunicacion();

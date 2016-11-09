@@ -3,6 +3,7 @@ package comunicacionServidor;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -25,26 +26,26 @@ public class Servidor {
 		this.correr();
 	}
 
-public void correr(){
-
-	try {
-		servidor = new ServerSocket(10000);
-		while(true){
-			socket = servidor.accept();
-			Sala sala = salas.get(1);
-			sala.agregar(socket);
-			new AtencionAlCliente(socket,sala).start();
-							
+	public void correr(){
+	
+		try {
+			servidor = new ServerSocket(10000);
+			while(true){
+				socket = servidor.accept();
+				Sala sala = salas.get(1);
+				sala.agregar(socket);
+				new AtencionAlCliente(socket).start();
+								
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
 	}
-}
-
-
-public static void main (String args[] ){
-
-	new Servidor();
-}
+	
+	
+	public static void main (String args[] ){
+	
+		new Servidor();
+	}
 }

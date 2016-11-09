@@ -1,4 +1,4 @@
-package login;
+package comunicacionServidor;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,7 +35,7 @@ public class SQLConnection {
 		} catch (ClassNotFoundException cnfe) {
 			System.err.println("No se encuentra el Driver.");
 		} catch (SQLException sqle) {
-			System.err.println("Error al intentar la conexión.");
+			System.err.println("Error al intentar la conexiï¿½n.");
 		}	
 		return conn;
 	}

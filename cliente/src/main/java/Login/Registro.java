@@ -31,7 +31,7 @@ public class Registro extends JFrame {
 	private Loggin pantallaLoggin;
 	JLabel lblMensaje;
 	Usuario uss;
-	private ServidorSQL servidorSQL;
+	private MensajeJSON mensajeJSON;
 	
 	
 	
@@ -122,9 +122,9 @@ public class Registro extends JFrame {
 						uss.setNombre(txtNombreUsuario.getText());
 						uss.setMail(txtMailUsuario.getText());
 						uss.setPassword(txtPassword1.getText());
-						servidorSQL=new ServidorSQL(); 
+						mensajeJSON=new MensajeJSON(); 
 						try {
-							servidorSQL.agregarUsuario(uss.getMail(), uss.getNombre(),uss.getNickname(),uss.getPassword());
+							mensajeJSON.agregarUsuario(uss.getMail(), uss.getNombre(),uss.getNickname(),uss.getPassword());
 						} catch (JSONException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -132,7 +132,7 @@ public class Registro extends JFrame {
 						dispose();
 						//pantallaLoggin.getCliente().usuarioDisponible(txtMailUsuario.getText());
 					} else
-						lblMensaje.setText("Las contraseñas deben coincidir.");
+						lblMensaje.setText("Las contraseï¿½as deben coincidir.");
 				else
 					lblMensaje.setText("Campos obligatorios, incompletos.");
 			}
