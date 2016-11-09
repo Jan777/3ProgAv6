@@ -1,4 +1,4 @@
-package Login;
+package login;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,13 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import org.json.JSONObject;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ServidorSQL extends JFrame {
 	public ServidorSQL() {
 	}
@@ -15,8 +22,20 @@ public class ServidorSQL extends JFrame {
 	private Connection conn;
 
 		
-	public void agregarUsuario(String mail, String nombre, String nickname, String password) {
-		PreparedStatement pstmt = null;
+	public void agregarUsuario(String mail, String nombre, String nickname, String password) throws JSONException {
+		
+		JSONObject obj = new JSONObject();
+		obj.put("name", "registro");
+		obj.put("email",  mail);
+		obj.put("nombre", nombre);
+		obj.put("nickname",  nickname);
+		obj.put("password",  password);
+		obj.put("isConect",  true);
+		
+		
+		
+		
+		/*PreparedStatement pstmt = null;
 		try {
 			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Usuario VALUES (?,?,?,?,?)");
 			pstmt.setString(1, mail);
@@ -33,7 +52,7 @@ public class ServidorSQL extends JFrame {
 			} catch (SQLException e) {
 				System.err.println("Conexion SQL fallida");
 			}
-		}
+		}*/
 	}
 	
 	

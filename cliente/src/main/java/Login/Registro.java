@@ -1,4 +1,4 @@
-package Login;
+package login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import org.json.JSONException;
 
 public class Registro extends JFrame {
 	
@@ -121,7 +123,12 @@ public class Registro extends JFrame {
 						uss.setMail(txtMailUsuario.getText());
 						uss.setPassword(txtPassword1.getText());
 						servidorSQL=new ServidorSQL(); 
-						servidorSQL.agregarUsuario(uss.getMail(), uss.getNombre(),uss.getNickname(),uss.getPassword());
+						try {
+							servidorSQL.agregarUsuario(uss.getMail(), uss.getNombre(),uss.getNickname(),uss.getPassword());
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						dispose();
 						//pantallaLoggin.getCliente().usuarioDisponible(txtMailUsuario.getText());
 					} else
