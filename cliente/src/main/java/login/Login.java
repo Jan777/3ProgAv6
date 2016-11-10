@@ -36,7 +36,7 @@ public class Login extends JFrame {
 					abreDialogSalida();
 				}
 			});
-			setTitle("Loggin WorldWar");
+			setTitle("Login WorldWar");
 			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			setBounds(100, 100, 319, 251);
 			contentPane = new JPanel();
@@ -84,6 +84,7 @@ public class Login extends JFrame {
 						mensajeJSON=new MensajeJSON(); 
 						try {
 						MensajeJSON.validarUsuario(u.getNickname(), u.getPassword());
+						
 						} catch (JSONException e1) {
 							e1.printStackTrace();
 						}
@@ -122,7 +123,7 @@ public class Login extends JFrame {
 	}
 	
 	public void abreDialogSalida() {
-		int res = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
+		int res = JOptionPane.showConfirmDialog(this, "Desea Salir?",
 				"Salida", JOptionPane.YES_NO_OPTION);
 		if (res == JOptionPane.YES_OPTION) {
 			System.exit(0);

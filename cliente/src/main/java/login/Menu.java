@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -20,12 +21,14 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import org.json.JSONException;
+import javax.swing.JComboBox;
 
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
 	private MensajeJSON mensajeJSON;
 	Socket socket;
+	private PantallaPersonaje pantallaPersonaje = null;
 	
 	
 	public Menu() {
@@ -54,19 +57,25 @@ public class Menu extends JFrame {
 			btnSalir.addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent e) {
-					try {
-						socket.close();
-						dispose();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					//socket.close();
+					dispose();
 				}
 			});
-			btnSalir.setBounds(27, 124, 231, 20);
+			btnSalir.setBounds(27, 124, 231, 23);
 			panel.setLayout(null);
 			panel.add(btnSalir);
 			
 			JButton btnCrearPersonaje = new JButton("Crear Personaje");
+			btnCrearPersonaje .addActionListener(new ActionListener() {
+				@SuppressWarnings("deprecation")
+				public void actionPerformed(ActionEvent arg0) {
+					instanciarCP();
+					pantallaPersonaje.show();
+				}
+			});
+			contentPane.add(btnCrearPersonaje, BorderLayout.SOUTH);
+			
+			
 			btnCrearPersonaje.setBounds(27, 16, 231, 23);
 			panel.add(btnCrearPersonaje);
 			
@@ -77,6 +86,24 @@ public class Menu extends JFrame {
 			});*/
 			btnMapa.setBounds(28, 67, 222, 23);
 			panel.add(btnMapa);
+			
+			
 		}
-
+	public void instanciarCP() {
+		this.pantallaPersonaje = new PantallaPersonaje(this);
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Menu frame = new Menu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					System.exit(1);
+				}
+			}
+		});
+		
+	}
 }

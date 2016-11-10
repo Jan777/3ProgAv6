@@ -34,6 +34,7 @@ public class ClienteEscritura extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 }

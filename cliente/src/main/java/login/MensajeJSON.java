@@ -45,7 +45,18 @@ public class MensajeJSON extends JFrame {
 		obj.put("name", "login");
 		obj.put("nickname",  nickname);
 		obj.put("password",  password);
-		new Cliente(obj);
+		//new Cliente(obj);
 	}
+	
+	public void agregarPersonaje(String nombre, String casta, String personaje) throws JSONException {
+		
+		JSONObject obj = new JSONObject();
+		obj.put("name", "personaje");
+		obj.put("nombre", nombre);
+		obj.put("casta",  casta);
+		obj.put("tipopers",  personaje);
+		System.out.println(obj);
+	}
+	
 	
 }

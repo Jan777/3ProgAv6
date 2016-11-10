@@ -129,7 +129,6 @@ public class Registro extends JFrame {
 							e1.printStackTrace();
 						}
 						dispose();
-						//pantallaLoggin.getCliente().usuarioDisponible(txtMailUsuario.getText());
 					} else
 						lblMensaje.setText("Las contrase�as deben coincidir.");
 				else

@@ -66,6 +66,7 @@ public class ClienteLectura extends Thread {
 		JOptionPane.showMessageDialog(null, "El usuario ha ingresado correctamente", "Bienvenido",
                 JOptionPane.INFORMATION_MESSAGE);
 		Menu menu= new Menu();
+		menu.setVisible(true);
 	}
 	
 	public void nicknameExistente() {

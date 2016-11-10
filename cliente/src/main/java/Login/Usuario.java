@@ -5,7 +5,8 @@ public class Usuario {
 	private String nombre;
 	private String nickname;
 	private String password;
-	private Boolean estado;
+	
+	
 	public String getMail() {
 		return mail;
 	}
@@ -31,18 +32,7 @@ public class Usuario {
 		this.password = password;
 	}
 	
-	public String toString(){
-		return this.mail + "~" + this.nombre + "~" + this.nickname + "~" + this.password;
-	}
 	
-	public Usuario(String concatenado,Boolean o)
-	{
-		String[] aux = concatenado.split("~");
-		this.mail=aux[0];
-		this.nombre=aux[1];
-		this.nickname=aux[2];
-		this.password=aux[3];
-	}
 	public Usuario(String nickname)
 	{
 		this.mail=null;
@@ -50,6 +40,7 @@ public class Usuario {
 		this.nickname=nickname;
 		this.password=null;
 	}
+	
 	public Usuario(String mail, String nombre, String apodo, String password)
 	{
 		this.mail=mail;
@@ -57,10 +48,5 @@ public class Usuario {
 		this.nickname=apodo;
 		this.password=password;
 	}
-	public Boolean getEstado() {
-		return estado;
-	}
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
+	
 }
