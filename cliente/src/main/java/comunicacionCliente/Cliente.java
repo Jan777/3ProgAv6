@@ -16,19 +16,19 @@ public class Cliente {
 	public Cliente(JSONObject obj){
 		this.correr(obj);
 	}
-	public void correr(JSONObject obj) {
-		try {
-			Socket socket = new Socket("localHost", 10005);
+	public void correr(JSONObject obj){
+		
+			Socket socket= new Socket ();
+			try {
+				socket = new Socket("localHost", 10005);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			new ClienteLectura(socket).start();
 			new ClienteEscritura(socket , obj).start();
 
-		} catch (UnknownHostException e) {
-
-			e.printStackTrace();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
+				
 
 	}
 

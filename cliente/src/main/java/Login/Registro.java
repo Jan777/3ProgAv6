@@ -125,7 +125,12 @@ public class Registro extends JFrame {
 						mensajeJSON=new MensajeJSON(); 
 						try {
 							mensajeJSON.agregarUsuario(uss.getMail(), uss.getNombre(),uss.getNickname(),uss.getPassword());
+						
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
 						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						dispose();
