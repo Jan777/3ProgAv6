@@ -24,7 +24,6 @@ import org.json.JSONObject;
 public class MensajeJSON extends JFrame {
 	
 	public MensajeJSON() {
-	
 	}
 
 	public void agregarUsuario(String mail, String nombre, String nickname, String password) throws JSONException {
@@ -37,7 +36,6 @@ public class MensajeJSON extends JFrame {
 		obj.put("password",  password);
 		obj.put("isConect",  0);
 		new Cliente(obj);
-		
 	}
 	
 	

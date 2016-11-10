@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import login.MensajeJSON;
+import login.Menu;
 
 public class ClienteLectura extends Thread {
 	private Socket socket;
@@ -32,15 +33,19 @@ public class ClienteLectura extends Thread {
 			String name = json.getString("error");
 			if (name.equals("logincorrecto")){
 				loginCorrecto();
+				
 			} 
 			if (name.equals("loginincorrecto")){
-				loginIncorrecto(); 
+				loginIncorrecto();
+				socket.close();
 			}
 			if (name.equals("isConnect")){
-				isConnect(); 
+				isConnect();
+				socket.close();
 			}
 			if (name.equals("nickname")){
 				nicknameExistente();
+				socket.close();
 			} 
 			
 			
@@ -60,6 +65,7 @@ public class ClienteLectura extends Thread {
 	public void loginCorrecto() {
 		JOptionPane.showMessageDialog(null, "El usuario ha ingresado correctamente", "Bienvenido",
                 JOptionPane.INFORMATION_MESSAGE);
+		Menu menu= new Menu();
 	}
 	
 	public void nicknameExistente() {

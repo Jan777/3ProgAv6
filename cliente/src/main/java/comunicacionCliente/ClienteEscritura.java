@@ -34,12 +34,6 @@ public class ClienteEscritura extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*
-		try {
-			this.socket.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
 	}
 
 }

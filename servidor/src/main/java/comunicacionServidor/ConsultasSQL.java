@@ -60,7 +60,6 @@ public class ConsultasSQL extends JFrame {
 			pstmt = SQLConnection.getConnection().prepareStatement("Select * from Usuario Where nickname=?");
 			pstmt.setString(1, nickname);
 			ResultSet rs  = pstmt.executeQuery();
-			System.out.println(rs.getInt("isConnect"));
 			if(rs.next()){
 				if(rs.getString("password").equals(password)){
 					if(rs.getInt("isConnect") == 0){
@@ -74,7 +73,6 @@ public class ConsultasSQL extends JFrame {
 						at.enviarRespuestaLogueado(socket);
 					}
 				}else {
-					//Contraseña incorrecta
 					AtencionAlCliente at=new AtencionAlCliente(socket); 
 					at.enviarRespuestaPasswordIncorrecta(socket);
 				}

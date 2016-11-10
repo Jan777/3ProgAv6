@@ -20,18 +20,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class Loggin extends JFrame {
+public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
 	private Registro pantallaRegistro = null;
+	private Menu menu = null;
 	
 	private MensajeJSON mensajeJSON;
-	
-	Connection conn=null;
-	
-	public Loggin() {
-		//conn=SQLConnection.dbConnector();
+		
+	public Login() {
 		addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent arg0) {
@@ -89,6 +87,7 @@ public class Loggin extends JFrame {
 						} catch (JSONException e1) {
 							e1.printStackTrace();
 						}
+					dispose();
 					}
 				}
 			});
@@ -118,11 +117,14 @@ public class Loggin extends JFrame {
 		this.pantallaRegistro = new Registro(this);
 	}
 	
+	public void instanciarMenu() {
+		this.menu = new Menu();
+	}
+	
 	public void abreDialogSalida() {
-		int res = JOptionPane.showConfirmDialog(this, "ï¿½Desea Salir?",
+		int res = JOptionPane.showConfirmDialog(this, "¿Desea Salir?",
 				"Salida", JOptionPane.YES_NO_OPTION);
 		if (res == JOptionPane.YES_OPTION) {
-			//getCliente().cerrarComunicacion();
 			System.exit(0);
 		}
 	}
@@ -132,10 +134,9 @@ public class Loggin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Loggin frame = new Loggin();
+					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					System.err.println("Loggin fallido");
 					System.exit(1);
 				}
 			}

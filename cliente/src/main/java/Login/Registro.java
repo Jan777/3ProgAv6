@@ -28,14 +28,14 @@ public class Registro extends JFrame {
 	private JTextField txtNickname;
 	private JPasswordField txtPassword1;
 	private JPasswordField txtPassword2;
-	private Loggin pantallaLoggin;
+	private Login pantallaLoggin;
 	JLabel lblMensaje;
 	Usuario uss;
 	private MensajeJSON mensajeJSON;
 	
 	
 	
-	public Registro(Loggin l) {
+	public Registro(Login l) {
 		this.pantallaLoggin = l;
 		addWindowListener(new WindowAdapter() {
 			@Override
