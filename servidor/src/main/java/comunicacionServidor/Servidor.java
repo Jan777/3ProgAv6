@@ -29,7 +29,7 @@ public class Servidor {
 	public void correr(){
 	
 		try {
-			servidor = new ServerSocket(10000);
+			servidor = new ServerSocket(10005);
 			while(true){
 				socket = servidor.accept();
 				Sala sala = salas.get(1);

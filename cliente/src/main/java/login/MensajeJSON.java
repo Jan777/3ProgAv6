@@ -35,7 +35,7 @@ public class MensajeJSON extends JFrame {
 		obj.put("nombre", nombre);
 		obj.put("nickname",  nickname);
 		obj.put("password",  password);
-		obj.put("isConect",  false);
+		obj.put("isConect",  0);
 		new Cliente(obj);
 		
 	}

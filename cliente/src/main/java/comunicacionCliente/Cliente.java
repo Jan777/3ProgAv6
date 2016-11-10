@@ -18,7 +18,7 @@ public class Cliente {
 	}
 	public void correr(JSONObject obj) {
 		try {
-			Socket socket = new Socket("localHost", 10000);
+			Socket socket = new Socket("localHost", 10005);
 			new ClienteLectura(socket).start();
 			new ClienteEscritura(socket , obj).start();
 

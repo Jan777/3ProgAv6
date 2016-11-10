@@ -8,14 +8,11 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.json.JSONObject;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +38,7 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setString(2, nombre);
 			pstmt.setString(3, nickname);
 			pstmt.setString(4, password);
-			pstmt.setBoolean(5, false);
+			pstmt.setInt(5, 0);
 			pstmt.execute();
 		} catch (SQLException e1) {
 			AtencionAlCliente at=new AtencionAlCliente(socket); 
@@ -63,14 +60,13 @@ public class ConsultasSQL extends JFrame {
 			pstmt = SQLConnection.getConnection().prepareStatement("Select * from Usuario Where nickname=?");
 			pstmt.setString(1, nickname);
 			ResultSet rs  = pstmt.executeQuery();
-			System.out.println(rs.getString("nickname"));
-			System.out.println(rs.getBoolean("isConnect"));
+			System.out.println(rs.getInt("isConnect"));
 			if(rs.next()){
 				if(rs.getString("password").equals(password)){
-					if(rs.getBoolean("isConnect") == false){
-						PreparedStatement pstmt1 = SQLConnection.getConnection().prepareStatement("UPDATE Usuario SET isConnect = 'true' WHERE nickname = 'a'");
+					if(rs.getInt("isConnect") == 0){
+						PreparedStatement pstmt1 = SQLConnection.getConnection().prepareStatement("UPDATE Usuario SET isConnect = '1' WHERE nickname = ?");
 						pstmt1.setString(1, nickname);
-						ResultSet rs1  = pstmt1.executeQuery();
+						pstmt1.executeUpdate();
 						AtencionAlCliente at=new AtencionAlCliente(socket); 
 						at.enviarRespuestaCorrecto(socket);
 					}else {
