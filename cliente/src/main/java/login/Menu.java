@@ -21,6 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import org.json.JSONException;
+
+import juego.Juego;
+
 import javax.swing.JComboBox;
 
 public class Menu extends JFrame {
@@ -29,6 +32,7 @@ public class Menu extends JFrame {
 	private MensajeJSON mensajeJSON;
 	Socket socket;
 	private PantallaPersonaje pantallaPersonaje = null;
+	private PantallaMapa pantallaMapa = null;
 	
 	
 	public Menu() {
@@ -39,32 +43,12 @@ public class Menu extends JFrame {
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			contentPane.setLayout(new BorderLayout(0, 0));
 			setContentPane(contentPane);
-
-			JButton btnIniciarJuego = new JButton("Iniciar Juego");
-			/*btnIniciarJuego.addActionListener(new ActionListener() {
-				@SuppressWarnings("deprecation")
-				public void actionPerformed(ActionEvent arg0) {
-					instanciarPR();
-					pantallaRegistro.show();
-				}
-			});*/
-			contentPane.add(btnIniciarJuego, BorderLayout.SOUTH);
-
+			
 			JPanel panel = new JPanel();
 			contentPane.add(panel, BorderLayout.CENTER);
-
-			JButton btnSalir = new JButton("Salir");
-			btnSalir.addActionListener(new ActionListener() {
-				@SuppressWarnings("deprecation")
-				public void actionPerformed(ActionEvent e) {
-					//socket.close();
-					dispose();
-				}
-			});
-			btnSalir.setBounds(27, 124, 231, 23);
-			panel.setLayout(null);
-			panel.add(btnSalir);
+			setLocationRelativeTo(null);
 			
+			/*BOTON CREAR EL PERSONAJE*/
 			JButton btnCrearPersonaje = new JButton("Crear Personaje");
 			btnCrearPersonaje .addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
@@ -73,24 +57,57 @@ public class Menu extends JFrame {
 					pantallaPersonaje.show();
 				}
 			});
-			contentPane.add(btnCrearPersonaje, BorderLayout.SOUTH);
-			
-			
-			btnCrearPersonaje.setBounds(27, 16, 231, 23);
+			//contentPane.add(btnCrearPersonaje, BorderLayout.SOUTH);
+			btnCrearPersonaje.setBounds(27, 15, 230, 23);
 			panel.add(btnCrearPersonaje);
 			
+			
+			/*BOTON ELEGIR EL MAPA*/
 			JButton btnMapa = new JButton("Seleccionar Mapa");
-			/*btnMapa.addActionListener(new ActionListener() {
+			btnMapa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					instanciarMapa();
+					pantallaMapa.show();
 				}
-			});*/
-			btnMapa.setBounds(28, 67, 222, 23);
+			});
+			btnMapa.setBounds(27, 65, 230, 23);
 			panel.add(btnMapa);
 			
+			/*BOTON INICIAR EL JUEGO*/
+			JButton btnIniciarJuego = new JButton("Iniciar Juego");
+			btnIniciarJuego.addActionListener(new ActionListener() {
+				@SuppressWarnings("deprecation")
+				public void actionPerformed(ActionEvent arg0) {
+					Juego worldwar = new Juego("World War", 1024, 768);
+					worldwar.start();
+				}
+			});
+			contentPane.add(btnIniciarJuego, BorderLayout.SOUTH);
+			btnIniciarJuego.setBounds(27, 115, 230, 23);
+			panel.add(btnIniciarJuego);
 			
-		}
+			
+			/*BOTON SALIR*/
+			JButton btnSalir = new JButton("Salir");
+			btnSalir.addActionListener(new ActionListener() {
+				@SuppressWarnings("deprecation")
+				public void actionPerformed(ActionEvent e) {
+					//socket.close();
+					dispose();
+				}
+			});
+			btnSalir.setBounds(77, 165, 130, 23);
+			panel.setLayout(null);
+			panel.add(btnSalir);
+
+	}
+	
 	public void instanciarCP() {
 		this.pantallaPersonaje = new PantallaPersonaje(this);
+	}
+	
+	public void instanciarMapa() {
+		this.pantallaMapa = new PantallaMapa(this);
 	}
 	
 	public static void main(String[] args) {

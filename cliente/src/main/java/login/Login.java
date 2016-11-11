@@ -44,6 +44,8 @@ public class Login extends JFrame {
 			contentPane.setLayout(new BorderLayout(0, 0));
 			setContentPane(contentPane);
 
+			setLocationRelativeTo(null);
+			
 			JButton btnRegistrarse = new JButton("Registrarse");
 			btnRegistrarse.addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")

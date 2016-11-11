@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 import org.json.JSONException;
 import javax.swing.JComboBox;
 
-public class PantallaPersonaje extends JFrame  {
+public class PantallaMapa extends JFrame  {
 	
 	private JPanel contentPane;
 	private Menu pantallaMenu;
@@ -31,9 +31,7 @@ public class PantallaPersonaje extends JFrame  {
 	private MensajeJSON mensajeJSON;
 	private JTextField textNombre;
 	
-	
-	
-	public PantallaPersonaje(Menu menu) {
+	public PantallaMapa(Menu menu) {
 		this.pantallaMenu = menu;
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -41,61 +39,42 @@ public class PantallaPersonaje extends JFrame  {
 				abreDialogSalida();
 			}
 		});
-		setTitle("Creacion de personaje");
+		setTitle("Eleccion del mapa");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 400, 280);
+		setBounds(100, 100, 320, 250);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
 		setLocationRelativeTo(null);
 		
-		JLabel lblNombre = new JLabel("Nombre Personaje");
-		lblNombre.setBounds(31, 37, 154, 14);
-		contentPane.add(lblNombre);
-
-		JLabel lblNickname = new JLabel("Personaje");
-		lblNickname.setBounds(31, 115, 114, 14);
-		contentPane.add(lblNickname);
-
-		JLabel lblMail = new JLabel("Casta");
-		lblMail.setBounds(31, 78, 46, 14);
-		contentPane.add(lblMail);
+		JLabel lblMapa = new JLabel("Mapa");
+		lblMapa.setBounds(50, 78, 46, 14);
+		contentPane.add(lblMapa);
 		
-		textNombre = new JTextField();
-		textNombre.setBounds(195, 34, 147, 20);
-		contentPane.add(textNombre);
-		textNombre.setColumns(10);
-		
-		String[] casta = new String[] {"Mago", "Guerrero","Explorador"};
-		JComboBox comboBox = new JComboBox(casta);
-		comboBox.setBounds(195, 75, 147, 20);
+		String[] Mapas = new String[] {"Bosque nevado", "Desierto"};
+		JComboBox comboBox = new JComboBox(Mapas);
+		comboBox.setBounds(135, 75, 147, 20);
 		contentPane.add(comboBox);
-		
-		String[] personaje = new String[] {"Humano", "Orco","Elfo"};
-		JComboBox comboBox_1 = new JComboBox(personaje);
-		comboBox_1.setBounds(195, 112, 147, 20);
-		contentPane.add(comboBox_1);
 
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!textNombre.getText().equals("")){
-						pers = new Pers(textNombre.getText());
-						pers.setCasta((String)comboBox.getSelectedItem());
-						pers.setPersonaje((String)comboBox_1.getSelectedItem());
-						mensajeJSON=new MensajeJSON(); 
-						try {
-							mensajeJSON.agregarPersonaje(pers.getNombrepers(), pers.getCasta(), pers.getPersonaje());
-						} catch (JSONException e1) {
-							e1.printStackTrace();
-						}
-				}
+
+//						pers.setCasta((String)comboBox.getSelectedItem());
+//
+//						mensajeJSON=new MensajeJSON(); 
+//						try {
+//							//mensajeJSON.agregarPersonaje(pers.getNombrepers(), pers.getCasta(), pers.getPersonaje());
+//						} catch (JSONException e1) {
+//							e1.printStackTrace();
+//						}
+
 						dispose();
 			}
 		});
-		btnAceptar.setBounds(139, 169, 89, 23);
+		btnAceptar.setBounds(65, 169, 89, 23);
 		contentPane.add(btnAceptar);
 
 		JButton btnCancelar = new JButton("Cancelar");
@@ -104,7 +83,7 @@ public class PantallaPersonaje extends JFrame  {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(253, 169, 89, 23);
+		btnCancelar.setBounds(165, 169, 89, 23);
 		contentPane.add(btnCancelar);
 		
 		
