@@ -31,7 +31,6 @@ public class AtencionAlCliente extends Thread {
 				case "registro":
 					consulta.grabarRegistro(json, clienteSocket);
 					break;
-			
 				case "login":
 					consulta.validarUsuario(json, clienteSocket);
 					break;
@@ -39,6 +38,9 @@ public class AtencionAlCliente extends Thread {
 				case "personaje":
 					consulta.crearPersonaje(json, clienteSocket);
 					break;
+				case "cerrarSesion":
+					consulta.cerrarSesion(json, clienteSocket);
+					break;		
 			} 		
 		} catch (IOException e) {
 			e.printStackTrace();

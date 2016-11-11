@@ -59,5 +59,12 @@ public class MensajeJSON extends JFrame {
 		new Cliente(obj);
 	}
 	
+	public void cerrarSesion (String nickname) throws JSONException{
+		JSONObject obj = new JSONObject();
+		obj.put("name", "cerrarSesion");
+		obj.put("nickname", nickname);
+		new Cliente(obj);
+	}
+	
 	
 }

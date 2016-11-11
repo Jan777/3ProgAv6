@@ -92,7 +92,13 @@ public class Menu extends JFrame {
 			btnSalir.addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent e) {
-					//socket.close();
+					MensajeJSON mensajeJSON=new MensajeJSON();
+					try {
+						mensajeJSON.cerrarSesion(nickname);
+					} catch (JSONException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					dispose();
 				}
 			});
@@ -109,6 +115,7 @@ public class Menu extends JFrame {
 	public void instanciarMapa() {
 		this.pantallaMapa = new PantallaMapa(this);
 	}
+	
 	
 	
 }

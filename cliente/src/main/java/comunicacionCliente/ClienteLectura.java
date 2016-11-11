@@ -19,7 +19,7 @@ public class ClienteLectura extends Thread {
 	private Socket socket;
 	private DataInputStream entrada;
 	JSONObject obj;
-
+	String nickname=null;
 	public ClienteLectura(Socket socket) {
 		this.socket = socket;
 		//this.obj = json;		
@@ -31,7 +31,7 @@ public class ClienteLectura extends Thread {
 			String line= reader.readLine();
 			JSONObject json= new JSONObject(line);
 			String name = json.getString("error");
-			String nickname = json.getString("nickname");
+			nickname = json.getString("nickname");
 			switch (name){
 				case "logincorrecto":
 					loginCorrecto(nickname);
@@ -57,9 +57,9 @@ public class ClienteLectura extends Thread {
 			} 			
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			
 		} catch (JSONException e) {
-			e.printStackTrace();
+			
 		}
 	}
 	

@@ -100,9 +100,17 @@ public class ConsultasSQL extends JFrame {
 		String casta = json.getString("casta");
 		String tipoPers = json.getString("tipopers");
 		String nombre = json.getString("nombre");
-		//crear usuario y grabarlo en la base de datos
-	
-		
+		//crear usuario y grabarlo en la base de datos		
 	}
-		
+	
+	public void cerrarSesion (JSONObject json, Socket clienteSocket) throws JSONException{
+		String nickname = json.getString("nickname");
+		try {
+			PreparedStatement pstmt2 = SQLConnection.getConnection().prepareStatement("UPDATE Usuario SET isConnect = '0' WHERE nickname = ?");
+			pstmt2.setString(1, nickname);
+			pstmt2.executeUpdate();
+		}catch (SQLException sqle1) {
+			
+		}
+	}
 }
