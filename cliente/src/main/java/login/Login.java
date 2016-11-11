@@ -120,8 +120,8 @@ public class Login extends JFrame {
 		this.pantallaRegistro = new Registro(this);
 	}
 	
-	public void instanciarMenu() {
-		this.menu = new Menu();
+	public void instanciarMenu(String nickname) {
+		this.menu = new Menu(nickname);
 	}
 	
 	public void abreDialogSalida() {

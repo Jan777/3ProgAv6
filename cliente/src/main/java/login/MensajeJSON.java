@@ -48,14 +48,15 @@ public class MensajeJSON extends JFrame {
 		new Cliente(obj);
 	}
 	
-	public void agregarPersonaje(String nombre, String casta, String personaje) throws JSONException {
+	public void agregarPersonaje(String nombre, String casta, String personaje, String nickname) throws JSONException {
 		
 		JSONObject obj = new JSONObject();
 		obj.put("name", "personaje");
+		obj.put("nickname", nickname);
 		obj.put("nombre", nombre);
 		obj.put("casta",  casta);
 		obj.put("tipopers",  personaje);
-		System.out.println(obj);
+		new Cliente(obj);
 	}
 	
 	

@@ -35,7 +35,7 @@ public class Menu extends JFrame {
 	private PantallaMapa pantallaMapa = null;
 	
 	
-	public Menu() {
+	public Menu(String nickname) {
 			setTitle("WorldWar");
 			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			setBounds(100, 100, 319, 251);
@@ -53,7 +53,7 @@ public class Menu extends JFrame {
 			btnCrearPersonaje .addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent arg0) {
-					instanciarCP();
+					instanciarCP(nickname);
 					pantallaPersonaje.show();
 				}
 			});
@@ -102,25 +102,13 @@ public class Menu extends JFrame {
 
 	}
 	
-	public void instanciarCP() {
-		this.pantallaPersonaje = new PantallaPersonaje(this);
+	public void instanciarCP(String nickname) {
+		this.pantallaPersonaje = new PantallaPersonaje(this, nickname);
 	}
 	
 	public void instanciarMapa() {
 		this.pantallaMapa = new PantallaMapa(this);
 	}
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Menu frame = new Menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					System.exit(1);
-				}
-			}
-		});
-		
-	}
+	
 }

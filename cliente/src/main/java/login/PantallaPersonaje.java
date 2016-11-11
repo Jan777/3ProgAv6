@@ -30,11 +30,13 @@ public class PantallaPersonaje extends JFrame  {
 	Pers pers;
 	private MensajeJSON mensajeJSON;
 	private JTextField textNombre;
+	private String nickname;
 	
 	
-	
-	public PantallaPersonaje(Menu menu) {
+	public PantallaPersonaje(Menu menu, String nickname) {
 		this.pantallaMenu = menu;
+		this.nickname=nickname;
+		
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -87,7 +89,7 @@ public class PantallaPersonaje extends JFrame  {
 						pers.setPersonaje((String)comboBox_1.getSelectedItem());
 						mensajeJSON=new MensajeJSON(); 
 						try {
-							mensajeJSON.agregarPersonaje(pers.getNombrepers(), pers.getCasta(), pers.getPersonaje());
+							mensajeJSON.agregarPersonaje(pers.getNombrepers(), pers.getCasta(), pers.getPersonaje(),nickname);
 						} catch (JSONException e1) {
 							e1.printStackTrace();
 						}

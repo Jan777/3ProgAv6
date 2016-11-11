@@ -26,15 +26,20 @@ public class AtencionAlCliente extends Thread {
 			String line= reader.readLine();
 			JSONObject json= new JSONObject(line);
 			String name = json.getString("name");
-			if (name.equals("registro")){
-				ConsultasSQL consulta= new ConsultasSQL();
-				consulta.grabarRegistro(json, clienteSocket);
-			}else if (name.equals("login")){
-				ConsultasSQL consulta= new ConsultasSQL();
-				consulta.validarUsuario(json, clienteSocket);
-			}
+			ConsultasSQL consulta= new ConsultasSQL();
+			switch (name){
+				case "registro":
+					consulta.grabarRegistro(json, clienteSocket);
+					break;
 			
-			
+				case "login":
+					consulta.validarUsuario(json, clienteSocket);
+					break;
+					
+				case "personaje":
+					consulta.crearPersonaje(json, clienteSocket);
+					break;
+			} 		
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
@@ -43,9 +48,24 @@ public class AtencionAlCliente extends Thread {
 		}
 	}
 	
+	public void enviarRespuestaRegistroError(Socket socket) throws JSONException{
+		JSONObject json = new JSONObject();
+		json.put("error", "nicknameError");		
+		OutputStreamWriter writer;
+		try {
+			writer = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
+			writer.write (json.toString() + "\n");
+			writer.flush();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void enviarRespuestaRegistro(Socket socket) throws JSONException{
 		JSONObject json = new JSONObject();
-		json.put("error", "nickname");		
+		json.put("error", "nicknameOk");
 		OutputStreamWriter writer;
 		try {
 			writer = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
@@ -59,22 +79,7 @@ public class AtencionAlCliente extends Thread {
 	}
 	
 	
-	public void enviarRespuestaUsuarioInexistente (Socket socket) throws JSONException{
-		JSONObject json = new JSONObject();
-		json.put("error", "usuarioinexistente");		
-		OutputStreamWriter writer;
-		try {
-			writer = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
-			writer.write (json.toString() + "\n");
-			writer.flush();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void enviarRespuestaPasswordIncorrecta (Socket socket) throws JSONException{
+	public void enviarRespuestaLoginIncorrecta (Socket socket) throws JSONException{
 		JSONObject json = new JSONObject();
 		json.put("error", "loginincorrecto");		
 		OutputStreamWriter writer;
@@ -89,9 +94,10 @@ public class AtencionAlCliente extends Thread {
 		
 	}
 	
-	public void enviarRespuestaCorrecto (Socket socket) throws JSONException{
+	public void enviarRespuestaCorrecto (Socket socket , String nickname) throws JSONException{
 		JSONObject json = new JSONObject();
-		json.put("error", "logincorrecto");		
+		json.put("error", "logincorrecto");	
+		json.put("nickname", nickname);
 		OutputStreamWriter writer;
 		try {
 			writer = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
@@ -117,5 +123,6 @@ public class AtencionAlCliente extends Thread {
 			e.printStackTrace();
 		}
 	}
+	
 	
 }

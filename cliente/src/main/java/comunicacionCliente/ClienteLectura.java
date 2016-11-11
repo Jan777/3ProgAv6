@@ -31,58 +31,68 @@ public class ClienteLectura extends Thread {
 			String line= reader.readLine();
 			JSONObject json= new JSONObject(line);
 			String name = json.getString("error");
-			if (name.equals("logincorrecto")){
-				loginCorrecto();
-				
-			} 
-			if (name.equals("loginincorrecto")){
-				loginIncorrecto();
-				socket.close();
-			}
-			if (name.equals("isConnect")){
-				isConnect();
-				socket.close();
-			}
-			if (name.equals("nickname")){
-				nicknameExistente();
-				socket.close();
-			} 
+			String nickname = json.getString("nickname");
+			switch (name){
+				case "logincorrecto":
+					loginCorrecto(nickname);
+					break;
 			
+				case "loginincorrecto":
+					loginIncorrecto(socket);
+					break;
+					
+				case "isConnect":
+					isConnect(socket);
+					break;
+
+				case "nicknameError":
+					nicknameExistente(socket);
+					break;
+				
+				case "nicknameOk":{
+					nicknameOk(socket);
+					break;
+					
+				}
+			} 			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
-			
-			e.printStackTrace();
-		}
-		try {
-			socket.close();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void loginCorrecto() {
+	public void loginCorrecto(String nickname) {
 		JOptionPane.showMessageDialog(null, "El usuario ha ingresado correctamente", "Bienvenido",
                 JOptionPane.INFORMATION_MESSAGE);
-		Menu menu= new Menu();
+		Menu menu= new Menu(nickname);
 		menu.setVisible(true);
 	}
 	
-	public void nicknameExistente() {
+	public void nicknameExistente(Socket socket) throws IOException {
 		JOptionPane.showMessageDialog(null, "El nickname ya existe seleccione otro", "Error",
                 JOptionPane.ERROR_MESSAGE);
+		socket.close();
 	}
 	
 	
-	public void loginIncorrecto() {
+	public void loginIncorrecto(Socket socket) throws IOException {
 		JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta", "Error",
                 JOptionPane.ERROR_MESSAGE);
+		socket.close();
 	}
 	
-	public void isConnect() {
+	public void isConnect(Socket socket) throws IOException {
 		JOptionPane.showMessageDialog(null, "El usuario ya se encuentra logueado", "Error",
                 JOptionPane.ERROR_MESSAGE);
+		socket.close();
+	}
+	
+	public void nicknameOk(Socket socket) throws IOException {
+		JOptionPane.showMessageDialog(null, "El usuario se ha registrado correctamente", "Bienvenido",
+                JOptionPane.INFORMATION_MESSAGE);
+		socket.close();
 	}
 	
 

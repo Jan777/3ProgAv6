@@ -40,9 +40,11 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setString(4, password);
 			pstmt.setInt(5, 0);
 			pstmt.execute();
-		} catch (SQLException e1) {
 			AtencionAlCliente at=new AtencionAlCliente(socket); 
 			at.enviarRespuestaRegistro(socket);
+		} catch (SQLException e1) {
+			AtencionAlCliente at=new AtencionAlCliente(socket); 
+			at.enviarRespuestaRegistroError(socket);
 		}finally {
 			try {
 				pstmt.close();
@@ -60,6 +62,7 @@ public class ConsultasSQL extends JFrame {
 			pstmt = SQLConnection.getConnection().prepareStatement("Select * from Usuario Where nickname=?");
 			pstmt.setString(1, nickname);
 			ResultSet rs  = pstmt.executeQuery();
+			System.out.println();
 			if(rs.next()){
 				if(rs.getString("password").equals(password)){
 					if(rs.getInt("isConnect") == 0){
@@ -67,27 +70,39 @@ public class ConsultasSQL extends JFrame {
 						pstmt1.setString(1, nickname);
 						pstmt1.executeUpdate();
 						AtencionAlCliente at=new AtencionAlCliente(socket); 
-						at.enviarRespuestaCorrecto(socket);
+						at.enviarRespuestaCorrecto(socket, rs.getString("nickname"));
 					}else {
 						AtencionAlCliente at=new AtencionAlCliente(socket); 
 						at.enviarRespuestaLogueado(socket);
 					}
 				}else {
 					AtencionAlCliente at=new AtencionAlCliente(socket); 
-					at.enviarRespuestaPasswordIncorrecta(socket);
+					at.enviarRespuestaLoginIncorrecta(socket);
 				}
 			}
 		
 		}catch (SQLException sqle1) {
-			System.out.println(sqle1);
+			AtencionAlCliente at=new AtencionAlCliente(socket); 
+			at.enviarRespuestaLoginIncorrecta(socket);
 		}finally {
 			try {
 				pstmt.close();
+				AtencionAlCliente at=new AtencionAlCliente(socket); 
+				at.enviarRespuestaLoginIncorrecta(socket);
 			} catch (SQLException e) {
 				System.err.println("Conexion SQL fallida");
 			}
 		}
 	}
 	
+	public void crearPersonaje(JSONObject json, Socket clienteSocket) throws JSONException{
+		String nickname = json.getString("nickname");
+		String casta = json.getString("casta");
+		String tipoPers = json.getString("tipopers");
+		String nombre = json.getString("nombre");
+		//crear usuario y grabarlo en la base de datos
+	
+		
+	}
 		
 }
