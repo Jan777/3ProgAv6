@@ -29,7 +29,7 @@ import xp.XP;
 public class ConsultasSQL extends JFrame {
 	private Personaje personaje = null;
 	private CrearPersonajes crear;
-	
+	private Socket socket;
 	public ConsultasSQL() {
 				
 	}
@@ -108,7 +108,7 @@ public class ConsultasSQL extends JFrame {
 	}
 	
 	public void crearPers(JSONObject json, Socket clienteSocket) throws JSONException, SQLException{
-		PreparedStatement pstmt = null;
+		this.socket=socket;
 		String nickname = json.getString("nickname");
 		String casta = json.getString("casta");
 		String tipoPers = json.getString("tipopers");
@@ -122,8 +122,9 @@ public class ConsultasSQL extends JFrame {
 		int inteligencia = personaje.getInteligencia();
 		int nivel=personaje.getExperiencia().getNivel();
 		int experiencia=personaje.getExperiencia().getPuntoDeExperiencia();
+		PreparedStatement pstmt = null;
 		try {
-			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?)");		
+			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?,?,?,?,?)");		
 			pstmt.setString(1, nickname);
 			pstmt.setString(2, nombre);
 			pstmt.setInt(3, energia);
