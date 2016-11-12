@@ -1,6 +1,7 @@
 package comunicacionServidor;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,18 @@ import java.net.Socket;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import alianza.Alianza;
+import casta.Casta;
+import items.Item;
+import personaje.CrearPersonajes;
+import personaje.Personaje;
+import ubicacion.Ubicacion;
+import xp.XP;
+
+
 public class ConsultasSQL extends JFrame {
+	private Personaje personaje = null;
+	private CrearPersonajes crear;
 	
 	public ConsultasSQL() {
 				
@@ -95,12 +107,38 @@ public class ConsultasSQL extends JFrame {
 		}
 	}
 	
-	public void crearPersonaje(JSONObject json, Socket clienteSocket) throws JSONException{
+	public void crearPers(JSONObject json, Socket clienteSocket) throws JSONException, SQLException{
+		PreparedStatement pstmt = null;
 		String nickname = json.getString("nickname");
 		String casta = json.getString("casta");
 		String tipoPers = json.getString("tipopers");
 		String nombre = json.getString("nombre");
-		//crear usuario y grabarlo en la base de datos		
+		personaje=crear.crearPersonajes(casta, tipoPers);
+		int energia = personaje.getEnergia();
+		int idPersonaje = personaje.getIdPersonaje();
+		int salud = personaje.getSalud();
+		int fuerza = personaje.getFuerza();
+		int destreza = personaje.getDestreza();
+		int inteligencia = personaje.getInteligencia();
+		int nivel=personaje.getExperiencia().getNivel();
+		int experiencia=personaje.getExperiencia().getPuntoDeExperiencia();
+		try {
+			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?)");		
+			pstmt.setString(1, nickname);
+			pstmt.setString(2, nombre);
+			pstmt.setInt(3, energia);
+			pstmt.setInt(4, salud);
+			pstmt.setInt(5, fuerza);
+			pstmt.setInt(6, destreza);
+			pstmt.setInt(7, inteligencia);
+			pstmt.setInt(8, nivel);
+			pstmt.setInt(9, experiencia);
+			pstmt.execute();
+			//AtencionAlCliente at=new AtencionAlCliente(socket); 
+			//at.enviarRespuestaRegistro(socket);
+		} catch (SQLException e) {
+			System.err.println("Conexion SQL fallida");
+		}
 	}
 	
 	public void cerrarSesion (JSONObject json, Socket clienteSocket) throws JSONException{

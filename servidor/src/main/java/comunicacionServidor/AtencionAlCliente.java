@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.sql.SQLException;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 import org.json.JSONException;
@@ -27,6 +28,7 @@ public class AtencionAlCliente extends Thread {
 			JSONObject json= new JSONObject(line);
 			String name = json.getString("name");
 			ConsultasSQL consulta= new ConsultasSQL();
+			System.out.println(json);
 			switch (name){
 				case "registro":
 					consulta.grabarRegistro(json, clienteSocket);
@@ -36,7 +38,7 @@ public class AtencionAlCliente extends Thread {
 					break;
 					
 				case "personaje":
-					consulta.crearPersonaje(json, clienteSocket);
+					consulta.crearPers(json, clienteSocket);
 					break;
 				case "cerrarSesion":
 					consulta.cerrarSesion(json, clienteSocket);
@@ -45,6 +47,9 @@ public class AtencionAlCliente extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

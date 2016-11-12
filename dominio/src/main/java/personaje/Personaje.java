@@ -45,6 +45,14 @@ public abstract class Personaje implements Atacable {
 	/*
 	 * Getters y Setters
 	 */
+	
+	public int getIdPersonaje() {
+		return idPersonaje;
+	}
+	public void setIdPersonaje(int idPersonaje) {
+		this.idPersonaje = idPersonaje;
+	}
+	
 	public int getEnergia() {
 		return energia;
 	}
