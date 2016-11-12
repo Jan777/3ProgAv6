@@ -22,7 +22,7 @@ public class ClienteLectura extends Thread {
 	String nickname=null;
 	public ClienteLectura(Socket socket) {
 		this.socket = socket;
-		//this.obj = json;		
+		
 	}
 
 	public void run() {
@@ -33,33 +33,38 @@ public class ClienteLectura extends Thread {
 			String name = json.getString("error");
 			nickname = json.getString("nickname");
 			switch (name){
-				case "logincorrecto":
+				case "logincorrecto":{
 					loginCorrecto(nickname);
 					break;
-			
-				case "loginincorrecto":
+				}
+				case "loginincorrecto":{
 					loginIncorrecto(socket);
 					break;
-					
-				case "isConnect":
+				}	
+				case "isConnect":{
 					isConnect(socket);
 					break;
-
-				case "nicknameError":
+				}
+				case "nicknameError":{
 					nicknameExistente(socket);
 					break;
-				
+				}
 				case "nicknameOk":{
 					nicknameOk(socket);
 					break;
-					
+				}
+				case "persOK":{
+					persOk(socket);
+					break;
+				}
+				case "errorPers":{
+					persError(socket);
+					break;
 				}
 			} 			
 			
-		} catch (IOException e) {
-			
-		} catch (JSONException e) {
-			
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 	
@@ -76,6 +81,17 @@ public class ClienteLectura extends Thread {
 		socket.close();
 	}
 	
+	public void persError(Socket socket) throws IOException {
+		JOptionPane.showMessageDialog(null, "Ya posee un personaje", "Error",
+                JOptionPane.ERROR_MESSAGE);
+		socket.close();
+	}
+	
+	public void persOk(Socket socket) throws IOException {
+		JOptionPane.showMessageDialog(null, "El personaje se ha creado correctamente", "Bienvenido",
+                JOptionPane.INFORMATION_MESSAGE);
+		socket.close();
+	}
 	
 	public void loginIncorrecto(Socket socket) throws IOException {
 		JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta", "Error",

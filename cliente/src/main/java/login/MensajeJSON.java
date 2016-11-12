@@ -26,7 +26,7 @@ public class MensajeJSON extends JFrame {
 	public MensajeJSON() {
 	}
 
-	public void agregarUsuario(String mail, String nombre, String nickname, String password) throws JSONException, IOException {
+	public void agregarUsuario(String mail, String nombre, String nickname, String password) throws JSONException{
 		
 		JSONObject obj = new JSONObject();
 		obj.put("name", "registro");

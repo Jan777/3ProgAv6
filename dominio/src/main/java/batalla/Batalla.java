@@ -57,7 +57,7 @@ public class Batalla  {
 		
 	}
 	
-	public void escaparBatalla(Personaje pers){
+/*	public void escaparBatalla(Personaje pers){
 		Iterator<Personaje> iter1 = batallon1.iterator();
 		Iterator<Personaje> iter2 = batallon2.iterator(); 
 		while (iter1.hasNext()){
@@ -72,6 +72,6 @@ public class Batalla  {
 				//desequipar Item
 			}
 		}	
-	}
+	}*/
 	
 }

@@ -10,7 +10,6 @@ public class CrearPersonajes {
 		private Personaje personaje = null;
 		
 		public Personaje crearPersonajes(String casta, String tipoPers){
-			System.out.println("hl");
 			if (casta.equals("Guerrero")){
 				casta1 =new Guerrero ();
 			}else if (casta.equals("Explorador")){
@@ -25,7 +24,6 @@ public class CrearPersonajes {
 			}else{
 				personaje= new Elfo (casta1);
 			}
-			System.out.println(personaje.getEnergia());
 		return personaje;
 		}
 

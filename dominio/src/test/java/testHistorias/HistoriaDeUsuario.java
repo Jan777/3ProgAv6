@@ -62,20 +62,6 @@ public class HistoriaDeUsuario {
 		
 		@Ignore
 	    public void Historia3() {
-			Casta guerrero = new Guerrero();
-			Personaje humano= new Humano(guerrero);
-			humano = new ConEspadaDeAcero(humano);
-			Casta guerrero1 = new Guerrero();
-			Personaje humano1= new Humano(guerrero1);
-			humano1 = new ConEspadaDeMadera(humano1);
-			humano1.setSalud(10);
-			Batalla batalla= new Batalla ();
-			batalla.agregarb1(humano);
-			batalla.agregarb2(humano1);
-			batalla.batalla();
-			Assert.assertTrue(humano.tiene(ConEspadaDeAcero.class));
-			Assert.assertEquals(7,humano.obtenerPuntosDeAtaque());
-			Assert.assertEquals(3,humano1.obtenerPuntosDeAtaque());
 		}
 		
 		/*
@@ -198,18 +184,6 @@ public class HistoriaDeUsuario {
 		
 		@Test
 	    public void Historia7() {
-			//Elijo una casta y se la asigno a un Humano
-			Casta guerrero = new Guerrero();
-			Personaje humano= new Humano(guerrero);
-	        Assert.assertEquals(2, humano.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
-	        Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
-	        
-	        //Asigno una espada al personaje
-	        humano = new ConEspadaDeMadera(humano);
-	        Assert.assertEquals(3, humano.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
-	        Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
 		}
 		
 		/*
@@ -219,20 +193,7 @@ public class HistoriaDeUsuario {
 		 */
 		
 		@Test
-	    public void Historia8() {
-			//Elijo una casta y se la asigno a un Orco
-			Casta explorador = new Explorador();
-			Personaje orco= new Orco(explorador);
-	        Assert.assertEquals(1, orco.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(2, orco.obtenerPuntosDeDefensa());
-	        Assert.assertEquals(1, orco.obtenerPuntosDeInteligencia());
-
-	        //Asigno un escudo al personaje
-	        orco = new ConEscudoDeMadera(orco);
-	        Assert.assertEquals(1, orco.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(3, orco.obtenerPuntosDeDefensa());
-	        Assert.assertEquals(1, orco.obtenerPuntosDeInteligencia());
-		}
+	    public void Historia8() {		}
 		
 		/*
 		 * Historia 9:
@@ -248,12 +209,6 @@ public class HistoriaDeUsuario {
 	        Assert.assertEquals(1, elfo.obtenerPuntosDeAtaque());
 	        Assert.assertEquals(1, elfo.obtenerPuntosDeDefensa());
 	        Assert.assertEquals(2, elfo.obtenerPuntosDeInteligencia());
-
-	        //Asigno un escudo al personaje
-	        elfo = new ConPapiroDeOz(elfo);
-	        Assert.assertEquals(1, elfo.obtenerPuntosDeAtaque());
-	        Assert.assertEquals(1, elfo.obtenerPuntosDeDefensa());
-	        Assert.assertEquals(3, elfo.obtenerPuntosDeInteligencia());
 		}
 		
 		/*
@@ -308,18 +263,6 @@ public class HistoriaDeUsuario {
 		
 		@Test
 		public void Historia12() {
-			Casta guerrero = new Guerrero();
-			Personaje humano= new Humano(guerrero);
-			humano = new ConEspadaDeAcero(humano);
-			Casta guerrero1 = new Guerrero();
-			Personaje humano1= new Humano(guerrero1);
-			humano1 = new ConEspadaDeMadera(humano1);
-			Batalla batalla= new Batalla ();
-			batalla.agregarb1(humano);
-			batalla.agregarb2(humano1);
-			batalla.escaparBatalla(humano);
-			Assert.assertEquals(0,batalla.consultaBatallon1());
-			Assert.assertEquals(1,batalla.consultaBatallon2());
 					
 		}
 		/*
@@ -341,24 +284,5 @@ public class HistoriaDeUsuario {
 		@Test
 	    public void Historia14() {
 			
-			//Elijo una casta y se la asigno a un Humano
-			Casta guerrero = new Guerrero();
-			Personaje humano= new Humano(guerrero);
-		    humano = new ConEspadaDeAcero(humano);
-		    NPC npc = new NPC ();
-		    NPC npc1 = new NPC ();
-		    Assert.assertEquals(7, humano.obtenerPuntosDeAtaque());
-		    Assert.assertEquals(1, humano.obtenerPuntosDeDefensa());
-		    Assert.assertEquals(1, humano.obtenerPuntosDeInteligencia());
-		    Assert.assertEquals(0, humano.getExperiencia().getPuntoDeExperiencia());
-		    Assert.assertEquals(5, npc.getSalud());
-		    BatallaVSNPC batalla= new BatallaVSNPC();
-			batalla.ataqueNPC(humano,npc);
-			Assert.assertEquals(1, humano.getExperiencia().getPuntoDeExperiencia());
-			Assert.assertEquals(0, npc.getSalud());
-			BatallaVSNPC batalla1= new BatallaVSNPC();
-			batalla1.ataqueNPC(humano,npc1);
-			Assert.assertEquals(2, humano.getExperiencia().getPuntoDeExperiencia());
-			Assert.assertEquals(0, npc.getSalud());
 		}
 }

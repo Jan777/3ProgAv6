@@ -52,17 +52,12 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setString(4, password);
 			pstmt.setInt(5, 0);
 			pstmt.execute();
+			pstmt.close();
 			AtencionAlCliente at=new AtencionAlCliente(socket); 
-			at.enviarRespuestaRegistro(socket);
+			at.enviarRespuestaRegistro(socket, nickname);
 		} catch (SQLException e1) {
 			AtencionAlCliente at=new AtencionAlCliente(socket); 
-			at.enviarRespuestaRegistroError(socket);
-		}finally {
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				System.err.println("Conexion SQL fallida");
-			}
+			at.enviarRespuestaRegistroError(socket, nickname);
 		}
 	}
 	
@@ -74,7 +69,6 @@ public class ConsultasSQL extends JFrame {
 			pstmt = SQLConnection.getConnection().prepareStatement("Select * from Usuario Where nickname=?");
 			pstmt.setString(1, nickname);
 			ResultSet rs  = pstmt.executeQuery();
-			System.out.println();
 			if(rs.next()){
 				if(rs.getString("password").equals(password)){
 					if(rs.getInt("isConnect") == 0){
@@ -85,22 +79,22 @@ public class ConsultasSQL extends JFrame {
 						at.enviarRespuestaCorrecto(socket, rs.getString("nickname"));
 					}else {
 						AtencionAlCliente at=new AtencionAlCliente(socket); 
-						at.enviarRespuestaLogueado(socket);
+						at.enviarRespuestaLogueado(socket, rs.getString("nickname"));
 					}
 				}else {
 					AtencionAlCliente at=new AtencionAlCliente(socket); 
-					at.enviarRespuestaLoginIncorrecta(socket);
+					at.enviarRespuestaLoginIncorrecta(socket, nickname);
 				}
 			}
 		
 		}catch (SQLException sqle1) {
 			AtencionAlCliente at=new AtencionAlCliente(socket); 
-			at.enviarRespuestaLoginIncorrecta(socket);
+			at.enviarRespuestaLoginIncorrecta(socket, nickname);
 		}finally {
 			try {
 				pstmt.close();
 				AtencionAlCliente at=new AtencionAlCliente(socket); 
-				at.enviarRespuestaLoginIncorrecta(socket);
+				at.enviarRespuestaLoginIncorrecta(socket, nickname);
 			} catch (SQLException e) {
 				System.err.println("Conexion SQL fallida");
 			}
@@ -108,11 +102,11 @@ public class ConsultasSQL extends JFrame {
 	}
 	
 	public void crearPers(JSONObject json, Socket clienteSocket) throws JSONException, SQLException{
-		this.socket=socket;
 		String nickname = json.getString("nickname");
 		String casta = json.getString("casta");
 		String tipoPers = json.getString("tipopers");
 		String nombre = json.getString("nombre");
+		CrearPersonajes crear = new CrearPersonajes();
 		personaje=crear.crearPersonajes(casta, tipoPers);
 		int energia = personaje.getEnergia();
 		int idPersonaje = personaje.getIdPersonaje();
@@ -135,13 +129,12 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setInt(8, nivel);
 			pstmt.setInt(9, experiencia);
 			pstmt.execute();
-			//AtencionAlCliente at=new AtencionAlCliente(socket); 
-			//at.enviarRespuestaRegistro(socket);
+			pstmt.close();
+			
 		} catch (SQLException e) {
-			System.err.println("Conexion SQL fallida");
+			
 		}
 	}
-	
 	public void cerrarSesion (JSONObject json, Socket clienteSocket) throws JSONException{
 		String nickname = json.getString("nickname");
 		try {

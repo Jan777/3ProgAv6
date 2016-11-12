@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 import org.json.JSONObject;
 
 public class Cliente {
@@ -21,19 +23,15 @@ public class Cliente {
 			Socket socket= new Socket ();
 			try {
 				socket = new Socket("localHost", 10005);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			new ClienteLectura(socket).start();
-			new ClienteEscritura(socket , obj).start();
+				new ClienteLectura(socket).start();
+				new ClienteEscritura(socket , obj).start();
 
+			} catch (Exception e) {
 				
-
+			}
+	
 	}
+	
+	
 
-	/*public static void main(String args[]) {
-		new Cliente();
-		
-	}*/
 }
