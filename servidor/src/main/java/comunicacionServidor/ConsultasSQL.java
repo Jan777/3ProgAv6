@@ -116,9 +116,10 @@ public class ConsultasSQL extends JFrame {
 		int inteligencia = personaje.getInteligencia();
 		int nivel=personaje.getExperiencia().getNivel();
 		int experiencia=personaje.getExperiencia().getPuntoDeExperiencia();
+		
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?,?,?,?,?)");		
+			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?,?,?,?,?,?)");		
 			pstmt.setString(1, nickname);
 			pstmt.setString(2, nombre);
 			pstmt.setInt(3, energia);
@@ -128,6 +129,7 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setInt(7, inteligencia);
 			pstmt.setInt(8, nivel);
 			pstmt.setInt(9, experiencia);
+			pstmt.setString(10, casta);
 			pstmt.execute();
 			pstmt.close();
 			
