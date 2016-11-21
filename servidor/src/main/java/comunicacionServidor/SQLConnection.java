@@ -35,7 +35,7 @@ public class SQLConnection {
 		} catch (ClassNotFoundException cnfe) {
 			System.err.println("No se encuentra el Driver.");
 		} catch (SQLException sqle) {
-			System.err.println("Error al intentar la conexi�n.");
+			System.err.println("Error al intentar la conexion.");
 		}	
 		return conn;
 	}

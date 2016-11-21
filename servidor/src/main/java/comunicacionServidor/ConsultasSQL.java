@@ -46,9 +46,9 @@ public class ConsultasSQL extends JFrame {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Usuario VALUES (?,?,?,?,?)");
-			pstmt.setString(1, mail);
+			pstmt.setString(1, nickname);
 			pstmt.setString(2, nombre);
-			pstmt.setString(3, nickname);
+			pstmt.setString(3, mail);
 			pstmt.setString(4, password);
 			pstmt.setInt(5, 0);
 			pstmt.execute();
@@ -119,7 +119,7 @@ public class ConsultasSQL extends JFrame {
 		
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?,?,?,?,?,?)");		
+			pstmt = SQLConnection.getConnection().prepareStatement("Insert into Personaje VALUES (?,?,?,?,?,?,?,?,?,?,?)");		
 			pstmt.setString(1, nickname);
 			pstmt.setString(2, nombre);
 			pstmt.setInt(3, energia);
@@ -130,11 +130,14 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setInt(8, nivel);
 			pstmt.setInt(9, experiencia);
 			pstmt.setString(10, casta);
+			pstmt.setString(11, tipoPers);
+			System.out.println("Llegue hasta aca 1");
 			pstmt.execute();
 			pstmt.close();
+			System.out.println("Llegue hasta aca 2");
 			
 		} catch (SQLException e) {
-			
+			System.out.println("Error al crear personaje");			
 		}
 	}
 	public void cerrarSesion (JSONObject json, Socket clienteSocket) throws JSONException{
