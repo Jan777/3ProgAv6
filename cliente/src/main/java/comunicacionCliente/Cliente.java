@@ -1,6 +1,5 @@
 package comunicacionCliente;
 
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,25 +12,23 @@ import javax.swing.JOptionPane;
 import org.json.JSONObject;
 
 public class Cliente {
-	
-	
-	public Cliente(JSONObject obj){
+
+	public Cliente(JSONObject obj) {
 		this.correr(obj);
 	}
-	public void correr(JSONObject obj){
-		
-			Socket socket= new Socket ();
-			try {
-				socket = new Socket("localHost", 10005);
-				new ClienteLectura(socket).start();
-				new ClienteEscritura(socket , obj).start();
 
-			} catch (Exception e) {
-				
-			}
-	
+	public Cliente correr(JSONObject obj) {
+
+		Socket socket = new Socket();
+		try {
+			socket = new Socket("localHost", 10005);
+			new ClienteLectura(socket).start();
+			new ClienteEscritura(socket, obj).start();
+			return this;
+		} catch (Exception e) {
+			return this;
+		}
+
 	}
-	
-	
 
 }

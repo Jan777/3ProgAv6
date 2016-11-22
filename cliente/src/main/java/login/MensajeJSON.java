@@ -23,7 +23,10 @@ import org.json.JSONObject;
 
 public class MensajeJSON extends JFrame {
 	
+	Cliente cliente = null;
+	
 	public MensajeJSON() {
+		
 	}
 
 	public void agregarUsuario(String mail, String nombre, String nickname, String password) throws JSONException{
@@ -39,13 +42,12 @@ public class MensajeJSON extends JFrame {
 	}
 	
 	
-	public static void validarUsuario(String nickname, String password) throws JSONException {
-		
+	public void validarUsuario(String nickname, String password) throws JSONException {
 		JSONObject obj = new JSONObject();
 		obj.put("name", "login");
 		obj.put("nickname",  nickname);
 		obj.put("password",  password);
-		new Cliente(obj);
+		this.cliente = new Cliente(obj);
 	}
 	
 	public void agregarPersonaje(String nombre, String casta, String personaje, String nickname) throws JSONException {

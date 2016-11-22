@@ -61,7 +61,7 @@ public class ConsultasSQL extends JFrame {
 		}
 	}
 	
-	public void validarUsuario(JSONObject json, Socket socket) throws JSONException {
+	public int validarUsuario(JSONObject json, Socket socket) throws JSONException {
 		String password = json.getString("password");
 		String nickname = json.getString("nickname");
 		PreparedStatement pstmt = null;
@@ -75,26 +75,31 @@ public class ConsultasSQL extends JFrame {
 						PreparedStatement pstmt1 = SQLConnection.getConnection().prepareStatement("UPDATE Usuario SET isConnect = '1' WHERE nickname = ?");
 						pstmt1.setString(1, nickname);
 						pstmt1.executeUpdate();
-						AtencionAlCliente at=new AtencionAlCliente(socket); 
-						at.enviarRespuestaCorrecto(socket, rs.getString("nickname"));
+						return 1;
+						//AtencionAlCliente at=new AtencionAlCliente(socket); 
+						//at.enviarRespuestaCorrecto(socket, rs.getString("nickname"));
 					}else {
-						AtencionAlCliente at=new AtencionAlCliente(socket); 
-						at.enviarRespuestaLogueado(socket, rs.getString("nickname"));
+						//AtencionAlCliente at=new AtencionAlCliente(socket); 
+						//at.enviarRespuestaLogueado(socket, rs.getString("nickname"));
+						return 0;
 					}
 				}else {
-					AtencionAlCliente at=new AtencionAlCliente(socket); 
-					at.enviarRespuestaLoginIncorrecta(socket, nickname);
+					//AtencionAlCliente at=new AtencionAlCliente(socket); 
+					//at.enviarRespuestaLoginIncorrecta(socket, nickname);
+					return -1;
 				}
 			}
+			return 2;
 		
 		}catch (SQLException sqle1) {
-			AtencionAlCliente at=new AtencionAlCliente(socket); 
-			at.enviarRespuestaLoginIncorrecta(socket, nickname);
+			//AtencionAlCliente at=new AtencionAlCliente(socket); 
+			//at.enviarRespuestaLoginIncorrecta(socket, nickname);
+			return -1;
 		}finally {
 			try {
 				pstmt.close();
-				AtencionAlCliente at=new AtencionAlCliente(socket); 
-				at.enviarRespuestaLoginIncorrecta(socket, nickname);
+				//AtencionAlCliente at=new AtencionAlCliente(socket); 
+				//at.enviarRespuestaLoginIncorrecta(socket, nickname);
 			} catch (SQLException e) {
 				System.err.println("Conexion SQL fallida");
 			}

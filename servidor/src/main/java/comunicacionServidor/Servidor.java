@@ -30,9 +30,10 @@ public class Servidor {
 	
 		try {
 			servidor = new ServerSocket(10005);
+			Sala sala;
 			while(true){
 				socket = servidor.accept();
-				Sala sala = salas.get(1);
+				sala = salas.get(1);
 				sala.agregar(socket);
 				new AtencionAlCliente(socket).start();
 								

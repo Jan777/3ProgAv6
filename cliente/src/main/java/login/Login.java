@@ -51,7 +51,6 @@ public class Login extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				instanciarPR();
-				pantallaRegistro.show();
 			}
 		});
 		contentPane.add(btnRegistrarse, BorderLayout.SOUTH);
@@ -84,7 +83,7 @@ public class Login extends JFrame {
 					u.setPassword(txtPassword.getText());
 					mensajeJSON = new MensajeJSON();
 					try {
-						MensajeJSON.validarUsuario(u.getNickname(), u.getPassword());
+						mensajeJSON.validarUsuario(u.getNickname(), u.getPassword());
 
 					} catch (JSONException e1) {
 						e1.printStackTrace();
@@ -117,6 +116,7 @@ public class Login extends JFrame {
 
 	public void instanciarPR() {
 		this.pantallaRegistro = new Registro(this);
+		pantallaRegistro.setVisible(true);
 	}
 
 	public void instanciarMenu(String nickname) {
