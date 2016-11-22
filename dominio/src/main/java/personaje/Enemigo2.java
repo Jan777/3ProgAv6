@@ -9,17 +9,17 @@ public class Enemigo2 extends Personaje {
 
 	@Override
 	public int obtenerPuntosDeAtaque() {
-		return getFuerza() + casta.getAtaque() + obtenerPuntosDeAtaqueItem();
+		return getFuerza() + obtenerPuntosDeAtaqueItem();
 	}
 	
 	@Override
 	public int obtenerPuntosDeDefensa() {
-		return getDestreza() +  casta.getDefensa() + obtenerPuntosDeDefensaItem();
+		return getDestreza() + obtenerPuntosDeDefensaItem();
 	}
 	
 	@Override
 	public int obtenerPuntosDeInteligencia() {
-		return getInteligencia() + casta.getInteligencia() + obtenerPuntosDeInteligenciaItem();
+		return getInteligencia() + obtenerPuntosDeInteligenciaItem();
 	}
 
 }

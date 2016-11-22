@@ -200,30 +200,36 @@ public abstract class Personaje implements Atacable {
 	 * Métodos para Alianzas
 	 */
 	public void aliarse(Personaje otr) {
-		if (this.aliados == null) {
-			if (otr.aliados == null) {
-				Alianza alianza = new Alianza();
-				alianza.agregarAliado(otr);
-				alianza.agregarAliado(this);
-				this.aliados = alianza;
-				otr.aliados = alianza;
+		if (this != otr){
+			if (this.aliados == null) {
+				if (otr.aliados == null) {
+					
+					this.aliados = new Alianza();
+					this.aliados.agregarAliado(otr);
+				
+					otr.aliados = new Alianza();
+					otr.aliados.agregarAliado(this);
+					
+				} else {
+	
+					otr.aliados.agregarAliado(this);
+					this.aliados = otr.aliados;
+				}
 			} else {
-
-				otr.aliados.agregarAliado(this);
-				this.aliados = otr.aliados;
+				if(otr.aliados == null){
+					this.aliados.agregarAliado(this);
+					otr.aliados = this.aliados;
+				}
 			}
-		} else {
-			if(otr.aliados == null){
-				this.aliados.agregarAliado(this);
-				otr.aliados = this.aliados;
-			}
-			else 
-				System.out.println("el jugador ya tiene alianza");
-
 		}
 
 	}
 
+	public boolean tieneAlianza(){
+		return this.aliados != null;
+	}
+	
+	
 	public void salirDeAlianza() {
 		this.aliados.removerAliado(this);
 		this.aliados = null;

@@ -6,6 +6,10 @@ public class Orco extends Personaje {
 
 	int cantidadDeAtaques;	
 	
+	public int getCantidadDeAtaques() {
+		return cantidadDeAtaques;
+	}
+
 	public Orco(Casta casta) {
 		super(casta);
 	}

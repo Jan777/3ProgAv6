@@ -1,10 +1,6 @@
 package items;
 
-import personaje.Personaje;
-
 public class ConEscoba extends Item{
-	
-	
 	
 	public int obtenerPuntosDeAtaque(){
 		if (this.equipamiento == null)

@@ -35,10 +35,6 @@ public class XP {
 		this.puntosGanados--;
 	}
 	
-	public void puntosHabilidades(){
-		
-	}
-	
 	private void aumentarNivel(){
 		this.nivel++;
 	}

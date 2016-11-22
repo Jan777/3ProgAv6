@@ -3,10 +3,6 @@ package personaje;
 public class NPC implements Atacable  {
 	
 	int salud = 5;
-	
-	public NPC() {
-		this.salud = salud;
-	}
 
 	public int getSalud() {
 		return salud;

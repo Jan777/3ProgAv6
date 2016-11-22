@@ -1,7 +1,5 @@
 package items;
 
-import personaje.Personaje;
-
 public abstract class Item {
 
 	public Item equipamiento;

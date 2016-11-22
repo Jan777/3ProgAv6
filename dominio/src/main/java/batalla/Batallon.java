@@ -1,7 +1,5 @@
 package batalla;
 
-import java.awt.List;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import java.util.Iterator;
@@ -13,17 +11,24 @@ public class Batallon {
 	
 private LinkedList <Personaje> batallon = new LinkedList <Personaje> ();
 	
-	public  void atacar(Batallon otro){
-		for (Personaje atacante : batallon) {
+	public void atacar(Batallon otro){
+		Iterator<Personaje> it = batallon.iterator();
+		Personaje atacante;
+		
+		while(it.hasNext()){
+			atacante = it.next();
+			atacante.atacar(otro.obtenerProximaVictima());
+		}
+		
+		/*for (Personaje atacante : batallon) {
 			if(batallon.isEmpty()){
 				
 			}else
-
-			atacante.atacar(otro.obtenerProximaVictima());}
+				atacante.atacar(otro.obtenerProximaVictima());
+		}*/
 	}
 	
-	
-	
+
 	public  Atacable obtenerProximaVictima(){
 		 depurarBatallon();
 		 

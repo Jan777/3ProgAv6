@@ -1,6 +1,5 @@
 package batalla;
 
-import personaje.Atacable;
 import personaje.NPC;
 import personaje.Personaje;
 

@@ -1,7 +1,5 @@
 package items;
 
-import personaje.Personaje;
-
 public class ConEscudoDeAcero extends Item {
 	
 	public ConEscudoDeAcero(){

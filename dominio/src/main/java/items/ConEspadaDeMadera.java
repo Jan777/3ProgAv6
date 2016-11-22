@@ -1,7 +1,5 @@
 package items;
 
-import personaje.Personaje;
-
 public class ConEspadaDeMadera extends Item {
 	
 	public ConEspadaDeMadera(){

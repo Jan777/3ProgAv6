@@ -25,7 +25,7 @@ public class Alianza {
 	}
 	
 	public int getTamanio(){
-		return this.aliados.size();
+		return aliados == null?0:this.aliados.size();
 	}
 	
 }

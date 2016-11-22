@@ -1,14 +1,8 @@
 package batalla;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 import alianza.Alianza;
-import items.ConEspadaDeAcero;
-import items.ConEspadaDeMadera;
-import personaje.Atacable;
-import personaje.Humano;
 import personaje.Personaje;
 
 public class Batalla  {
@@ -16,12 +10,14 @@ public class Batalla  {
 	public Batallon prepararBatallon(Personaje pepe) {
 		Batallon batallon = new Batallon();
 		Alianza aliados = pepe.getAliados();
+		
 		if (aliados != null) {
 			Iterator<Personaje> iter = aliados.getAliados().iterator();
 			while (iter.hasNext()) {
 				Personaje p = iter.next();
-				if (p.getUbicacion().intersectaCon(pepe.getUbicacion()))
+				if (p.getUbicacion().intersectaCon(pepe.getUbicacion())){
 					batallon.agregar(p);
+				}
 			}
 		}
 		else
@@ -35,18 +31,20 @@ public class Batalla  {
 		Batallon batallon1 = prepararBatallon(p1);
 		Batallon batallon2 = prepararBatallon(p2);
 		
+		System.out.println(batallon1);
+		System.out.println(batallon2);
+		
+		
 		while (!batallon1.estaVacio() && !batallon2.estaVacio()){
-			
+
 			batallon1.atacar(batallon2);
 			
 			if (batallon2.estaVacio()){
 				System.out.println("Gana Batallon1");
 				batallon1.batallaGanada();
-				
 			}
 			else{
 				batallon2.atacar(batallon1);
-				
 			}
 			if (batallon1.estaVacio()){
 				System.out.println("gana Batallon2");

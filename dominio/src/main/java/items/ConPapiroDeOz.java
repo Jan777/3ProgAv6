@@ -1,7 +1,5 @@
 package items;
 
-import personaje.Personaje;
-
 public class ConPapiroDeOz extends Item {
 	
 	public ConPapiroDeOz(){
