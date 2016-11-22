@@ -17,8 +17,12 @@ private LinkedList <Personaje> batallon = new LinkedList <Personaje> ();
 		
 		while(it.hasNext()){
 			atacante = it.next();
-			atacante.atacar(otro.obtenerProximaVictima());
+			otro.depurarBatallon();
+			if(!otro.estaVacio()){
+				atacante.atacar(otro.obtenerProximaVictima());
+			}
 		}
+		
 		
 		/*for (Personaje atacante : batallon) {
 			if(batallon.isEmpty()){
@@ -30,7 +34,7 @@ private LinkedList <Personaje> batallon = new LinkedList <Personaje> ();
 	
 
 	public  Atacable obtenerProximaVictima(){
-		 depurarBatallon();
+		 //depurarBatallon();
 		 
 		 return batallon.get(0);
 		

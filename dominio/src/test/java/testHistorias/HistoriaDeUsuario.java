@@ -4,10 +4,8 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import alianza.Alianza;
 import batalla.Batalla;
 import batalla.BatallaVSNPC;
-import batalla.Batallon;
 import casta.Casta;
 import casta.Explorador;
 import casta.Guerrero;
@@ -99,6 +97,7 @@ public class HistoriaDeUsuario {
 		 * ingresar a un mundo con un personaje
 		 */
 		
+		@Test
 		@Ignore
 	    public void Historia2() {
 		}
@@ -110,6 +109,7 @@ public class HistoriaDeUsuario {
 		 * No se reflejan los cambios que se realizan dentro de la clase Batalla al agregar y quitar Items
 		 */
 		
+		@Test
 		@Ignore
 	    public void Historia3() {
 		}
@@ -340,6 +340,7 @@ public class HistoriaDeUsuario {
 		 */
 		
 		@Test
+		
 	    public void Historia10() {
 			Personaje elfo = new Elfo(new Mago());
 			Personaje humano = new Humano(new Guerrero());
@@ -355,9 +356,18 @@ public class HistoriaDeUsuario {
 			sigurd.setUbicacion(new Ubicacion(10,10));
 			elfo.setUbicacion(new Ubicacion(11,11));
 			
+			//Seteo la salud para que la batalla termine más rápido
+			elfo.setSalud(10);
+			orco.setSalud(10);
+			
 			new Batalla().batalla(sigurd, elfo);
 			
+			Assert.assertFalse(elfo.estaVivo());
+			Assert.assertFalse(orco.estaVivo());
 			
+			Assert.assertTrue(sigurd.estaVivo());
+			Assert.assertTrue(humano.estaVivo());
+
 		}
 		
 		/*
@@ -470,6 +480,7 @@ public class HistoriaDeUsuario {
 		 */
 		
 		@Test
+		@Ignore
 		public void Historia12() {
 					
 		}
@@ -479,6 +490,7 @@ public class HistoriaDeUsuario {
 		 * Destrozar obstaculos
 		 */
 		
+		@Test
 		@Ignore
 	    public void Historia13() {
 		}
