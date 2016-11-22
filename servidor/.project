@@ -18,7 +18,7 @@
 		<link>
 			<name>dominio</name>
 			<type>2</type>
-			<location>C:/Users/Lautaro/Documents/GitHub/jrpg/dominio/src/main/java</location>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/jrpg/dominio/src/main/java</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
