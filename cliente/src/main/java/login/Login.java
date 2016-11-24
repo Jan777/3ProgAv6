@@ -89,6 +89,8 @@ public class Login extends JFrame {
 						e1.printStackTrace();
 					}
 					dispose();
+				}else{
+					JOptionPane.showMessageDialog(null, "Por favor, complete todos los datos.");
 				}
 			}
 		});

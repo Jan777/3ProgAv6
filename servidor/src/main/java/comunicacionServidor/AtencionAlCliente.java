@@ -39,7 +39,7 @@ public class AtencionAlCliente extends Thread {
 						enviarRespuestaLoginCorrecto(json.getString("nickname"));
 					if(respuesta == 0)
 						enviarRespuestaLogueado(clienteSocket, json.getString("nickname"));
-					if(respuesta == -1)
+					if(respuesta == -1 || respuesta == 2)
 						enviarRespuestaLoginIncorrecta(clienteSocket, json.getString("nickname"));
 					break;					
 				case "personaje":
