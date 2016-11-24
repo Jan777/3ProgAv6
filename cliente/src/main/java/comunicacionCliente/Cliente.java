@@ -26,6 +26,8 @@ public class Cliente {
 			new ClienteEscritura(socket, obj).start();
 			return this;
 		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Hubo un error al iniciar la aplicación. Revise la conexión con el servidor.");
+			System.exit(0);
 			return this;
 		}
 
