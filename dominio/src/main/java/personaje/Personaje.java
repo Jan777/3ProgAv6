@@ -156,7 +156,6 @@ public abstract class Personaje implements Atacable {
 	
 	public void serAtacado(int danio) {
 		if(danio > this.obtenerPuntosDeDefensa())
-			this.salud -= (danio-this.obtenerPuntosDeDefensa());
 		else
 			this.salud--;
 		

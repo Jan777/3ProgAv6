@@ -36,12 +36,14 @@ public class Batalla  {
 			
 			if (batallon2.estaVacio()){
 				batallon1.batallaGanada();
+				batallon1.asignarItemsGanados(batallon2.itemsPerdidos);
 			}
 			else{
 				batallon2.atacar(batallon1);
 			}
 			if (batallon1.estaVacio()){
 				batallon2.batallaGanada();
+				batallon2.asignarItemsGanados(batallon1.itemsPerdidos);
 			}
 		
 		}

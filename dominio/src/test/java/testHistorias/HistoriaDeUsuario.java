@@ -110,8 +110,28 @@ public class HistoriaDeUsuario {
 		 */
 		
 		@Test
-		@Ignore
 	    public void Historia3() {
+			
+			Personaje elfo = new Elfo(new Mago());
+			Personaje orco = new Orco (new Explorador());
+			
+			orco.agregarItem(new ConEscudoDeAcero());	
+			elfo.agregarItem(new ConEspadaDeHierro());
+			
+			Assert.assertEquals(1, elfo.getCantItem());
+			Assert.assertEquals(1, orco.getCantItem());
+			
+			//Seteo la salud para que la batalla termine más rápido y saber quién sera el ganador
+			elfo.setSalud(5);
+			orco.setSalud(10);
+			
+			new Batalla().batalla(orco, elfo);
+
+			Assert.assertEquals(0, elfo.getCantItem());
+			Assert.assertEquals(2, orco.getCantItem());
+			Assert.assertTrue(orco.tiene(ConEscudoDeAcero.class));
+			Assert.assertTrue(orco.tiene(ConEspadaDeHierro.class));
+			
 		}
 		
 		/*
@@ -357,8 +377,8 @@ public class HistoriaDeUsuario {
 			elfo.setUbicacion(new Ubicacion(11,11));
 			
 			//Seteo la salud para que la batalla termine más rápido
-			elfo.setSalud(10);
-			orco.setSalud(10);
+			elfo.setSalud(5);
+			orco.setSalud(5);
 			
 			new Batalla().batalla(sigurd, elfo);
 			
