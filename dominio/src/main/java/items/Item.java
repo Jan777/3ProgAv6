@@ -37,7 +37,7 @@ public abstract class Item {
 	}
 
 	public boolean tiene (Class decorado) {
-		return this.getClass() == decorado || this.equipamiento.tiene(decorado);
+		return this.getClass() == decorado?true:(this.equipamiento == null?false:this.equipamiento.tiene(decorado));
 	}
 
 	public void desequiparPorClase(Class decorado, Item itemLlamador) {

@@ -50,21 +50,21 @@ public class Batalla  {
 		
 	}
 	
-/*	public void escaparBatalla(Personaje pers){
-		Iterator<Personaje> iter1 = batallon1.iterator();
-		Iterator<Personaje> iter2 = batallon2.iterator(); 
+	public void escaparBatalla(Personaje pers, Batallon batallon1, Batallon batallon2){
+		Iterator<Personaje> iter1 = batallon1.getBatallon().iterator();
+		Iterator<Personaje> iter2 = batallon2.getBatallon().iterator(); 
 		while (iter1.hasNext()){
 			if (pers==iter1.next()){
 				iter1.remove();
-				//desequipar Item
+				pers.desequiparMejorItem();
 			}
 		}
 		while (iter2.hasNext()){
 			if (pers==iter2.next()){
 				iter2.remove();
-				//desequipar Item
+				pers.desequiparMejorItem();
 			}
 		}	
-	}*/
+	}
 	
 }

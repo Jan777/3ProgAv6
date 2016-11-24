@@ -2,7 +2,6 @@ package batalla;
 
 import java.util.LinkedList;
 
-import items.ConArmadura;
 import items.ConEscudoDeAcero;
 import items.ConEscudoDeKevlar;
 import items.ConEscudoDeMadera;
@@ -22,6 +21,10 @@ import personaje.Atacable;
 public class Batallon {
 	
 private LinkedList <Personaje> batallon = new LinkedList <Personaje> ();
+
+public LinkedList<Personaje> getBatallon() {
+	return batallon;
+}
 
 public LinkedList<Class> itemsPerdidos = new LinkedList<Class>();
 public LinkedList<Item> itemsTotal = new LinkedList<Item>();

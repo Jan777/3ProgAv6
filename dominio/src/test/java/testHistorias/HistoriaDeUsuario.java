@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import batalla.Batalla;
 import batalla.BatallaVSNPC;
+import batalla.Batallon;
 import casta.Casta;
 import casta.Explorador;
 import casta.Guerrero;
@@ -500,9 +501,39 @@ public class HistoriaDeUsuario {
 		 */
 		
 		@Test
-		@Ignore
 		public void Historia12() {
-					
+			Personaje elfo = new Elfo(new Mago());
+			Personaje orco = new Orco (new Explorador());
+			
+			//equipo ambos personajes
+			orco.agregarItem(new ConEscudoDeAcero());	
+			elfo.agregarItem(new ConEspadaDeHierro()); // item de mayor prioridad
+			elfo.agregarItem(new ConEscudoDeMadera()); // item de menor prioridad
+			
+			Assert.assertTrue(elfo.tiene(ConEspadaDeHierro.class));
+			Assert.assertEquals(2, elfo.getCantItem());
+			Assert.assertEquals(1, orco.getCantItem());
+			
+			//Creo una batallon y armo los batallones
+			Batalla batalla = new Batalla();
+			Batallon b1 = batalla.prepararBatallon(elfo);
+			Batallon b2 = batalla.prepararBatallon(orco);
+			
+			Assert.assertEquals(1, b1.getSize());
+			
+			//Este metodo va a ser llamado mediante un boton mientras se desarrolla la batalla.
+			//aca se hace directamente a modo de ejemplo.
+			batalla.escaparBatalla(elfo, b1, b2);
+			
+			Assert.assertEquals(0, b1.getSize());
+			
+			//penalizacion al personaje que escapo, se le quita su mejor item
+			
+			Assert.assertTrue(elfo.tiene(ConEscudoDeMadera.class));
+			Assert.assertFalse(elfo.tiene(ConEspadaDeHierro.class));
+			Assert.assertEquals(1, elfo.getCantItem());
+			Assert.assertEquals(1, orco.getCantItem());
+			
 		}
 		/*
 		 * Historia 13:
