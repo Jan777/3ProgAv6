@@ -1,15 +1,13 @@
 package comunicacionServidor;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.sql.SQLException;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
+import javax.swing.JOptionPane;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,7 +32,7 @@ public class AtencionAlCliente extends Thread {
 					break;
 				case "login":
 					int respuesta = consulta.validarUsuario(json, clienteSocket);
-					System.out.println(respuesta);
+					//System.out.println(respuesta);
 					if(respuesta == 1)
 						enviarRespuestaLoginCorrecto(json.getString("nickname"));
 					if(respuesta == 0)
@@ -50,13 +48,11 @@ public class AtencionAlCliente extends Thread {
 					break;		
 			} 		
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al hacer la lectura del cliente.");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error en la mensajería JSON.");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error de base de datos.");
 		}
 	}
 	
@@ -71,7 +67,7 @@ public class AtencionAlCliente extends Thread {
 			writer.flush();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de registro erróneo.");
 		}
 		
 	}
@@ -87,7 +83,7 @@ public class AtencionAlCliente extends Thread {
 			writer.flush();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de registro correcto.");
 		}
 		
 	}
@@ -103,7 +99,7 @@ public class AtencionAlCliente extends Thread {
 			writer.flush();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de login erróneo.");
 		}
 	}
 	
@@ -117,7 +113,7 @@ public class AtencionAlCliente extends Thread {
 			writer.write (json.toString() + "\n");
 			writer.flush();
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de login correcto.");
 		}
 	}
 	
@@ -131,7 +127,7 @@ public class AtencionAlCliente extends Thread {
 			writer.write (json.toString() + "\n");
 			writer.flush();
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de usuario logueado.");
 		}
 	}
 	
@@ -146,7 +142,7 @@ public class AtencionAlCliente extends Thread {
 			writer.flush();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de creación de personaje erróneo.");
 		}
 	}
 	
@@ -161,7 +157,7 @@ public class AtencionAlCliente extends Thread {
 			writer.flush();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ocurrió un error al enviar la respuesta de creación de personaje correcto.");
 		}
 	}
 	

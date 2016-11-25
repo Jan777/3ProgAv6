@@ -1,17 +1,12 @@
 package comunicacionCliente;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
-import org.json.JSONException;
+import javax.swing.JOptionPane;
+
 import org.json.JSONObject;
 
 public class ClienteEscritura extends Thread {
@@ -35,8 +30,7 @@ public class ClienteEscritura extends Thread {
 			try {
 				this.socket.close();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Ocurrió un error al querer cerrar el socket.");
 			}
 			
 		}

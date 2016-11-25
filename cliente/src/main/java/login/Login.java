@@ -65,7 +65,7 @@ public class Login extends JFrame {
 		label_3.setBounds(73, 16, 0, 0);
 
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(92, 40, 166, 20);
+		txtUsuario.setBounds(114, 40, 146, 20);
 		txtUsuario.setColumns(10);
 
 		JLabel label_2 = new JLabel("");
@@ -84,11 +84,10 @@ public class Login extends JFrame {
 					mensajeJSON = new MensajeJSON();
 					try {
 						mensajeJSON.validarUsuario(u.getNickname(), u.getPassword());
-
 					} catch (JSONException e1) {
-						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "No se pudo validar los datos ingresados.");
 					}
-					dispose();
+					//dispose();
 				}else{
 					JOptionPane.showMessageDialog(null, "Por favor, complete todos los datos.");
 				}

@@ -9,27 +9,20 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import alianza.Alianza;
-import casta.Casta;
-import items.Item;
 import personaje.CrearPersonajes;
 import personaje.Personaje;
-import ubicacion.Ubicacion;
-import xp.XP;
 
 
 public class ConsultasSQL extends JFrame {
 	private Personaje personaje = null;
 	private CrearPersonajes crear;
 	private Socket socket;
+	
 	public ConsultasSQL() {
 				
 	}
@@ -101,7 +94,7 @@ public class ConsultasSQL extends JFrame {
 				//AtencionAlCliente at=new AtencionAlCliente(socket); 
 				//at.enviarRespuestaLoginIncorrecta(socket, nickname);
 			} catch (SQLException e) {
-				System.err.println("Conexion SQL fallida");
+				JOptionPane.showMessageDialog(null, "Falló la conexión con la bases de datos.");
 			}
 		}
 	}
@@ -136,13 +129,13 @@ public class ConsultasSQL extends JFrame {
 			pstmt.setInt(9, experiencia);
 			pstmt.setString(10, casta);
 			pstmt.setString(11, tipoPers);
-			System.out.println("Llegue hasta aca 1");
+			//System.out.println("Llegue hasta aca 1");
 			pstmt.execute();
 			pstmt.close();
-			System.out.println("Llegue hasta aca 2");
+			//System.out.println("Llegue hasta aca 2");
 			
 		} catch (SQLException e) {
-			System.out.println("Error al crear personaje");			
+			JOptionPane.showMessageDialog(null, "Ocurrio un error al crear el personaje.");
 		}
 	}
 	public void cerrarSesion (JSONObject json, Socket clienteSocket) throws JSONException{

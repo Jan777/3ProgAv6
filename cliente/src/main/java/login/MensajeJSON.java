@@ -1,28 +1,20 @@
 package login;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
 
 import comunicacionCliente.Cliente;
-import comunicacionCliente.ClienteLectura;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.Socket;
-
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MensajeJSON extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Cliente cliente = null;
 	
 	public MensajeJSON() {

@@ -2,17 +2,15 @@ package comunicacionCliente;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
 import javax.swing.JOptionPane;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import login.MensajeJSON;
 import login.Menu;
 
 public class ClienteLectura extends Thread {

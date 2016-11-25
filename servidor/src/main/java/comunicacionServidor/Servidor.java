@@ -1,14 +1,14 @@
 package comunicacionServidor;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JOptionPane;
 
 public class Servidor {
 
@@ -39,8 +39,7 @@ public class Servidor {
 								
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "El servidor ya se encuentra levantado.");
 		}
 	}
 	

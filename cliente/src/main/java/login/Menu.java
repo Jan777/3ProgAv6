@@ -22,6 +22,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.json.JSONException;
 
+import juego.Juego;
+
 import javax.swing.JComboBox;
 
 public class Menu extends JFrame {
@@ -76,7 +78,8 @@ public class Menu extends JFrame {
 			btnIniciarJuego.addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent arg0) {
-					
+					Juego worldwar = new Juego("World War", 800, 600, nickname);
+					worldwar.start();
 				}
 			});
 			contentPane.add(btnIniciarJuego, BorderLayout.SOUTH);
@@ -93,8 +96,7 @@ public class Menu extends JFrame {
 					try {
 						mensajeJSON.cerrarSesion(nickname);
 					} catch (JSONException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "No se pudo cerrar sesión del usuario " + nickname);
 					}
 					dispose();
 				}

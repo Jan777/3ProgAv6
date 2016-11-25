@@ -91,7 +91,7 @@ public class PantallaPersonaje extends JFrame  {
 						try {
 							mensajeJSON.agregarPersonaje(pers.getNombrepers(), pers.getCasta(), pers.getPersonaje(),nickname);
 						} catch (JSONException e1) {
-							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Ocurrió un error al crear el personaje.");
 						}
 				}
 						dispose();

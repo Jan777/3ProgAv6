@@ -4,15 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -22,6 +18,10 @@ import org.json.JSONException;
 
 public class Registro extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombreUsuario;
 	private JTextField txtMailUsuario;
@@ -40,7 +40,7 @@ public class Registro extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				//abreDialogSalida();
+				abreDialogSalida();
 			}
 		});
 		setTitle("Registro");
@@ -56,7 +56,7 @@ public class Registro extends JFrame {
 		contentPane.add(lblNombre);
 
 		txtNombreUsuario = new JTextField();
-		txtNombreUsuario.setBounds(87, 34, 255, 20);
+		txtNombreUsuario.setBounds(115, 34, 227, 20);
 		contentPane.add(txtNombreUsuario);
 		txtNombreUsuario.setColumns(10);
 
@@ -69,12 +69,12 @@ public class Registro extends JFrame {
 		contentPane.add(lblMail);
 
 		txtMailUsuario = new JTextField();
-		txtMailUsuario.setBounds(87, 75, 255, 20);
+		txtMailUsuario.setBounds(115, 75, 227, 20);
 		contentPane.add(txtMailUsuario);
 		txtMailUsuario.setColumns(10);
 
 		txtNickname = new JTextField();
-		txtNickname.setBounds(87, 112, 255, 20);
+		txtNickname.setBounds(115, 112, 227, 20);
 		contentPane.add(txtNickname);
 		txtNickname.setColumns(10);
 
@@ -125,11 +125,8 @@ public class Registro extends JFrame {
 						mensajeJSON=new MensajeJSON(); 
 						try {
 							mensajeJSON.agregarUsuario(uss.getMail(), uss.getNombre(),uss.getNickname(),uss.getPassword());
-						
-						
 						} catch (JSONException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Ocurrió un error al crear el usuario.");
 						}
 						dispose();
 					} else
@@ -157,6 +154,13 @@ public class Registro extends JFrame {
 		JLabel lblAsterisco4 = new JLabel("*");
 		lblAsterisco4.setBounds(344, 78, 22, 14);
 		contentPane.add(lblAsterisco4);
+	}
+	
+	public void abreDialogSalida() {
+		int res = JOptionPane.showConfirmDialog(this, "¿Desea salir de la pantalla de registro?", "Salida", JOptionPane.YES_NO_OPTION);
+		if (res == JOptionPane.YES_OPTION) {
+			dispose();
+		}
 	}
 	
 }

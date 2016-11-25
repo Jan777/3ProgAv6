@@ -2,7 +2,6 @@ package comunicacionServidor;
 
 
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
