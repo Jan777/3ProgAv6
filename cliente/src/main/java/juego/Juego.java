@@ -3,6 +3,8 @@ package juego;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.JOptionPane;
+
 public class Juego implements Runnable {
 
 	private Ventana pantalla;
@@ -131,7 +133,7 @@ public class Juego implements Runnable {
 			enFuncionamiento = false;
 			hilo.join();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Fallo al intentar detener el juego.");
 		}
 	}
 
