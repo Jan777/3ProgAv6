@@ -59,29 +59,31 @@ public class Entidad {
 	private final Animacion moverAbajoDer;
 	private final Animacion moverAbajo;
 	private final Animacion moverAbajoIzq;
-
+	
+	private String raza;
 	private Mundo mundo;
 
-	public Entidad(Juego juego, Mundo mundo, int ancho, int alto, float spawnX, float spawnY, LinkedList<BufferedImage[]> animaciones, int velAnimacion) {
+	public Entidad(Juego juego, Mundo mundo, int ancho, int alto, float spawnX, float spawnY, LinkedList<BufferedImage[]> animaciones, int velAnimacion, String raza) {
 		this.juego = juego;
 		this.ancho = ancho;
 		this.alto = alto;
 		this.mundo = mundo;
+		this.raza=raza;
 		xOffset = ancho / 2;
 		yOffset = alto / 2;
 		x = spawnX;
 		y = spawnY;
 
 		this.animaciones = animaciones;
-		 
-	    moverIzq = new Animacion(velAnimacion, animaciones.get(0));
-	    moverArribaIzq = new Animacion(velAnimacion, animaciones.get(1));
-	    moverArriba = new Animacion(velAnimacion, animaciones.get(2));
-	    moverArribaDer = new Animacion(velAnimacion, animaciones.get(3));
-	    moverDer = new Animacion(velAnimacion, animaciones.get(4));
-	    moverAbajoDer = new Animacion(velAnimacion, animaciones.get(5));
-	    moverAbajo = new Animacion(velAnimacion, animaciones.get(6));
-	    moverAbajoIzq = new Animacion(velAnimacion, animaciones.get(7));
+		
+		moverArriba = new Animacion(velAnimacion, animaciones.get(0)); 
+		moverArribaDer = new Animacion(velAnimacion, animaciones.get(1));
+		moverDer = new Animacion(velAnimacion, animaciones.get(2));
+		moverAbajoDer = new Animacion(velAnimacion, animaciones.get(3));
+		moverAbajo = new Animacion(velAnimacion, animaciones.get(4));
+	    moverAbajoIzq = new Animacion(velAnimacion, animaciones.get(5));
+		moverIzq = new Animacion(velAnimacion, animaciones.get(6));
+	    moverArribaIzq = new Animacion(velAnimacion, animaciones.get(7));
 	}
 
 	public void actualizar() {
@@ -113,9 +115,13 @@ public class Entidad {
 
 			xInicio = x;
 			yInicio = y;
+			System.out.println("Origen " + x + " " + y);
 						
 			xFinal = Math.round(posMouse[0] + juego.getCamara().getxOffset() - xOffset);
 			yFinal = Math.round(posMouse[1] + juego.getCamara().getyOffset() - yOffset);
+			
+			
+			//enviar mensaje al servidor xInicial, yInicial, xFinal , yFinal , raza, nickname
 						
 			difX = Math.abs(xFinal - xInicio);
 			difY = Math.abs(yFinal - yInicio);
@@ -232,15 +238,10 @@ public class Entidad {
 	public void graficar(Graphics g) {
 		drawX = (int) (x - juego.getCamara().getxOffset());
 		drawY = (int) (y - juego.getCamara().getyOffset());
-		g.drawImage(getFrameAnimacionActual(), drawX, drawY, ancho, alto, null);
-		
-		//Se puede setear el nombre del nick arriba del personaje
-		//g.setColor(Color.WHITE);
-		//g.drawString("<LosCacheFC>", drawX, drawY);
-		//g.drawString("Leo - 100", drawX + 10, drawY - 12);
+		g.drawImage(getFrameAnimacionActual(raza), drawX, drawY, ancho, alto, null);
 	}
 
-	private BufferedImage getFrameAnimacionActual() {
+	private BufferedImage getFrameAnimacionActual(String raza) {
 		if (horizontal && x > xFinal) {
 			return moverIzq.getFrameActual();
 		} else if (horizontal && x < xFinal) {
@@ -258,8 +259,14 @@ public class Entidad {
 		} else if (diagonalSupDer) {
 			return moverArribaDer.getFrameActual();
 		}
-
-		return Recursos.ogro.get(6)[0];
+		
+		if (raza.equals("Orco"))
+			return Recursos.orco.get(4)[0];
+		else if (raza.equals("Humano"))
+			return Recursos.humano.get(4)[0];
+		else if (raza.equals("Elfo"))
+			return Recursos.elfo.get(4)[0];
+		return null;
 	}
 
 	public float getX() {

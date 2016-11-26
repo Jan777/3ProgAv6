@@ -8,11 +8,17 @@ public class EstadoDelJuego extends Estado {
 
 	private Entidad personaje;
 	private Mundo mundo;
+	private String raza;
 
-	public EstadoDelJuego(Juego juego) {
+	public EstadoDelJuego(Juego juego, String raza) {
 		super(juego);
 		mundo = new Mundo(juego, "recursos/mundo2.txt");
-	    personaje = new Entidad(juego, mundo, 64, 64, 0, 0, Recursos.ogro, 150);
+		if (raza.equals("Orco"))
+			personaje = new Entidad(juego, mundo, 64, 64, 0, 0, Recursos.orco, 170, raza);
+		else if (raza.equals("Humano"))
+			personaje = new Entidad(juego, mundo, 64, 64, 0, 0, Recursos.humano, 170, raza);
+		else if (raza.equals("Elfo"))
+			personaje = new Entidad(juego, mundo, 64, 64, 0, 0, Recursos.elfo, 170, raza);
 	}
 
 	@Override

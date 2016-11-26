@@ -4,13 +4,14 @@ import java.awt.image.BufferedImage;
 
 public class HojaDeSprites {
 
-	private BufferedImage sprite;
+	private BufferedImage ss;
 	
 	public HojaDeSprites(BufferedImage sprite) {
-		this.sprite = sprite;
+		this.ss = sprite;
 	}
 	
 	public BufferedImage getTile(int x, int y, int ancho, int alto) {
-		return sprite.getSubimage(x, y, ancho, alto);
+		BufferedImage sprite = ss.getSubimage(x, y, ancho, alto);
+		return sprite;
 	}
 }

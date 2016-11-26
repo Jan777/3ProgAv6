@@ -99,7 +99,7 @@ public class ConsultasSQL extends JFrame {
 		}
 	}
 	
-	public void crearPers(JSONObject json, Socket clienteSocket) throws JSONException, SQLException{
+	public int crearPers(JSONObject json, Socket clienteSocket) throws JSONException, SQLException{
 		String nickname = json.getString("nickname");
 		String casta = json.getString("casta");
 		String tipoPers = json.getString("tipopers");
@@ -133,9 +133,10 @@ public class ConsultasSQL extends JFrame {
 			pstmt.execute();
 			pstmt.close();
 			//System.out.println("Llegue hasta aca 2");
-			
+			return 3;
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Ocurrio un error al crear el personaje.");
+			return 4;
+			//JOptionPane.showMessageDialog(null, "Ocurrio un error al crear el personaje.");
 		}
 	}
 	public void cerrarSesion (JSONObject json, Socket clienteSocket) throws JSONException{
@@ -147,5 +148,19 @@ public class ConsultasSQL extends JFrame {
 		}catch (SQLException sqle1) {
 			
 		}
+	}
+	
+	public String raza (String nickname){
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = SQLConnection.getConnection().prepareStatement("Select * from Personaje Where nickname=?");
+			pstmt.setString(1, nickname);
+			ResultSet rs  = pstmt.executeQuery();
+			return rs.getString("raza");
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return "sinPersonaje";
+		}		
 	}
 }

@@ -87,6 +87,5 @@ public class BosqueConNieve {
 	public void setTiles(int[][] tiles) {
 		this.tiles = tiles;
 	}
-	
-	
+
 }

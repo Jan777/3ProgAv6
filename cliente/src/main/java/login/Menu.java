@@ -33,9 +33,10 @@ public class Menu extends JFrame {
 	Socket socket;
 	private PantallaPersonaje pantallaPersonaje = null;
 	private PantallaMapa pantallaMapa = null;
+	String mapa;
 	
 	
-	public Menu(String nickname) {
+	public Menu(String nickname, String raza) {
 			setTitle("WorldWar");
 			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			setBounds(100, 100, 319, 251);
@@ -53,8 +54,13 @@ public class Menu extends JFrame {
 			btnCrearPersonaje .addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent arg0) {
+					if (raza.equals("sinPersonaje")){
 					instanciarCP(nickname);
 					pantallaPersonaje.show();
+					dispose ();
+					}else{
+					personajeCreado();
+					}
 				}
 			});
 			//contentPane.add(btnCrearPersonaje, BorderLayout.SOUTH);
@@ -78,7 +84,8 @@ public class Menu extends JFrame {
 			btnIniciarJuego.addActionListener(new ActionListener() {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent arg0) {
-					Juego worldwar = new Juego("World War", 800, 600, nickname);
+					
+					Juego worldwar = new Juego("World War", 800, 600, nickname, raza);
 					worldwar.start();
 				}
 			});
@@ -115,6 +122,8 @@ public class Menu extends JFrame {
 		this.pantallaMapa = new PantallaMapa(this);
 	}
 	
-	
+	public void personajeCreado (){
+		JOptionPane.showMessageDialog(null, "Ya posee creado un personaje");
+	}
 	
 }

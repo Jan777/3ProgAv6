@@ -120,8 +120,8 @@ public class Login extends JFrame {
 		pantallaRegistro.setVisible(true);
 	}
 
-	public void instanciarMenu(String nickname) {
-		this.menu = new Menu(nickname);
+	public void instanciarMenu(String nickname, String raza) {
+		this.menu = new Menu(nickname, raza);
 	}
 
 	public void abreDialogSalida() {

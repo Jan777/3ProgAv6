@@ -12,6 +12,7 @@ public class Juego implements Runnable {
 	private final int ANCHO;
 	private final int ALTO;
 	private String nickname;
+	private String raza;
 	
 	private Thread hilo;
 	
@@ -33,12 +34,13 @@ public class Juego implements Runnable {
 	// Camara
 	private VistaCamara camara;
 
-	public Juego(final String nombre, final int ancho, final int alto, String nickname) {
+	public Juego(final String nombre, final int ancho, final int alto, String nickname, String raza) {
 		this.NOMBRE = nombre;
 		this.ALTO = alto;
 		this.ANCHO = ancho;
 		this.nickname = nickname;
 		controlarMouse = new ControlMouse();
+		this.raza = raza;
 	}
 
 	public void iniciar() { // Carga lo necesario para iniciar el juego
@@ -46,7 +48,7 @@ public class Juego implements Runnable {
 		pantalla.getCanvas().addMouseListener(controlarMouse);
 		Recursos.cargar();
 
-		estadoJuego = new EstadoDelJuego(this);
+		estadoJuego = new EstadoDelJuego(this, raza);
 		Estado.setEstado(estadoJuego);
 		
 		camara = new VistaCamara(this, 0, 0);
@@ -156,5 +158,6 @@ public class Juego implements Runnable {
 	public EstadoDelJuego getEstadoJuego() {
 		return (EstadoDelJuego) estadoJuego;
 	}
+
 }
 

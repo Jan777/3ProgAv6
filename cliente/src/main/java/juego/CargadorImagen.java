@@ -2,6 +2,7 @@ package juego;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -17,4 +18,6 @@ public class CargadorImagen {
 		}
 		return null;
 	}
+	
+	
 }

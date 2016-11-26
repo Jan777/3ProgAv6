@@ -32,7 +32,8 @@ public class ClienteLectura extends Thread {
 			nickname = json.getString("nickname");
 			switch (name){
 				case "logincorrecto":{
-					loginCorrecto(nickname);
+					String raza = json.getString("raza");
+					loginCorrecto(nickname , raza);
 					break;
 				}
 				case "loginincorrecto":{
@@ -59,6 +60,15 @@ public class ClienteLectura extends Thread {
 					persError(socket);
 					break;
 				}
+				case "personajeCorrecto":{
+					String raza = json.getString("raza");
+					personajeCorrecto(nickname , raza);
+					break;
+				}
+				case "personajeIncorrecto":{
+					persOk(socket);
+					break;
+				}
 			} 			
 			
 		}catch (Exception e) {
@@ -66,10 +76,15 @@ public class ClienteLectura extends Thread {
 		}
 	}
 	
-	public void loginCorrecto(String nickname) {
+	public void loginCorrecto(String nickname, String raza) {
 		JOptionPane.showMessageDialog(null, "El usuario ha ingresado correctamente", "Bienvenido",
                 JOptionPane.INFORMATION_MESSAGE);
-		Menu menu= new Menu(nickname);
+		Menu menu= new Menu(nickname, raza);
+		menu.setVisible(true);
+	}
+	
+	public void personajeCorrecto (String nickname, String raza) {
+		Menu menu= new Menu(nickname, raza);
 		menu.setVisible(true);
 	}
 	

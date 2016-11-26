@@ -93,7 +93,7 @@ public class PantallaPersonaje extends JFrame  {
 						} catch (JSONException e1) {
 							JOptionPane.showMessageDialog(null, "Ocurrió un error al crear el personaje.");
 						}
-				}
+				}	
 						dispose();
 			}
 		});

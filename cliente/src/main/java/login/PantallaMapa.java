@@ -61,7 +61,6 @@ public class PantallaMapa extends JFrame  {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 //						pers.setCasta((String)comboBox.getSelectedItem());
 //
 //						mensajeJSON=new MensajeJSON(); 
