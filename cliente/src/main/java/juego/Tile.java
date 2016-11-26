@@ -8,8 +8,9 @@ public class Tile {
 	
 	public static Tile[] tiles = new Tile[256];
 	public static Tile cesped = new TileCesped(0); //id 0 para cesped
-	public static Tile fuego = new TileFuego(1); //id 1 para fueog
+	public static Tile fuego = new TileLimite(1); //id 1 para fueog
 	public static Tile nieve = new TileNieve(2); //id 2 para nieve
+	public static Tile agua = new TileAgua(3); //id 2 para nieve
 	//public static Tile bordeFrontal = new TilePared1(3);
 	//public static Tile bordeLateral = new TilePared2(4);
 	

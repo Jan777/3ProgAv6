@@ -68,7 +68,8 @@ public class Mundo {
 		//en este método podríamos poner la eleccion del mundo con un case.
 		
 		//ejemplo de un mapa
-		BosqueConNieve mundo1 = new BosqueConNieve();
+		//BosqueConNieve mundo1 = new BosqueConNieve();
+		Pantano mundo1 = new Pantano();
 		ancho = mundo1.getAncho();
 		alto = mundo1.getAlto();
 		spawnX = mundo1.getSpawnX();

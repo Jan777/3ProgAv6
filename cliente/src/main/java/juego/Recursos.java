@@ -9,7 +9,6 @@ public class Recursos {
 	private static int ANCHO; // Ancho del frame a obtener
 	private static int ALTO; // Alto del frame a obtener
 	
-	// Inicio Personajes
 	public static LinkedList<BufferedImage[]> humano = new LinkedList<>();
 	private static BufferedImage[] humanoN;
 	private static BufferedImage[] humanoNO; 
@@ -18,9 +17,7 @@ public class Recursos {
 	private static BufferedImage[] humanoS;
 	private static BufferedImage[] humanoSE;
 	private static BufferedImage[] humanoE;
-	private static BufferedImage[] humanoNE;
-	 
-	
+	private static BufferedImage[] humanoNE;	
 	public static LinkedList<BufferedImage[]> orco = new LinkedList<>();
 	private static BufferedImage[] orcoN;
 	private static BufferedImage[] orcoNO;
@@ -30,7 +27,6 @@ public class Recursos {
 	private static BufferedImage[] orcoSE;
 	private static BufferedImage[] orcoE;
 	private static BufferedImage[] orcoNE; 
-
 	public static LinkedList<BufferedImage[]> elfo = new LinkedList<>();
 	private static BufferedImage[] elfoN;
 	private static BufferedImage[] elfoNO;
@@ -39,19 +35,15 @@ public class Recursos {
 	private static BufferedImage[] elfoS;
 	private static BufferedImage[] elfoSE;
 	private static BufferedImage[] elfoE;
-	private static BufferedImage[] elfoNE; 
-
-	
-	// Entorno
+	private static BufferedImage[] elfoNE; 	
 	public static BufferedImage cesped;
-	public static BufferedImage fuego;
+	public static BufferedImage limite;
 	public static BufferedImage background;
-	//public static BufferedImage pared1;
-	//public static BufferedImage pared2;
+	public static BufferedImage agua;
 	
 	
 	public static BufferedImage nieve;
-	// Fin Entorno
+	
 	
 	// Cargo todos los recursos una sola vez para no tener que hacerlo en cada actualizacion
 	
@@ -238,20 +230,12 @@ public class Recursos {
 		orco.add(orcoSE);
 		orco.add(orcoE);
 		orco.add(orcoNE);
-		
-		
-		
-		// Fin Ogro		
-		
-		// Inicio Entorno
-		//cesped = CargadorImagen.cargarImagen("/cretebrick970.png");
+
+		HojaDeSprites aguaSS = new HojaDeSprites(CargadorImagen.cargarImagen("/outside.png"));
+		agua = aguaSS.getTile(256, 544 , 63 , 31 );
 		cesped = CargadorImagen.cargarImagen("/Cesped.png");
-		//fuego = CargadorImagen.cargarImagen("/brickpavers2.png");
-		fuego = CargadorImagen.cargarImagen("/rock.png");
+		limite = CargadorImagen.cargarImagen("/rock.png");
 		nieve = CargadorImagen.cargarImagen("/snow.png");
 		background = CargadorImagen.cargarImagen("/background.jpg");
-		//pared1 = CargadorImagen.cargarImagen("/bordeFrontal.png");
-		//pared2 = CargadorImagen.cargarImagen("/bordeCostado.png");
-		// Fin Entorno
 	}
 }
